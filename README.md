@@ -1,2 +1,3 @@
 # Schrodinger-s-cat
-Team Schrödinger's cat Repo
+
+Wiki Link : https://github.com/airavata-courses/Schrodinger-s-cat/wiki
