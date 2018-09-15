@@ -2,6 +2,7 @@ package com.foodcode.microservice.restfuluserauthentication.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -49,8 +50,16 @@ public class UserDAOService implements UserDAO {
 	}
 
 	@Override
-	public User deleteUser(Integer id) {
-		// TODO Auto-generated method stub
+	public User deleteUserById(Integer id) {
+		//using iterator to iterate over the users list
+		Iterator<User> iterator = users.iterator();
+		while(iterator.hasNext()) {
+			User user = iterator.next();
+			if(user.getId()==id) {
+				iterator.remove();
+				return user;
+			}
+		}
 		return null;
 	} 
 }

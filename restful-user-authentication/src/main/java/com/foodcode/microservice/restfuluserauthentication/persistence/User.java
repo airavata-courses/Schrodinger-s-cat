@@ -2,21 +2,30 @@ package com.foodcode.microservice.restfuluserauthentication.persistence;
 
 import java.util.Date;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
 public class User {
 	private Integer id;
 	
+	@Size(min=1)
 	private String firstName;
 	
+	@Size(min=1)
 	private String lastName;
 	
+	@Past
 	private Date birthDate;
 	
+	@Size(min=2)
 	private String selfDescription;
 	
 	private Integer recipeId;
 	
+	@Size(min=1)
 	private String emailId;
 	
+	@Size(min=1)
 	private String userName;
 	
 	private String password;

@@ -8,7 +8,7 @@ public interface UserDAO {
 	List<User> findAll();
 	User findById(Integer id);
 	User saveUser(User user);
-	User deleteUser(Integer id);
+	User deleteUserById(Integer id);
 	
 	// TODO: implement the below func
 	//List<User> findByName();
