@@ -8,24 +8,24 @@ import javax.validation.constraints.Size;
 public class User {
 	private Integer id;
 	
-	@Size(min=1)
+	@Size(min=1,message="firstName should have atleast one characters")
 	private String firstName;
 	
-	@Size(min=1)
+	@Size(min=1,message="lastName should have atleast one characters")
 	private String lastName;
 	
 	@Past
 	private Date birthDate;
 	
-	@Size(min=2)
+	@Size(min=1,message="selfDescription should have atleast two characters")
 	private String selfDescription;
 	
 	private Integer recipeId;
 	
-	@Size(min=1)
+	//@Size(min=1,message="Name should have atleast two characters")
 	private String emailId;
 	
-	@Size(min=1)
+	@Size(min=5,message="userName should have atleast five characters")
 	private String userName;
 	
 	private String password;
