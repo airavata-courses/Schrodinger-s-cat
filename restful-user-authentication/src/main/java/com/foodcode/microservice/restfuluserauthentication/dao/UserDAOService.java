@@ -39,11 +39,12 @@ public class UserDAOService implements UserDAO {
 	}
 
 	@Override
-	public boolean saveUser(User user) {
+	public User saveUser(User user) {
 		if(user.getId()==null) {
 			user.setId(++userCount);
 		}
-		return users.add(user);
+		users.add(user);
+		return user;
 		
 	}
 
