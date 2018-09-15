@@ -14,7 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.foodcode.microservice.restfuluserauthentication.dao.UserDAOService;
 import com.foodcode.microservice.restfuluserauthentication.persistence.User;
-
+//TODO: define proper exception for all the attributes for User. Like retrieveUsers - 404 not found.
 @RestController
 public class UserResource {
 	
@@ -28,7 +28,12 @@ public class UserResource {
 	
 	@GetMapping("/users/{id}")
 	public User retrieveUsers(@PathVariable int id){
-		return service.findById(id);
+		User user = service.findById(id);
+		if(user==null) {
+			// it is a runtime exception, not an Exception
+			throw new UserNotFoundException("id-"+id);
+		}
+		return user;
 	}
 	
 	@PostMapping("/users")
