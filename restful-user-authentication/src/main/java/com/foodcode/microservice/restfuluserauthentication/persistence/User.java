@@ -5,6 +5,15 @@ import java.util.Date;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.annotations.ApiModel;
+
+@JsonFilter("UserFilter")
+//@JsonIgnoreProperties(value= {"password"})//static filtering
+@ApiModel(description="All details about the user")
 public class User {
 	private Integer id;
 	
@@ -28,6 +37,7 @@ public class User {
 	@Size(min=5,message="userName should have atleast five characters")
 	private String userName;
 	
+//	@JsonIgnore
 	private String password;
 
 	public User() {
