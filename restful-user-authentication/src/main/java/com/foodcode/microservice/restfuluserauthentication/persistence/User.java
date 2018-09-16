@@ -1,7 +1,12 @@
 package com.foodcode.microservice.restfuluserauthentication.persistence;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -14,7 +19,10 @@ import io.swagger.annotations.ApiModel;
 @JsonFilter("UserFilter")
 //@JsonIgnoreProperties(value= {"password"})//static filtering
 @ApiModel(description="All details about the user")
+@Entity
 public class User {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
 	@Size(min=1,message="firstName should have atleast one characters")
@@ -29,7 +37,8 @@ public class User {
 	@Size(min=1,message="selfDescription should have atleast two characters")
 	private String selfDescription;
 	
-	private Integer recipeId;
+	@OneToMany(mappedBy="user")
+	private List<Posts> recipeId;
 	
 	//@Size(min=1,message="Name should have atleast two characters")
 	private String emailId;
@@ -43,25 +52,39 @@ public class User {
 	public User() {
 		super();
 	}
-
-	public User(Integer id, String firstName, String lastName, Date birthDate, String selfDescription, Integer recipeId,
-			String emailId, String userName, String password) {
+	
+	
+	
+	public User(Integer id, @Size(min = 1, message = "firstName should have atleast one characters") String firstName,
+			@Size(min = 1, message = "lastName should have atleast one characters") String lastName,
+			@Past Date birthDate,
+			@Size(min = 1, message = "selfDescription should have atleast two characters") String selfDescription, String emailId,
+			@Size(min = 5, message = "userName should have atleast five characters") String userName, String password) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
-		this.selfDescription = selfDescription;
-		this.recipeId = recipeId;
+		if(selfDescription == null || selfDescription == "") {
+			this.selfDescription = "Something something";
+		}
+		else {
+			this.selfDescription = selfDescription;
+		}
 		this.emailId = emailId;
 		this.userName = userName;
-		this.password = password;
+		if(password==null || password =="") {
+			this.password = "password";
+		}
+		else {
+			this.password = password;
+		}
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate=" + birthDate
-				+ ", selfDescription=" + selfDescription + ", recipeId=" + recipeId + ", emailId=" + emailId
+				+ ", selfDescription=" + selfDescription + ", emailId=" + emailId
 				+ ", userName=" + userName + ", password=" + password + "]";
 	}
 
@@ -105,11 +128,11 @@ public class User {
 		this.selfDescription = selfDescription;
 	}
 
-	public Integer getRecipeId() {
+	public List<Posts> getRecipeId() {
 		return recipeId;
 	}
 
-	public void setRecipeId(Integer recipeId) {
+	public void setRecipeId(List<Posts> recipeId) {
 		this.recipeId = recipeId;
 	}
 
@@ -136,6 +159,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	
 }

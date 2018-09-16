@@ -15,14 +15,14 @@ public class UserDAOService implements UserDAO {
 	//
 	private static List<User> users = new ArrayList<>();
 	private static int userCount = 3;
-	static {
-		users.add(new User(1,"Adam","Baccha",new Date(),"Mein bada chef hoon",
-				0,"adamBaccha@example.com","adam_baccha","password"));
-		users.add(new User(2,"Zebra","Baccha",new Date(),"Mein bada nahi chef hoon",
-				0,"zebraBaccha@example.com","zebra_baccha","password"));
-		users.add(new User(3,"Horse","Baccha",new Date(),"Mein bada chef hoon re pakka",
-				0,"horseBaccha@example.com","horse_baccha","password"));
-	}
+//	static {
+//		users.add(new User(1,"Adam","Baccha",new Date(),"Mein bada chef hoon",
+//				new Posts(),"adamBaccha@example.com","adam_baccha","password"));
+//		users.add(new User(2,"Zebra","Baccha",new Date(),"Mein bada nahi chef hoon",
+//				0,"zebraBaccha@example.com","zebra_baccha","password"));
+//		users.add(new User(3,"Horse","Baccha",new Date(),"Mein bada chef hoon re pakka",
+//				0,"horseBaccha@example.com","horse_baccha","password"));
+//	}
 	//
 	@Override
 	public List<User> findAll() {
