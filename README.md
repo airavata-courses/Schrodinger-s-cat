@@ -17,11 +17,11 @@ An interactive website where you can browse for recipes, upload your own creatio
 - API Modeling
 
 ### Links
-####Post
+#### Post
 - /jpa/users							- createUser
 - /jpa/users/{id}/save-posts			- createUserPosts
 
-####Get
+#### Get
 - /jpa/users/all-attributes 			- retrieveAllUsers
 - /jpa/users/f-l-name 				- retrieveAllUsersFirstLastName
 - /jpa/users/uId-emailId 			- retrieveAllUsersUIdEmailId
@@ -34,6 +34,6 @@ An interactive website where you can browse for recipes, upload your own creatio
 - /jpa/users/fn-ln-ui-ps/{id}		- retrieveFirstLastUserIdPass
 - /jpa/users/fn-ln-ds-re/{id}		- retrieveFirstLastDescRecipeId
 
-####Delete
+#### Delete
 - /jpa/users/{id}					- deleteUser
 - jpa/users/{id}/delete-post			- deleteUserPost
