@@ -10,15 +10,30 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Stable Releases
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
 
-### Links
-- /users/all-attributes 			- retrieveAllUsers
-- /users/f-l-name 				- retrieveAllUsersFirstLastName
-- /users/uId-emailId 			- retrieveAllUsersUIdEmailId
-- /users/fn-ln-ui-ps				- retrieveAllUsersFnLnUnPass
-- /users/fn-ln-ds-re				- retrieveAllUsersFnLnDrRId
+#### What all added? 
+- Swagger UI
+- Customized Exception hanlding
+- Dynamic Filtering 
+- API Modeling
 
-- /users/all-attributes/{id}		- retrieveUserAllAttributes
-- /users/f-l-name/{id}			- retrieveUserFirstLastName
-- /users/uId-emailId/{id}		- retrieveUserIdEmail
-- /users/fn-ln-ui-ps/{id}		- retrieveFirstLastUserIdPass
-- /users/fn-ln-ds-re/{id}		- retrieveFirstLastDescRecipeId
+### Links
+####Post
+- /jpa/users							- createUser
+- /jpa/users/{id}/save-posts			- createUserPosts
+
+####Get
+- /jpa/users/all-attributes 			- retrieveAllUsers
+- /jpa/users/f-l-name 				- retrieveAllUsersFirstLastName
+- /jpa/users/uId-emailId 			- retrieveAllUsersUIdEmailId
+- /jpa/users/fn-ln-ui-ps				- retrieveAllUsersFnLnUnPass
+- /jpa/users/fn-ln-ds-re				- retrieveAllUsersFnLnDrRId
+
+- /jpa/users/all-attributes/{id}		- retrieveUserAllAttributes
+- /jpa/users/f-l-name/{id}			- retrieveUserFirstLastName
+- /jpa/users/uId-emailId/{id}		- retrieveUserIdEmail
+- /jpa/users/fn-ln-ui-ps/{id}		- retrieveFirstLastUserIdPass
+- /jpa/users/fn-ln-ds-re/{id}		- retrieveFirstLastDescRecipeId
+
+####Delete
+- /jpa/users/{id}					- deleteUser
+- jpa/users/{id}/delete-post			- deleteUserPost
