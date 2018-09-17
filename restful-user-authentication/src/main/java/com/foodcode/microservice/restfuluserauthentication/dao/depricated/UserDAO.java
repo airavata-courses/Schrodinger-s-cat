@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication.dao;
+package com.foodcode.microservice.restfuluserauthentication.dao.depricated;
 
 import java.util.List;
 

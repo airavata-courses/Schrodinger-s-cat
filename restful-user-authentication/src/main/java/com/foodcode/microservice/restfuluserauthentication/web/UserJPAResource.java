@@ -26,9 +26,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.foodcode.microservice.restfuluserauthentication.dao.UserDAOService;
 import com.foodcode.microservice.restfuluserauthentication.persistence.User;
 import com.foodcode.microservice.restfuluserauthentication.persistence.UserRepository;
+import com.foodcode.microservice.restfuluserauthentication.dao.depricated.UserDAOService;
 import com.foodcode.microservice.restfuluserauthentication.persistence.Posts;
 import com.foodcode.microservice.restfuluserauthentication.persistence.PostsRepository;
 //TODO: define proper exception for all the attributes for User. Like retrieveUsers - 404 not found.

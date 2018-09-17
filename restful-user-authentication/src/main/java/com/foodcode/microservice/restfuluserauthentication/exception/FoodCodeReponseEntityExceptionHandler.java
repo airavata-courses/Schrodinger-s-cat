@@ -17,7 +17,7 @@ import com.foodcode.microservice.restfuluserauthentication.web.UserNotFoundExcep
 //apply to all controllers/resource
 @ControllerAdvice// share things against multiple resources
 @RestController
-public class foodCodeReponseEntityExceptionHandler 
+public class FoodCodeReponseEntityExceptionHandler 
 extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
