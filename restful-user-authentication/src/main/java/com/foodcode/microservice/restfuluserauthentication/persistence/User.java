@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiModel;
 //@JsonIgnoreProperties(value= {"password"})//static filtering
 @ApiModel(description="All details about the user")
 @Entity
+@Table(name="user")
 public class User {
 	@Id
 	@GeneratedValue

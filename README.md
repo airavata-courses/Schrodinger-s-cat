@@ -18,22 +18,22 @@ An interactive website where you can browse for recipes, upload your own creatio
 
 ### Links
 #### Post
-- /jpa/users							- createUser
-- /jpa/users/{id}/save-posts			- createUserPosts
+- http://localhost:8888/jpa/users							- createUser
+- http://localhost:8888/jpa/users/{id}/save-posts				- createUserPosts
 
 #### Get
-- /jpa/users/all-attributes 			- retrieveAllUsers
-- /jpa/users/f-l-name 				- retrieveAllUsersFirstLastName
-- /jpa/users/uId-emailId 			- retrieveAllUsersUIdEmailId
-- /jpa/users/fn-ln-ui-ps				- retrieveAllUsersFnLnUnPass
-- /jpa/users/fn-ln-ds-re				- retrieveAllUsersFnLnDrRId
+- http://localhost:8888/jpa/users/all-attributes 				- retrieveAllUsers
+- http://localhost:8888/jpa/users/f-l-name 					- retrieveAllUsersFirstLastName
+- http://localhost:8888/jpa/users/uId-emailId 				- retrieveAllUsersUIdEmailId
+- http://localhost:8888/jpa/users/fn-ln-ui-ps				- retrieveAllUsersFnLnUnPass
+- http://localhost:8888/jpa/users/fn-ln-ds-re				- retrieveAllUsersFnLnDrRId
 
-- /jpa/users/all-attributes/{id}		- retrieveUserAllAttributes
-- /jpa/users/f-l-name/{id}			- retrieveUserFirstLastName
-- /jpa/users/uId-emailId/{id}		- retrieveUserIdEmail
-- /jpa/users/fn-ln-ui-ps/{id}		- retrieveFirstLastUserIdPass
-- /jpa/users/fn-ln-ds-re/{id}		- retrieveFirstLastDescRecipeId
+- http://localhost:8888/jpa/users/all-attributes/{id}			- retrieveUserAllAttributes
+- http://localhost:8888/jpa/users/f-l-name/{id}				- retrieveUserFirstLastName
+- http://localhost:8888/jpa/users/uId-emailId/{id}			- retrieveUserIdEmail
+- http://localhost:8888/jpa/users/fn-ln-ui-ps/{id}			- retrieveFirstLastUserIdPass
+- http://localhost:8888/jpa/users/fn-ln-ds-re/{id}			- retrieveFirstLastDescRecipeId
 
 #### Delete
-- /jpa/users/{id}					- deleteUser
-- jpa/users/{id}/delete-post			- deleteUserPost
+- http://localhost:8888/jpa/users/{id}						- deleteUser
+- http://localhost:8888/jpa/users/{id}/delete-post			- deleteUserPost

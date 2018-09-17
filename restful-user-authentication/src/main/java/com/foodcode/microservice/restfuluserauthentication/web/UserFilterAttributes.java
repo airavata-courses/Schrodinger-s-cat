@@ -12,7 +12,7 @@ import com.foodcode.microservice.restfuluserauthentication.persistence.User;
 
 @Component
 public class UserFilterAttributes {
-
+	
 	// To return All the attributes without Password
 	public MappingJacksonValue getAllAttributes(List<User> findAll) {
 		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter

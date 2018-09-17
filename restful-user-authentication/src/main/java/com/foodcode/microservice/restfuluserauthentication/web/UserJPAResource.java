@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -35,6 +37,9 @@ import com.foodcode.microservice.restfuluserauthentication.persistence.PostsRepo
 @RestController
 public class UserJPAResource {
 
+	private static final Logger log = 
+			LoggerFactory.getLogger(UserJPAResource.class);
+	
 	@Autowired
 	private UserFilterAttributes filterAttributes;
 
@@ -52,6 +57,7 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveAllUsers(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getAllAttributes(findAll);
+		log.info("retrieved all users with all of their attributes");
 		return allAttributes;
 	}
 
@@ -59,6 +65,7 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveAllUsersFirstLastName(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getAllFirstLastName(findAll);
+		log.info("retrieved all users with first name and last names");
 		return allAttributes;
 	}
 
@@ -66,6 +73,7 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveAllUsersUIdEmailId(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getUserNameEmailId(findAll);
+		log.info("retrieved all user ids with email Id");
 		return allAttributes;
 	}
 
@@ -73,6 +81,7 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveAllUsersFnLnUnPass(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getUserNameFirstLastNamePassword(findAll);
+		log.info("retrieved all users with first name, last names, username and password");
 		return allAttributes;
 	}
 
@@ -80,6 +89,7 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveAllUsersFnLnDrRId(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getFirstLastDescriptionRecipeId(findAll);
+		log.info("retrieved all users with first name, last names, description and RecipeIds");
 		return allAttributes;
 	}
 	/*---------------*/
@@ -89,6 +99,7 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveUserAllAttributes(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		List<User> userList = new ArrayList<>();
@@ -101,6 +112,7 @@ public class UserJPAResource {
 
 
 		MappingJacksonValue allAttributes = filterAttributes.getAllAttributes(userList);
+		log.info("retrieved user:"+id+" all users with all of their attributes");
 		return allAttributes;
 	}
 	
@@ -108,11 +120,13 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveUserFirstLastName(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		List<User> userList = new ArrayList<>();
 		userList.add(user.get());
 		MappingJacksonValue allAttributes = filterAttributes.getAllFirstLastName(userList);
+		log.info("retrieved user:"+id+" users with first name and last names");
 		return allAttributes;
 	}
 	
@@ -120,11 +134,13 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveUserIdEmail(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		List<User> userList = new ArrayList<>();
 		userList.add(user.get());
 		MappingJacksonValue allAttributes = filterAttributes.getUserNameEmailId(userList);
+		log.info("retrieved user:"+id+" ids with email Id");
 		return allAttributes;
 	}
 	
@@ -132,11 +148,13 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveFirstLastUserIdPass(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		List<User> userList = new ArrayList<>();
 		userList.add(user.get());
 		MappingJacksonValue allAttributes = filterAttributes.getUserNameFirstLastNamePassword(userList);
+		log.info("retrieved user:"+id+" with first name, last names, username and password");
 		return allAttributes;
 	}
 	
@@ -144,22 +162,26 @@ public class UserJPAResource {
 	public MappingJacksonValue retrieveFirstLastDescRecipeId(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		List<User> userList = new ArrayList<>();
 		userList.add(user.get());
 		MappingJacksonValue allAttributes = filterAttributes.getFirstLastDescriptionRecipeId(userList);
+		log.info("retrieved user:"+id+" with first name, last names, description and RecipeIds");
 		return allAttributes;
 	}
 	@GetMapping("/jpa/users/all-attributes/{id}/onlyposts")
 	public MappingJacksonValue retrieveAllUsersAndPosts(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		List<User> userList = new ArrayList<>();
 		userList.add(user.get());
 		MappingJacksonValue allAttributes = filterAttributes.getUserIdRecipeId(userList);
+		log.info("retrieved user:"+id+" with RecipeIds");
 		return allAttributes;
 	}
 	
@@ -175,6 +197,7 @@ public class UserJPAResource {
 				.buildAndExpand(savedUser.getId()).toUri();
 
 		//return proper response status, where is the user created
+		log.info("created User: "+savedUser);
 		return ResponseEntity.created(location).build();
 	}
 	
@@ -189,6 +212,7 @@ public class UserJPAResource {
 		if(!(user.getRecipeId().isEmpty())){
 			for(Posts recipeIds:user.getRecipeId()) {
 				if(recipeIds.getId() == post.getId() ) {
+					log.info("exception at adding user's recipe with the id:"+post.getId());
 					throw new RecipeIdExistsException("Recipe id-"+post.getId()+" already exists add another recipe");
 				}
 			}
@@ -200,6 +224,7 @@ public class UserJPAResource {
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedUser.get().getId()).toUri();
+		log.info("created User's: "+savedUser+" Post with the Id: "+post.getId());
 		return ResponseEntity.created(location).build();
 	}
 
@@ -207,15 +232,18 @@ public class UserJPAResource {
 	public void deleteUser(@PathVariable int id) {
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		userRepository.deleteById(id);
+		log.info("Deleted user with the id:"+id);
 	}
 	
 	@DeleteMapping("/jpa/users/{id}/delete-post")
 	public void deleteUserPost(@PathVariable int id, @RequestBody Posts post) {
 		Optional<User> savedUser = userRepository.findById(id);
 		if(!(savedUser.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
 		}
 		
@@ -228,7 +256,9 @@ public class UserJPAResource {
 			}
 		}
 		if(!containsFlag) {
+			log.info("exception at deleting user's recipe with the id:"+post.getId());
 			throw new RecipeIdExistsException("Recipe id-"+post.getId()+" does not exit, cannot delete it");
 		}
+		log.info("Deleted user's:"+id+" recipe with the id:"+post.getId());
 	}
 }
