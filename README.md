@@ -6,8 +6,7 @@ Wiki Link : https://github.com/airavata-courses/Schrodinger-s-cat/wiki
 An interactive website where you can browse for recipes, upload your own creations and also check-out what your friends are cooking! Get upvotes, suggestions and recommendations. Just Sign up!
 
 ### About this branch
-* Master Branch.
-* Stable Releases
+* Feature-Login-Authentication Branch.
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
 
 #### What all added? 
@@ -15,25 +14,34 @@ An interactive website where you can browse for recipes, upload your own creatio
 - Customized Exception hanlding
 - Dynamic Filtering 
 - API Modeling
+- Http Security
+- Web Secutiry
 
 ### Links
-#### Post
-- http://localhost:8888/jpa/users							- createUser
-- http://localhost:8888/jpa/users/{id}/save-posts				- createUserPosts
+- Need login.html at http://localhost:8888/login.html
+- Need registration.html at http://localhost:8888/registration.html
+- Need access-denied.html at http://localhost:8888/access-denied.html
+- Need home.html in admin folder at http://localhost:8888/admin/access-denied.html
 
-#### Get
-- http://localhost:8888/jpa/users/all-attributes 				- retrieveAllUsers
-- http://localhost:8888/jpa/users/f-l-name 					- retrieveAllUsersFirstLastName
-- http://localhost:8888/jpa/users/uId-emailId 				- retrieveAllUsersUIdEmailId
-- http://localhost:8888/jpa/users/fn-ln-ui-ps				- retrieveAllUsersFnLnUnPass
-- http://localhost:8888/jpa/users/fn-ln-ds-re				- retrieveAllUsersFnLnDrRId
+Need to register a user in registration.html and then access create and delete urls
 
-- http://localhost:8888/jpa/users/all-attributes/{id}			- retrieveUserAllAttributes
-- http://localhost:8888/jpa/users/f-l-name/{id}				- retrieveUserFirstLastName
-- http://localhost:8888/jpa/users/uId-emailId/{id}			- retrieveUserIdEmail
-- http://localhost:8888/jpa/users/fn-ln-ui-ps/{id}			- retrieveFirstLastUserIdPass
-- http://localhost:8888/jpa/users/fn-ln-ds-re/{id}			- retrieveFirstLastDescRecipeId
 
-#### Delete
-- http://localhost:8888/jpa/users/{id}						- deleteUser
-- http://localhost:8888/jpa/users/{id}/delete-post			- deleteUserPost
+#### Post (requires user authentication)
+- http://localhost:8888/jpa/users/create							- createUser
+- http://localhost:8888/jpa/users/create/{id}/save-posts			- createUserPosts
+
+#### Get (require no authentication)
+- http://localhost:8888/jpa/users/get/all-attributes 				- retrieveAllUsers 
+- http://localhost:8888/jpa/users/get/f-l-name 					- retrieveAllUsersFirstLastName
+- http://localhost:8888/jpa/users/get/uId-emailId 				- retrieveAllUsersUIdEmailId
+- http://localhost:8888/jpa/users/get/fn-ln-ui-ps					- retrieveAllUsersFnLnUnPass
+- http://localhost:8888/jpa/users/get/fn-ln-ds-re					- retrieveAllUsersFnLnDrRId
+- http://localhost:8888/jpa/users/get/all-attributes/{id}			- retrieveUserAllAttributes
+- http://localhost:8888/jpa/users/get/f-l-name/{id}				- retrieveUserFirstLastName
+- http://localhost:8888/jpa/users/get/uId-emailId/{id}			- retrieveUserIdEmail
+- http://localhost:8888/jpa/users/get/fn-ln-ui-ps/{id}			- retrieveFirstLastUserIdPass
+- http://localhost:8888/jpa/users/get/fn-ln-ds-re/{id}			- retrieveFirstLastDescRecipeId
+
+#### Delete (requires user authentication)
+- http://localhost:8888/jpa/users/delete/{id}					- deleteUser
+- http://localhost:8888/jpa/users/delete/{id}/delete-post			- deleteUserPost
