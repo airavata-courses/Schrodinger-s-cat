@@ -35,4 +35,4 @@ script:
 #   - feature-login_authentication
 
 notifications:
-    slack: sga-fall2018:e2zEK5UltgzOoMTJfEQz54BL
+    slack: sga-fall2018:oHf28vlKoZBU7ke2HJvnZQzt
