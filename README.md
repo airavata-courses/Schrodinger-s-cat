@@ -1,4 +1,5 @@
-# Schrodinger-s-cat
+# Schrodinger-s-cat 
+[![Build Status](https://travis-ci.org/airavata-courses/Schrodinger-s-cat.svg?branch=feature-login_authenticatiion)](https://travis-ci.org/airavata-courses/Schrodinger-s-cat)
 
 Wiki Link : https://github.com/airavata-courses/Schrodinger-s-cat/wiki
 
