@@ -11,10 +11,13 @@ import SignUp from './SignUp';
 class App extends Component {
   constructor() {
     super();
-    this.state = { user: {} };
+    this.state = { recipes: [] };
     this.onSubmit = this.handleSubmit.bind(this);
   //  this.routeChange = this.routeChange.bind(this);
   }
+
+  
+
   handleSignUp(e){
       return(
           <ul>    
@@ -46,21 +49,7 @@ class App extends Component {
   }
 
   render() {
-    let recipes = [{
-      name: 'Kadhai Paneer'
-    },
-    {
-      name: 'Palak Paneer'
-    },
-    {
-      name: 'Butter Paneer'
-    },
-    {
-      name: 'Matar Paneer'
-    },
-    {
-      name: 'Paneer do pyaza'
-    }]
+    let alpha = this.state.recipes;
     return (
       /*https://code.visualstudio.com/docs/nodejs/reactjs-tutorial*/
       <div className="Header">
@@ -107,7 +96,7 @@ class App extends Component {
         </Router> 
         <div>
           <h1>List</h1> 
-          <RecipeList recipes={recipes}/>
+          <RecipeList recipes={alpha}/>
         </div>
       </div>
       
