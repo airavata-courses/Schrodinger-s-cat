@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.foodcode.microservice.restfuluserauthentication.persistence.User;
+import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
 
 @Component
 public class UserDAOService implements UserDAO {

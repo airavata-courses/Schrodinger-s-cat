@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication.web.depricated;
+package com.foodcode.microservice.restfuluserauthentication.controller.depricated;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -23,10 +23,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.foodcode.microservice.restfuluserauthentication.controller.exception.UserNotFoundException;
+import com.foodcode.microservice.restfuluserauthentication.controller.filter.UserFilterAttributes;
 import com.foodcode.microservice.restfuluserauthentication.dao.depricated.UserDAOService;
-import com.foodcode.microservice.restfuluserauthentication.persistence.User;
-import com.foodcode.microservice.restfuluserauthentication.web.UserFilterAttributes;
-import com.foodcode.microservice.restfuluserauthentication.web.UserNotFoundException;
+import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
 //TODO: define proper exception for all the attributes for User. Like retrieveUsers - 404 not found.
 //applying dynamic filtering on attributes being retrieved 
 //TODO : add multiple filtering links to retrieve only required fields

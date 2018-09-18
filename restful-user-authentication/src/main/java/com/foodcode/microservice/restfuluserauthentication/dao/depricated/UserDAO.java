@@ -2,7 +2,7 @@ package com.foodcode.microservice.restfuluserauthentication.dao.depricated;
 
 import java.util.List;
 
-import com.foodcode.microservice.restfuluserauthentication.persistence.User;
+import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
 
 public interface UserDAO {
 	List<User> findAll();

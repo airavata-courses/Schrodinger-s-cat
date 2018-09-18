@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication;
+package com.foodcode.microservice.restfuluserauthentication.controller.swagger;
 
 import java.util.Arrays;
 import java.util.HashSet;

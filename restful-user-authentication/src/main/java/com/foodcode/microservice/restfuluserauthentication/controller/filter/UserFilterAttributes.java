@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication.web;
+package com.foodcode.microservice.restfuluserauthentication.controller.filter;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.foodcode.microservice.restfuluserauthentication.persistence.User;
+import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
 
 @Component
 public class UserFilterAttributes {
@@ -16,9 +16,12 @@ public class UserFilterAttributes {
 	// To return All the attributes without Password
 	public MappingJacksonValue getAllAttributes(List<User> findAll) {
 		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
-				.filterOutAllExcept("id","firstName","lastName",
-						"birthDate","selfDescription","recipeId",
-						"emailId","userName");
+//				.filterOutAllExcept("id","firstName","lastName",
+//						"birthDate","selfDescription","recipeId",
+//						"emailId","username");
+			.filterOutAllExcept("id","firstName","lastName",
+				"selfDescription","recipeId",
+				"emailId","username");
 		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter",filter);
 		MappingJacksonValue mapping = new MappingJacksonValue(findAll);
 		mapping.setFilters(filters);
@@ -38,7 +41,7 @@ public class UserFilterAttributes {
 	//To get only user name and Email ID
 	public MappingJacksonValue getUserNameEmailId(List<User> findAll) {
 		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
-				.filterOutAllExcept("id","emailId","userName");
+				.filterOutAllExcept("id","emailId","username");
 		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter",filter);
 		MappingJacksonValue mapping = new MappingJacksonValue(findAll);
 		mapping.setFilters(filters);
@@ -49,7 +52,7 @@ public class UserFilterAttributes {
 	public MappingJacksonValue getUserNameFirstLastNamePassword(List<User> findAll) {
 		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
 				.filterOutAllExcept("id","firstName","lastName",
-						"userName","password");
+						"username","password");
 		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter",filter);
 		MappingJacksonValue mapping = new MappingJacksonValue(findAll);
 		mapping.setFilters(filters);

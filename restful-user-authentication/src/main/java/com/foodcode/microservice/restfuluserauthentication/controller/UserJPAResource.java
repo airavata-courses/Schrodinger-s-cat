@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication.web;
+package com.foodcode.microservice.restfuluserauthentication.controller;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -20,17 +20,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.foodcode.microservice.restfuluserauthentication.persistence.User;
-import com.foodcode.microservice.restfuluserauthentication.persistence.UserRepository;
+import com.foodcode.microservice.restfuluserauthentication.persistence.model.Posts;
+import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
+import com.foodcode.microservice.restfuluserauthentication.persistence.repository.PostsRepository;
+import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
+import com.foodcode.microservice.restfuluserauthentication.controller.exception.RecipeIdExistsException;
+import com.foodcode.microservice.restfuluserauthentication.controller.exception.UserNotFoundException;
+import com.foodcode.microservice.restfuluserauthentication.controller.filter.UserFilterAttributes;
 import com.foodcode.microservice.restfuluserauthentication.dao.depricated.UserDAOService;
-import com.foodcode.microservice.restfuluserauthentication.persistence.Posts;
-import com.foodcode.microservice.restfuluserauthentication.persistence.PostsRepository;
 //TODO: define proper exception for all the attributes for User. Like retrieveUsers - 404 not found.
 //applying dynamic filtering on attributes being retrieved 
 //TODO : add multiple filtering links to retrieve only required fields
@@ -53,7 +57,7 @@ public class UserJPAResource {
 	private PostsRepository postsRepository;
 
 	/*---------------*/
-	@GetMapping("/jpa/users/all-attributes")
+	@GetMapping("/jpa/users/get/all-attributes")
 	public MappingJacksonValue retrieveAllUsers(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getAllAttributes(findAll);
@@ -61,7 +65,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 
-	@GetMapping("/jpa/users/f-l-name")
+	@GetMapping("/jpa/users/get/f-l-name")
 	public MappingJacksonValue retrieveAllUsersFirstLastName(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getAllFirstLastName(findAll);
@@ -69,7 +73,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 
-	@GetMapping("/jpa/users/uId-emailId")
+	@GetMapping("/jpa/users/get/uId-emailId")
 	public MappingJacksonValue retrieveAllUsersUIdEmailId(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getUserNameEmailId(findAll);
@@ -77,7 +81,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 
-	@GetMapping("/jpa/users/fn-ln-ui-ps")
+	@GetMapping("/jpa/users/get/fn-ln-ui-ps")
 	public MappingJacksonValue retrieveAllUsersFnLnUnPass(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getUserNameFirstLastNamePassword(findAll);
@@ -85,7 +89,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 
-	@GetMapping("/jpa/users/fn-ln-ds-re")
+	@GetMapping("/jpa/users/get/fn-ln-ds-re")
 	public MappingJacksonValue retrieveAllUsersFnLnDrRId(){
 		List<User> findAll = userRepository.findAll();
 		MappingJacksonValue allAttributes = filterAttributes.getFirstLastDescriptionRecipeId(findAll);
@@ -95,7 +99,7 @@ public class UserJPAResource {
 	/*---------------*/
 
 	/*---------------*/
-	@GetMapping("/jpa/users/all-attributes/{id}")
+	@GetMapping("/jpa/users/get/all-attributes/{id}")
 	public MappingJacksonValue retrieveUserAllAttributes(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
@@ -116,7 +120,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 	
-	@GetMapping("/jpa/users/f-l-name/{id}")
+	@GetMapping("/jpa/users/get/f-l-name/{id}")
 	public MappingJacksonValue retrieveUserFirstLastName(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
@@ -130,7 +134,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 	
-	@GetMapping("/jpa/users/uId-emailId/{id}")
+	@GetMapping("/jpa/users/get/uId-emailId/{id}")
 	public MappingJacksonValue retrieveUserIdEmail(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
@@ -144,7 +148,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 	
-	@GetMapping("/jpa/users/fn-ln-ui-ps/{id}")
+	@GetMapping("/jpa/users/get/fn-ln-ui-ps/{id}")
 	public MappingJacksonValue retrieveFirstLastUserIdPass(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
@@ -158,7 +162,7 @@ public class UserJPAResource {
 		return allAttributes;
 	}
 	
-	@GetMapping("/jpa/users/fn-ln-ds-re/{id}")
+	@GetMapping("/jpa/users/get/fn-ln-ds-re/{id}")
 	public MappingJacksonValue retrieveFirstLastDescRecipeId(@PathVariable int id){
 		Optional<User> user = userRepository.findById(id);
 		if(!(user.isPresent()))  {
@@ -187,10 +191,11 @@ public class UserJPAResource {
 	
 	/*---------------*/	
 	
-	@PostMapping("/jpa/users")
+	@PostMapping("/jpa/users/create")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
+		log.info("In /jpa/users/create to create post");
 		User savedUser = userRepository.save(user);
-
+		log.info("retrieved user");
 		//get the location of created user
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest().path("/{id}")
@@ -201,10 +206,13 @@ public class UserJPAResource {
 		return ResponseEntity.created(location).build();
 	}
 	
-	@PostMapping("/jpa/users/{id}/save-posts")
+	@PostMapping("/jpa/users/create/{id}/save-posts")
 	public ResponseEntity<Object> createUserPosts(@PathVariable int id, @RequestBody Posts post) {
+		log.info("In /jpa/users/create/{id}/save-posts to create post");
 		Optional<User> savedUser = userRepository.findById(id);
+		log.info("retrieved user");
 		if(!(savedUser.isPresent()))  {
+			log.info("user not present");
 			throw new UserNotFoundException("id-"+id);
 		}
 		
@@ -228,18 +236,25 @@ public class UserJPAResource {
 		return ResponseEntity.created(location).build();
 	}
 
-	@DeleteMapping("/jpa/users/{id}")
+	@DeleteMapping("/jpa/users/delete/{id}")
 	public void deleteUser(@PathVariable int id) {
-		Optional<User> user = userRepository.findById(id);
-		if(!(user.isPresent()))  {
+		Optional<User> savedUser = userRepository.findById(id);
+		if(!(savedUser.isPresent()))  {
 			log.info("exception at deleting user with the id:"+id);
 			throw new UserNotFoundException("id-"+id);
+		}
+		User user = savedUser.get();
+		boolean containsFlag = false;
+		if(!(user.getRecipeId().isEmpty())) {
+			for(Posts delPost:user.getRecipeId()) {
+				postsRepository.deleteById(delPost.getId());
+			}
 		}
 		userRepository.deleteById(id);
 		log.info("Deleted user with the id:"+id);
 	}
 	
-	@DeleteMapping("/jpa/users/{id}/delete-post")
+	@DeleteMapping("/jpa/users/delete/{id}/delete-post")
 	public void deleteUserPost(@PathVariable int id, @RequestBody Posts post) {
 		Optional<User> savedUser = userRepository.findById(id);
 		if(!(savedUser.isPresent()))  {

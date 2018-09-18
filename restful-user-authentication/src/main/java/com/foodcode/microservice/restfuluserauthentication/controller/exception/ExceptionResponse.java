@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication.exception;
+package com.foodcode.microservice.restfuluserauthentication.controller.exception;
 
 import java.util.Date;
 

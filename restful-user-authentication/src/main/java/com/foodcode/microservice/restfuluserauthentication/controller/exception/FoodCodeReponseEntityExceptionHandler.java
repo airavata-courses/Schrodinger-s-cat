@@ -1,18 +1,17 @@
-package com.foodcode.microservice.restfuluserauthentication.exception;
+package com.foodcode.microservice.restfuluserauthentication.controller.exception;
 
 import java.util.Date;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import com.foodcode.microservice.restfuluserauthentication.web.UserNotFoundException;
 
 //apply to all controllers/resource
 @ControllerAdvice// share things against multiple resources
@@ -30,7 +29,7 @@ extends ResponseEntityExceptionHandler {
 				HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@ExceptionHandler(UserNotFoundException.class)
+	@ExceptionHandler({UserNotFoundException.class, RecipeIdExistsException.class,UsernameNotFoundException.class})
 	public final ResponseEntity<Object> handleUserException
 	(Exception ex, WebRequest request) {
 		ExceptionResponse exceptionResponse=
@@ -38,6 +37,16 @@ extends ResponseEntityExceptionHandler {
 						request.getDescription(false));
 		return new ResponseEntity<Object>(exceptionResponse,
 				HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler({JDBCConnectionFailed.class})
+	public final ResponseEntity<Object> handleUserException1
+	(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse=
+				new ExceptionResponse(new Date(),ex.getMessage(),
+						request.getDescription(false));
+		return new ResponseEntity<Object>(exceptionResponse,
+				HttpStatus.FAILED_DEPENDENCY);
 	}
 	
 	

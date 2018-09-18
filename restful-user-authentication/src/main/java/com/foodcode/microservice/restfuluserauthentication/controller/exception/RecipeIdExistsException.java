@@ -1,4 +1,4 @@
-package com.foodcode.microservice.restfuluserauthentication.web;
+package com.foodcode.microservice.restfuluserauthentication.controller.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
