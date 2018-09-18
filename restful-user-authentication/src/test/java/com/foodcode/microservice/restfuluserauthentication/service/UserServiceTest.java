@@ -2,6 +2,7 @@ package com.foodcode.microservice.restfuluserauthentication.service;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -13,13 +14,17 @@ import static org.mockito.MockitoAnnotations.initMocks;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.Role;
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.RoleRepository;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class UserServiceTest {
 	@Mock
 	private UserRepository mockUserRepository;
@@ -59,7 +64,7 @@ public class UserServiceTest {
         final User result = userServiceUnderTest.findUserByEmail(email);
 
         // Verify the results
-        System.out.println("find by email id");
+        //System.out.println("find by email id");
         assertEquals(email, result.getEmail());
     }
 	
@@ -72,7 +77,7 @@ public class UserServiceTest {
         User result = userServiceUnderTest.saveUser(user);
 
         // Verify the results
-        System.out.println("testing save user");
+        //System.out.println("testing save user");
         assertEquals(email, result.getEmail());
     }
 

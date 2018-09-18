@@ -16,6 +16,7 @@ An interactive website where you can browse for recipes, upload your own creatio
 - API Modeling
 - Http Security
 - Web Secutiry
+- Test Cases to check user registration
 
 ### Links
 - Need login.html at http://localhost:8888/login.html
