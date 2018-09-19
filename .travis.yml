@@ -3,4 +3,7 @@ python:
   - "3.6"
 install:
   - pip install django
-script: pythonMicroservice/manage.py runserver
+script: 
+  - pythonMicroservice/manage.py makemigrations
+  - pythonMicroservice/manage.py migrate
+  - pythonMicroservice/manage.py runserver
