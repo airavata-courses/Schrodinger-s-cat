@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.jpg';
 import './App.css';
+import axios from 'axios';
 import {Router, Route, browserHistory, Link} from 'react-router';  
 //import {Link} from 'react-router';
 
@@ -11,7 +12,10 @@ import SignUp from './SignUp';
 class App extends Component {
   constructor() {
     super();
-    this.state = { recipes: [] };
+    this.state = { recipes: [],
+    uname:'',
+    passwd:''
+   };
     this.onSubmit = this.handleSubmit.bind(this);
   //  this.routeChange = this.routeChange.bind(this);
   }
@@ -32,22 +36,25 @@ class App extends Component {
   //   }
   handleSubmit(e) {
     e.preventDefault();
-    var self = this;
-    // On submit of the form, send a POST request with the data to the server.
-    fetch('/users', { 
-        method: 'POST',
-        data: {
-          name: self.refs.Username,
-          job: self.refs.Password
-        }
-      })
-      .then(function(response) {
-        return response.json()
-      }).then(function(body) {
-        console.log(body);
-      });
-  }
-
+    
+    var name = this.state.uname;
+    var pass = this.state.passwd;
+    
+    axios.post('/expressLogin/',{
+      username : name,
+      passwd : pass
+    }).then(res=>{
+        console.log(res)
+    });
+  };
+  handleChangeUname(event){
+    this.setState({uname: event.target.value})
+    
+  };
+  handleChangePasswd(event){
+    this.setState({passwd: event.target.value})
+    
+  };
   render() {
     let alpha = this.state.recipes;
     return (
@@ -80,8 +87,8 @@ class App extends Component {
         </nav> */}
         
         <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="User name" ref="Username"/>
-          <input type="text" placeholder="Password" ref="Password"/>
+          <input type="text" placeholder="User name"   onChange={this.handleChangeUname.bind(this)}/>
+          <input type="text" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>
           <input type="submit" />
         </form>
         <div className="component-wrapper">
