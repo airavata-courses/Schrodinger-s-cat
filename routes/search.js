@@ -9,7 +9,7 @@ router.get('/:searchString', function(req, res, next) {
   if (!error && response.statusCode == 200) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    console.log(body);
+    console.log
     res.send(body);
   }
   
