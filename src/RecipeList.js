@@ -1,5 +1,6 @@
 import React from 'react';
 import Recipe from './Recipe'
+import { error } from 'util';
 
 class RecipeList extends React.Component{
     constructor(){
@@ -14,8 +15,12 @@ class RecipeList extends React.Component{
           .then(res => {
              res.json().then(resultArray => {
                 this.setState({recipes:resultArray})
-             }) 
-      
+             }).catch(error =>{
+                console.log("error")
+            })
+        
+          }).catch(error =>{
+              console.log("error")
           })}
     updateSearch(event) {
         this.setState({search: event.target.value});
@@ -30,9 +35,13 @@ class RecipeList extends React.Component{
         .then(res => {
             res.json().then(resultArray => {
                this.setState({recipes:resultArray})
+            }).catch(error =>{
+                console.log("error")
             }) 
      
-         })
+         }).catch(error =>{
+            console.log("error")
+        })
     }
     
 
