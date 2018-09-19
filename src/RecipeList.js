@@ -10,19 +10,29 @@ class RecipeList extends React.Component{
         };
     };
     componentDidMount() {
-        fetch('http://localhost:4000/recipesExpress')
+        fetch('/recipesExpress/')
           .then(res => {
              res.json().then(resultArray => {
                 this.setState({recipes:resultArray})
              }) 
       
           })}
-    updateSearch(event){
+    updateSearch(event) {
         this.setState({search: event.target.value});
         
-        let searchString=this.state.search
-        console.log(searchString);
-        fetch('http://localhost:4000/recipesExpress/search/?param1=${searchString}')
+        const data = {
+            searchString: event.target.value
+        };
+
+        fetch(`/search/${encodeURIComponent(data.searchString)}`, {
+            method: "GET"
+        })
+        .then(res => {
+            res.json().then(resultArray => {
+               this.setState({recipes:resultArray})
+            }) 
+     
+         })
     }
     
 

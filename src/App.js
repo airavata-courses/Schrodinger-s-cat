@@ -96,7 +96,7 @@ class App extends Component {
         </Router> 
         <div>
           <h1>List</h1> 
-          <RecipeList recipes={alpha}/>
+          <RecipeList />
         </div>
       </div>
       
