@@ -18,5 +18,5 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^search/(?P<searchString>\w{0,50})/',views.search,name='searchBasic'),
+    url(r'^pythonSearch/(?P<searchString>\w{0,50})/',views.search,name='searchBasic'),
 ]
