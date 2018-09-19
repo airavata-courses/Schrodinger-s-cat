@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - "stable"
+  
+install:
+  - npm install 
+  - npm install --save-dev mocha
+  - npm install -g chai
+
+script:
+  - npm test
