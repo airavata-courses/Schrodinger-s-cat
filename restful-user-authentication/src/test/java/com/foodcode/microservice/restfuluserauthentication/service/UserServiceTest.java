@@ -49,8 +49,12 @@ public class UserServiceTest {
 		user.setEmail("test@example.com");
 		user.setFirstName("test");
 		user.setLastName("test");
-		Optional<Role> userRole = mockRoleRepository.findByRole("ADMIN");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole.get())));
+		Role userRole = mockRoleRepository.findByRole("ADMIN");
+//		if(!(userRole.isPresent())) {
+//			System.out.println("userRole not found ***********************");
+//		}
+//		Role userRoleRole = userRole.get();
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		user.setPassword(mockBCryptPasswordEncoder.encode("test@1234"));
 		
 		Mockito.when(mockUserRepository.save(any()))
@@ -68,7 +72,7 @@ public class UserServiceTest {
         final User result = userServiceUnderTest.findUserByEmail(email);
 
         // Verify the results
-        //System.out.println("find by email id");
+        System.out.println("find by email id");
         assertEquals(email, result.getEmail());
     }
 	
@@ -81,7 +85,7 @@ public class UserServiceTest {
         User result = userServiceUnderTest.saveUser(user);
 
         // Verify the results
-        //System.out.println("testing save user");
+        System.out.println("testing save user");
         assertEquals(email, result.getEmail());
     }
 

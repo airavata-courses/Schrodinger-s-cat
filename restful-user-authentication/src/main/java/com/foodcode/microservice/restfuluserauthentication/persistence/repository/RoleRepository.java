@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer>{
-	  Optional<Role> findByRole(String role);
+	  Role findByRole(String role);
 }
