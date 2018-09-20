@@ -15,6 +15,7 @@ class RecipeList extends React.Component{
           .then(res => {
              res.json().then(resultArray => {
                 this.setState({recipes:resultArray})
+                console.log(resultArray)
              }).catch(error =>{
                 console.log("error")
             })

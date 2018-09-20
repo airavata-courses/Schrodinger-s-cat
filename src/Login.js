@@ -19,11 +19,10 @@ class Login extends React.Component{
         
         var name = this.state.uname;
         var pass = this.state.passwd;
-        console.log(name)
-	console.log(pass)
+       
         axios.post('/expressLogin/',{
           username : name,
-          passwd : pass
+          password : pass
         }).then(res=>{
             console.log(res)
         });
