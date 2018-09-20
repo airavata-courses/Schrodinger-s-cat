@@ -1,66 +1,94 @@
 import React, { Component } from 'react';
-import logo from './logo.jpg';
 import './App.css';
-import axios from 'axios';
-import {Router, Route, browserHistory, Link} from 'react-router';  
-//import {Link} from 'react-router';
-
-import RecipeList from './RecipeList';
+import {Router, Route, browserHistory,withRouter} from 'react-router';  
+import logo from './logo.jpg';
+import {Button} from 'reactstrap';
 import SignUp from './SignUp';
+import Login from './Login';
+import RecipeList from './RecipeList';
 
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { recipes: [],
-    uname:'',
-    passwd:''
-   };
-    this.onSubmit = this.handleSubmit.bind(this);
-  //  this.routeChange = this.routeChange.bind(this);
+    this.state = {recipes:[]};
+  }
+handlePageChange_SignUP() {
+    window.location = "signup";
   }
 
-  
-
-  handleSignUp(e){
-      return(
-          <ul>    
-              <li>
-              </li>
-          </ul>
-      );
+  handlePageChange_Login() {
+    window.location = "login";
   }
-  // routeChange(){
-  //   let path = "/SignUp";
-  //   this.props.history.push(path);
-  //   }
-  handleSubmit(e) {
-    e.preventDefault();
-    
-    var name = this.state.uname;
-    var pass = this.state.passwd;
-    
-    axios.post('/expressLogin/',{
-      username : name,
-      passwd : pass
-    }).then(res=>{
-        console.log(res)
-    });
-  };
-  handleChangeUname(event){
-    this.setState({uname: event.target.value})
-    
-  };
-  handleChangePasswd(event){
-    this.setState({passwd: event.target.value})
-    
-  };
+  handlePageChange_Home() {
+    window.location = "App";
+  }
   render() {
     let alpha = this.state.recipes;
     return (
       /*https://code.visualstudio.com/docs/nodejs/reactjs-tutorial*/
-      <div className="Header">
-        <div className="App">
+        <div className="Body">
+          <div className="App">
+          <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">foodCode</h1>
+            </header>
+            <p className="App-intro">
+              All the recipes at one place
+            </p>
+          </div>
+          {/* <Tabs tabActive={2} onBeforeChange={this.onBeforeChange} onAfterChange={this.onAfterChange} onMount={this.onMount}>
+              <Tabs.Panel title='Tab #1'>
+                <h2>Content #1</h2>
+              </Tabs.Panel>
+              <Tabs.Panel title='Tab #2'>
+                <h2>Content #2</h2>
+              </Tabs.Panel>
+              <Tabs.Panel title='Tab #3'>
+                <h2>Content #3</h2>
+              </Tabs.Panel>
+          </Tabs> */}
+
+          <div>
+              <Button color="primary" className="px-4" onClick={this.handlePageChange_Home}>
+                  Home
+              </Button>
+              <Button color="primary" className="px-4" onClick={this.handlePageChange_SignUP}>
+                  Sign Up!
+              </Button>
+              <Button color="primary" className="px-4" onClick={this.handlePageChange_Login}>
+                  Login
+              </Button> 
+          </div>
+          {/* <Tabs active={this.state.active} onchange={active=> this.setState({active})}>
+              <div key={aTab} title="Tab 1">
+                Tab 1 content
+              </div>
+              <div key={bTab} title="Tab 2">
+                Tab 2 content
+              </div>
+          </Tabs>
+          <h2>Content</h2>
+          <p>{content[this.state.active]}</p> */}
+          <div>
+          <Router history={browserHistory}>
+                <Route exact path="signup" component={SignUp}/>
+          </Router>
+          </div>
+          <div>
+          <Router history={browserHistory}>
+                <Route exact path="login" component={Login}/>
+          </Router>
+          </div>
+          <div>
+              <h1>List</h1> 
+              <RecipeList />
+          </div>
+        </div>
+      );
+    } 
+  }
+        /* <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">foodCode</h1>
@@ -68,14 +96,10 @@ class App extends Component {
           <p className="App-intro">
             All the recipes at one place
           </p>
-        </div>
-        <div className="Login">
-        </div>
-        <div className="Signup">
-        </div>
-        {/* https://stackoverflow.com/questions/41332643/sending-data-to-database-in-react-js-web-application */}
+        </div> 
+         https://stackoverflow.com/questions/41332643/sending-data-to-database-in-react-js-web-application 
         
-        {/* <nav className="navbar navbar-default">
+         <nav className="navbar navbar-default">
             <div className="container">
                 <div className="navbar-header">
                     <ul className= "nav navbar-nav">
@@ -84,32 +108,25 @@ class App extends Component {
                     </ul>
                 </div>
             </div>
-        </nav> */}
+        </nav> 
         
-        <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="User name"   onChange={this.handleChangeUname.bind(this)}/>
-          <input type="text" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>
+         <form onSubmit={this.onSubmit}>
+          <input type="text" placeholder="User name" ref="Username"/>
+          <input type="text" placeholder="Password" ref="Password"/>
           <input type="submit" />
         </form>
         <div className="component-wrapper">
-            {/* <button onClick={this.handleSignUp()} className="button">
-            Sign Up!
-            </button> */}
-            {/* <button className="button" onClick={this.routeChange()}>Sign Up!</button> */}
-            <button className="button"><Link to ={"/SignUP"}>Sign Up!</Link></button>
+            <div>
+              <Button color="primary" className="px-4" onClick={this.handlePageChange}>
+                  Sign Up!
+              </Button> 
+            </div>
          </div>
-        <Router history={browserHistory}>
-          <Route path={"SignUP"} component={SignUp}/>
-        </Router> 
         <div>
           <h1>List</h1> 
-          <RecipeList />
-        </div>
-      </div>
-      
-    );
-  }
+          <RecipeList recipes={recipes}/>
+        </div> */
 
-}
-
-export default App;
+//export default App;
+//React.renderComponent(<App />, mountNode);
+export default withRouter(App);
