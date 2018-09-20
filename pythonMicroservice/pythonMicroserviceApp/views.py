@@ -33,31 +33,47 @@ def search(request,searchString):
 
     returnValue=[]
     for obj in ingredientSearch:
+        ingList = []
+        for x in obj.ingredients.all():
+            ingList.append(x.name)
         dictToBeSent = {
             "name": obj.name,
             "genre": obj.genre,
             "madeBy":obj.madeBy,
+            "ingredients": ingList
         }
         returnValue.append(dictToBeSent)
     for obj in nameSearch:
+        print(obj.ingredients.all())
+        ingList = []
+        for x in obj.ingredients.all():
+            ingList.append(x.name)
         dictToBeSent = {
             "name": obj.name,
             "genre": obj.genre,
             "madeBy": obj.madeBy,
+            "ingredients": ingList
         }
         returnValue.append(dictToBeSent)
     for obj in genreSearch:
+        print(obj.ingredients.all())
+        for x in obj.ingredients.all():
+            ingList.append(x.name)
         dictToBeSent = {
             "name": obj.name,
             "genre": obj.genre,
             "madeBy": obj.madeBy,
+            "ingredients": ingList
         }
         returnValue.append(dictToBeSent)
     for obj in madeBy:
+        for x in obj.ingredients.all():
+            ingList.append(x.name)
         dictToBeSent = {
             "name": obj.name,
             "genre": obj.genre,
             "madeBy": obj.madeBy,
+            "ingredients":ingList
         }
         returnValue.append(dictToBeSent)
     return HttpResponse(json.dumps(returnValue),'application/json')
