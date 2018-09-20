@@ -49,6 +49,26 @@ extends ResponseEntityExceptionHandler {
 				HttpStatus.FAILED_DEPENDENCY);
 	}
 	
+	@ExceptionHandler({UserPasswordWrongException.class})
+	public final ResponseEntity<Object> handleUserException2
+	(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse=
+				new ExceptionResponse(new Date(),ex.getMessage(),
+						request.getDescription(false));
+		return new ResponseEntity<Object>(exceptionResponse,
+				HttpStatus.NOT_ACCEPTABLE);
+	}
+	
+	@ExceptionHandler({RegistrationDetailsException.class})
+	public final ResponseEntity<Object> handleUserException3
+	(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse=
+				new ExceptionResponse(new Date(),ex.getMessage(),
+						request.getDescription(false));
+		return new ResponseEntity<Object>(exceptionResponse,
+				HttpStatus.IM_USED);
+	}
+	
 	
 	@Override
 	public final ResponseEntity<Object> handleMethodArgumentNotValid(

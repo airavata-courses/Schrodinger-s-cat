@@ -13,8 +13,10 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.Role;
@@ -32,6 +34,8 @@ public class UserServiceTest {
 	private RoleRepository mockRoleRepository;
 	@Mock
 	private BCryptPasswordEncoder mockBCryptPasswordEncoder;
+	@Mock
+	private AuthenticationManager mockAuthenticationManager;
 	
 	private UserService userServiceUnderTest;
 	private User user;
@@ -39,14 +43,14 @@ public class UserServiceTest {
 	@Before
 	public void setUp() {
 		initMocks(this);
-		userServiceUnderTest = new UserService(mockUserRepository,mockRoleRepository,mockBCryptPasswordEncoder);
+		userServiceUnderTest = new UserService(mockUserRepository,mockRoleRepository,mockBCryptPasswordEncoder, mockAuthenticationManager);
 		user = new User();
 		user.setActive(1);
 		user.setEmail("test@example.com");
 		user.setFirstName("test");
 		user.setLastName("test");
-		Role userRole = mockRoleRepository.findByRole("ADMIN");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		Optional<Role> userRole = mockRoleRepository.findByRole("ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole.get())));
 		user.setPassword(mockBCryptPasswordEncoder.encode("test@1234"));
 		
 		Mockito.when(mockUserRepository.save(any()))

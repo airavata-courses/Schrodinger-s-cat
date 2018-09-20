@@ -58,6 +58,15 @@ public class UserFilterAttributes {
 		mapping.setFilters(filters);
 		return mapping;
 	}
+	//To get username and userId
+		public MappingJacksonValue getUserNameAndUserID(List<User> findAll) {
+			SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+					.filterOutAllExcept("id","username");
+			FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter",filter);
+			MappingJacksonValue mapping = new MappingJacksonValue(findAll);
+			mapping.setFilters(filters);
+			return mapping;
+		}
 
 	//To first name, last name, description, recipeIds
 	public MappingJacksonValue getFirstLastDescriptionRecipeId(List<User> findAll) {

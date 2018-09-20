@@ -4,7 +4,10 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -30,6 +33,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
     
+    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
     	auth
@@ -42,65 +51,40 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-//		http
-//		.httpBasic()
-//		.and()
-//		.authorizeRequests().antMatchers("/jpa/users/get/**").permitAll()
-//		.and().authorizeRequests().antMatchers("/jpa/users/create/**","/jpa/users/delete/**").hasRole("USER")
-//		.antMatchers("/**").hasRole("ADMIN")
-//		.and().csrf().disable().headers().frameOptions().disable();
-//		
-//		.and()
-//		 .authorizeRequests()
-//         .antMatchers("/").permitAll()
-//         .antMatchers("/login").permitAll()
-//         .antMatchers("/registration").permitAll()
-//         .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-//         
-//         .authenticated().and().csrf().disable().formLogin()
-//         .loginPage("/login").failureUrl("/login?error=true")
-//         .defaultSuccessUrl("/admin/home")
-//         .usernameParameter("email")
-//         .passwordParameter("password")
-//         .and().logout()
-//         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//         .logoutSuccessUrl("/").and().exceptionHandling()
-//         .accessDeniedPage("/access-denied");
-		
-//    	http
-//    		.authorizeRequests()
-//    		.antMatchers("/").permitAll()
-//            .antMatchers("/login").permitAll()
-//            .antMatchers("/registration").permitAll()
-//            .antMatchers("/jpa/users/get/**").hasAuthority("ADMIN").anyRequest().authenticated()
-//            .antMatchers("/jpa/users/create/**","/jpa/users/delete/**").hasAuthority("ADMIN").anyRequest().authenticated()//.antMatchers("/**").hasAuthority("ADMIN").anyRequest().authenticated()
-//            .and().csrf().disable().formLogin()
-//            .loginPage("/login").failureUrl("/login?error=true")
-//            .defaultSuccessUrl("/admin/home")
-//            .usernameParameter("email")
-//            .passwordParameter("password")
-//            .and().logout()
-//            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//            .logoutSuccessUrl("/").and().exceptionHandling()
-//            .accessDeniedPage("/access-denied");
+
     	 http
          	.authorizeRequests()
-         		.antMatchers("/").permitAll()
-         		.antMatchers("/login").permitAll()
-         		.antMatchers("/registration").permitAll()
+         		.antMatchers("/auth/users/logmein").permitAll()
+         		.antMatchers("/auth/users/logmeout").authenticated()
+         		.antMatchers("/auth/users/get/**").authenticated()
+         		.antMatchers("/jpa/users/register").permitAll()
          		.antMatchers("/jpa/users/get/**").permitAll()
-         		.antMatchers("/admin/**","/jpa/users/create/**","/jpa/users/delete/**").hasAuthority("ADMIN").anyRequest()
-         		.authenticated().and().csrf().disable().formLogin()
-         	.loginPage("/login").failureUrl("/login?error=true")
-         		.defaultSuccessUrl("/admin/home")
-         		.usernameParameter("email")
-         		.passwordParameter("password")
-         	.and().logout()
-         		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-         		.logoutSuccessUrl("/").and().exceptionHandling()
-         		.accessDeniedPage("/access-denied")
-         	.and()
+         		.antMatchers("/jpa/users/delete/**").authenticated()
+         		.antMatchers("/jpa/users/create/**").authenticated()
+         		.antMatchers("/jpa/users/create/**","/jpa/users/delete/**").hasRole("ADMIN").anyRequest()
+         		.authenticated().and().csrf().disable()
          		.headers().frameOptions().disable();
+//    	 http
+
+//      	.logout()
+//       		.logoutUrl("/jpa/users/logmeout").clearAuthentication(true).logoutSuccessUrl("/auth/users/logmeout")
+//       		.and()
+//      	.authorizeRequests()
+//      		.antMatchers("/jpa/users/login").permitAll()
+//      		.antMatchers("/").permitAll()
+//      		.antMatchers("/login").permitAll()
+//      		.antMatchers("/registration").permitAll()
+//      		.antMatchers("/jpa/users/get/**").permitAll()
+//      		.antMatchers("/admin/**","/jpa/users/create/**","/jpa/users/delete/**").hasAuthority("ADMIN").anyRequest()
+//      		.authenticated().and().csrf().disable().formLogin()
+//      	.loginPage("/jpa/users/login").failureUrl("/login?error=true")
+//      		.defaultSuccessUrl("/admin/home")
+//      		.usernameParameter("username")
+//      		.passwordParameter("password")
+//      	.and().logout()
+//      		.logoutUrl("/jpa/users/logmeout")
+//      	.and()
+//      		.headers().frameOptions().disable();
 	}
     @Override
     public void configure(WebSecurity web) throws Exception {
