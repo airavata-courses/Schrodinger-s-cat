@@ -15,6 +15,7 @@ class RecipeList extends React.Component{
           .then(res => {
              res.json().then(resultArray => {
                 this.setState({recipes:resultArray})
+                console.log(resultArray)
              }).catch(error =>{
                 console.log("error")
             })
@@ -54,11 +55,13 @@ class RecipeList extends React.Component{
         
         return (
             <div>
-                <input type = "text" value={this.state.search} onChange={this.updateSearch.bind(this)} >
-                </input>
-                { <ul>    
-                    {this.state.recipes.map((recipe)=><Recipe recipe={recipe}/>)}
-                </ul>  }
+                <div>
+                    <input type = "text" value={this.state.search} onChange={this.updateSearch.bind(this)} >
+                    </input>
+                    { <ul>    
+                        {this.state.recipes.map((recipe)=><Recipe recipe={recipe}/>)}
+                    </ul>  }
+                </div>
             </div>
         )
     }

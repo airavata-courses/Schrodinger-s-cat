@@ -5,26 +5,30 @@ import logo from './logo.jpg';
 import {Button} from 'reactstrap';
 import SignUp from './SignUp';
 import Login from './Login';
-import RecipeList from './RecipeList';
+import Home from './Home';
+// import RecipeList from './RecipeList';
 
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {recipes:[]};
+    //this.state = {recipes:[]};
   }
-handlePageChange_SignUP() {
+  handlePageChange_SignUP() {
     window.location = "signup";
   }
 
   handlePageChange_Login() {
     window.location = "login";
   }
-  handlePageChange_Home() {
+  handlePageChange_Dashboard() {
     window.location = "App";
   }
+  handlePageChange_Home() {
+    window.location = "Home";
+  }
   render() {
-    let alpha = this.state.recipes;
+    // let alpha = this.state.recipes;
     return (
       /*https://code.visualstudio.com/docs/nodejs/reactjs-tutorial*/
         <div className="Body">
@@ -50,6 +54,9 @@ handlePageChange_SignUP() {
           </Tabs> */}
 
           <div>
+              <Button color="primary" className="px-4" onClick={this.handlePageChange_Dashboard}>
+                  Dashboard
+              </Button>
               <Button color="primary" className="px-4" onClick={this.handlePageChange_Home}>
                   Home
               </Button>
@@ -81,9 +88,14 @@ handlePageChange_SignUP() {
           </Router>
           </div>
           <div>
+          <Router history={browserHistory}>
+                <Route exact path="home" component={Home}/>
+          </Router>
+          </div>
+          {/* <div>
               <h1>List</h1> 
               <RecipeList />
-          </div>
+          </div> */}
         </div>
       );
     } 
