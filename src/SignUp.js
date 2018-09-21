@@ -8,22 +8,21 @@ import axios from 'axios';
 class SignUp extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
-        
+        console.log("here")
         var firstname = this.state.firstname;
         var lastname = this.state.lastname;
-        var phoneno = this.state.phoneno;
-        var dob = this.state.dob;
-        var foodPreference = this.state.foodPreference;
-        var displayPicture = this.state.displayPicture;
-
-        axios.post('/expressSignUp/',{
-            firstname : firstname,
-            lastname : lastname,
-            phoneno : phoneno,
-            dob : dob,
-            foodPreference : foodPreference,
-            displayPicture : displayPicture
-
+        var email = this.state.email;
+        var username = this.state.username;
+        var password = this.state.password;
+        var description = this.state.description;
+        axios.post('/expressSignup',{
+            firstName : firstname,
+            lastName : lastname,
+            email:  email,
+            username : username,
+            password : password,
+            selfDescription : description,
+            recipeId : []
         }).then(res=>{
             console.log(res)
         });
@@ -34,18 +33,18 @@ class SignUp extends React.Component {
       handleChangelname(event){
         this.setState({lastname: event.target.value})      
       };
-      handleChangephoneno(event){
-        this.setState({phoneno: event.target.value})
+      handleChangeemail(event){
+        this.setState({email: event.target.value})
       };
-      handleChangedob(event){
-        this.setState({dob: event.target.value})
+      handleChangeusername(event){
+        this.setState({username: event.target.value})      
       };
-      handleChangefoodPreference(event){
-        this.setState({foodPreference: event.target.value})
+      handleChangedescription(event){
+        this.setState({description: event.target.value})
       };
-      handleChangedisplayPicture(event){
-        this.setState({displayPicture: event.target.value})
-      };
+      handleChangepassword(event){
+        this.setState({password: event.target.value})      
+      }
     render() {
         return (
             <div>
@@ -59,7 +58,7 @@ class SignUp extends React.Component {
                 </p>
         </div> */}
 
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className="firstname">
                     <label htmlfor="firstname">First Name :</label>
                     <input type="text" placeholder="firstname"   onChange={this.handleChangefname.bind(this)}/>
@@ -68,21 +67,22 @@ class SignUp extends React.Component {
                     <label htmlfor="lastname">Last Name :</label>
                     <input type="text" placeholder="lastname"  onChange={this.handleChangelname.bind(this)}/>
                 </div>
-                <div className="phoneno">
-                    <label htmlfor="phoneno">Phone number :</label>
-                    <input type="text" placeholder="phoneno"  onChange={this.handleChangephoneno.bind(this)}/>
+                <div className="email">
+                    <label htmlfor="email">Email :</label>
+                    <input type="text" placeholder="email"  onChange={this.handleChangeemail.bind(this)}/>
                 </div>
-                <div className="dob">
-                    <label htmlfor="dob">Date of birth :</label>
-                    <input type="text" placeholder="dob"  onChange={this.handleChangedob.bind(this)}/>
+                
+                <div className="description">
+                    <label htmlfor="description">Self description :</label>
+                    <input type="text" placeholder="description"  onChange={this.handleChangedescription.bind(this)}/>
                 </div>
-                <div className="foodPreference">
-                    <label htmlfor="foodPreference">Type of food Preferred :</label>
-                    <input type="text" placeholder="foodPreference"  onChange={this.handleChangefoodPreference.bind(this)}/>
+                <div className="username">
+                    <label htmlfor="username">Username :</label>
+                    <input type="text" placeholder="username"  onChange={this.handleChangeusername.bind(this)}/>
                 </div>
-                <div className="displayPicture">
-                    <label htmlfor="displayPicture">Upload Display Picture :</label>
-                    <input type="text" placeholder="displayPicture"  onChange={this.handleChangedisplayPicture.bind(this)}/>
+                <div className="password">
+                    <label htmlfor="password">password :</label>
+                    <input type="text" placeholder="password"  onChange={this.handleChangepassword.bind(this)}/>
                 </div>
                     <input type="submit" />
                 </form>
