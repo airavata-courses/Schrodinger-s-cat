@@ -4,7 +4,8 @@ import React from 'react';
 //import {SingleDatePicker} from 'react-dates';
 //import Icon from './icon';
 import axios from 'axios';
-
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 class SignUp extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
@@ -24,7 +25,10 @@ class SignUp extends React.Component {
             selfDescription : description,
             recipeId : []
         }).then(res=>{
+            this.notify("Signup Successful")
             console.log(res)
+        }).catch(error => {
+            this.notify("Sign up failed")
         });
       };
       handleChangefname(event){
@@ -44,7 +48,8 @@ class SignUp extends React.Component {
       };
       handleChangepassword(event){
         this.setState({password: event.target.value})      
-      }
+      };
+      notify = (message) => toast(message)
     render() {
         return (
             <div>
@@ -85,6 +90,7 @@ class SignUp extends React.Component {
                     <input type="password" placeholder="password"  onChange={this.handleChangepassword.bind(this)}/>
                 </div>
                     <input type="submit" />
+                    <ToastContainer/>
                 </form>
                 {/* <div>
 
