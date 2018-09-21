@@ -25,6 +25,7 @@ class Login extends React.Component{
           password : pass
         }).then(res=>{
             console.log(res)
+            
         });
       };
       handleChangeUname(event){
@@ -47,7 +48,7 @@ class Login extends React.Component{
             </p>  */}
           <form onSubmit={this.onSubmit}>
           <input type="text" placeholder="User name"   onChange={this.handleChangeUname.bind(this)}/>
-          <input type="text" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>
+          <input type="password" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>
           <input type="submit" />
         </form>
         {/* <div className="component-wrapper">

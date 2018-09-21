@@ -82,7 +82,7 @@ class SignUp extends React.Component {
                 </div>
                 <div className="password">
                     <label htmlfor="password">password :</label>
-                    <input type="text" placeholder="password"  onChange={this.handleChangepassword.bind(this)}/>
+                    <input type="password" placeholder="password"  onChange={this.handleChangepassword.bind(this)}/>
                 </div>
                     <input type="submit" />
                 </form>
