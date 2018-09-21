@@ -3,7 +3,8 @@ import React from 'react';
 //import RecipeList from './RecipeList';
 //import { Button} from 'reactstrap';
 import axios from 'axios';
-
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 class Login extends React.Component{
     constructor() {
       super();
@@ -24,9 +25,13 @@ class Login extends React.Component{
           username : name,
           password : pass
         }).then(res=>{
-            console.log(res)
+            console.log(res.data.username)
+            this.notify("Login Success")
+        }).catch(error =>{
+            this.notify("Login Failed")
         });
       };
+      notify = (message) => toast(message)
       handleChangeUname(event){
         this.setState({uname: event.target.value})
         
@@ -49,6 +54,7 @@ class Login extends React.Component{
           <input type="text" placeholder="User name"   onChange={this.handleChangeUname.bind(this)}/>
           <input type="text" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>
           <input type="submit" />
+          <ToastContainer/>
         </form>
         {/* <div className="component-wrapper">
             <div>
