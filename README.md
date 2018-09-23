@@ -13,7 +13,7 @@ An interactive website where you can browse for recipes, upload your own creatio
 ### Active Branches
 * feature-login_authenticatiion : Login Authentication to be implemented in Spring
 * feature-nodejs_server : NodeJS server to handle incoming and outgoing requests to and fro from the front end. Also communicate with the Messaging Queue and gather distributed logs.
-* feature-react_ui : Front end of the project
+* frontEnd-React : Front end of the project
 * feature-search_recipes : To be implemented in python.
 
 ### Execute the following steps to start the project
