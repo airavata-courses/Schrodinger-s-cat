@@ -47,7 +47,7 @@ An interactive website where you can browse for recipes, upload your own creatio
 ## Step -3:
 * Host machine should have python 3.6 or higher. Follow the below instructions to check your python version
     * Include the you python installation directory in path variable
-        * SET PATH=$PATH:&ltPYTHON INSTALLATION DIR&gt
+        * SET PATH=$PATH:&lt;PYTHON INSTALLATION DIR&gt;
         * give the command "python". It should open a python shell and display version
 * Clone the github repository
 * Change the branch to feature-search_recipes using the following command   
