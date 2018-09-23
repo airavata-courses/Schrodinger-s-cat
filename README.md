@@ -25,6 +25,6 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Change the directory to Schrodinegr's - cat
 * Check if you have the file "package.json"
 * Run the following commands
-    npm install 
-    npm install --save-dev mocha
-    npm install -g chai
+   * npm install 
+   * npm install --save-dev mocha
+   * npm install -g chai
