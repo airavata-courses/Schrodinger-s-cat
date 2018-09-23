@@ -25,7 +25,7 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Change the directory to Schrodinegr's - cat
 * Check if you have the file "package.json"
 * Run the following commands
-   * npm install 
+   * npm install
    * npm install --save-dev mocha
    * npm install -g chai
    * npm start
@@ -38,7 +38,7 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Change the directory to Schrodinegr's - cat
 * Check if you have the file "package.json"
 * Run the following commands
-   * npm install 
+   * npm install
    * npm install --save-dev mocha
    * npm install -g chai
    * npm start
@@ -62,6 +62,14 @@ An interactive website where you can browse for recipes, upload your own creatio
    * pythonMicroservice/manage.py runserver
 
 ## Step -4:
+* need to install Maven and Mysql in this step
+* To install Mysql in Linux:
+- sudo apt-get update
+- sudo apt-get install mysql-server
+* To install Mysql in Unix with homebrew:
+- brew install mysql
+* To install MySql in windows follow the steps mentioned in https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html
+* How to install maven in Windows or mac or linux: https://www.baeldung.com/install-maven-on-windows-linux-mac
 * Clone the github repository
 * Change the branch to feature-login_authentication using the following command   
     * git checkout feature-login_authentication
