@@ -74,3 +74,5 @@ An interactive website where you can browse for recipes, upload your own creatio
 * mvn clean install
 * mvn install package
 * java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar
+## Step -4:
+* Visit the url http://localhost:3080/ (or) http://hostname:3080 to access the product
