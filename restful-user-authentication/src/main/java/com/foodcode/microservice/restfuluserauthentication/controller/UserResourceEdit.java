@@ -140,7 +140,7 @@ public class UserResourceEdit {
 
 	@PostMapping("/jpa/users/register")
 	public MappingJacksonValue createNewUser(@Valid @RequestBody User user, BindingResult bindingResult) {
-		log.info("user email:"+user.getEmail()+" "+user.getFirstName()+" "+user.getLastName()+" "+user.getSelfDescription()+" "+user.getUsername());
+		log.info("user email:"+user.getEmail()+" user.getFirstName():"+user.getFirstName()+" user.getLastName():"+user.getLastName()+" user.getSelfDescription():"+user.getSelfDescription()+" user.getUsername():"+user.getUsername()+" user.getRecipeId():"+user.getRecipeId());
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
 			bindingResult
@@ -148,7 +148,7 @@ public class UserResourceEdit {
 					"There is already a user registered with the email provided");
 		}
 		if (bindingResult.hasErrors()) {
-			throw new RegistrationDetailsException("There is already a user registered with the email "+userExists.getEmail()+"provided");
+			throw new RegistrationDetailsException("There is already a user registered with the email "+userExists.getEmail()+" provided");
 		} else {
 			userService.saveUser(user);
 			List<User> userList = new ArrayList<>();
