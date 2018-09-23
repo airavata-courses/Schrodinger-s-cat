@@ -28,3 +28,35 @@ An interactive website where you can browse for recipes, upload your own creatio
    * npm install 
    * npm install --save-dev mocha
    * npm install -g chai
+   * npm start
+
+
+## Step -2:
+* Clone the github repository
+* Change the branch to frontEnd_React using the following command   
+    * git checkout frontEnd_React
+* Change the directory to Schrodinegr's - cat
+* Check if you have the file "package.json"
+* Run the following commands
+   * npm install 
+   * npm install --save-dev mocha
+   * npm install -g chai
+   * npm start
+
+
+## Step -3:
+* Host machine should have python 3.6 or higher. Follow the below instructions to check your python version
+    * Include the you python installation directory in path variable
+        * SET PATH=$PATH:<PYTHON INSTALLATION DIR>
+        * give the command "python". It should open a python shell and display version
+* Clone the github repository
+* Change the branch to feature-search_recipes using the following command   
+    * git checkout feature-search_recipes
+* Change the directory to Schrodinegr's - cat
+* Check if you have the file "pythonMicroservice/manage.py"
+* Run the following commands
+   * pip install django
+   * pip install pytz
+   * pythonMicroservice/manage.py makemigrations
+   * pythonMicroservice/manage.py migrate
+   * pythonMicroservice/manage.py runserver
