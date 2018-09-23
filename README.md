@@ -10,6 +10,22 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Feature-Login-Authentication Branch.
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
 
+### How to run this project? 
+- You need Postman to test the functionality of this module. Download postman from https://www.getpostman.com.
+- You also need to have an installed instance of MySQL in your local machine.
+- Then run the following commands:
+	- mysql_upgrade
+  	- mysql -u root -e 'CREATE DATABASE IF NOT EXISTS loginAuth;'
+  	- mysql -u root -e "CREATE USER IF NOT EXISTS 'nawaz'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
+  	- mysql -u root -e "GRANT ALL PRIVILEGES ON loginAuth.* TO 'nawaz'@'localhost';"
+- Then Check out/clone this repository.
+- run 'mvn clean install' from restful-user-authentication folder to check if the checked out code will work or not.
+- once mvn runs successfully, open this project in eclipse to launch the project.
+- right click on RestfulUserAuthenticationApplication.java and run it as java application to launch it.
+- you can hit each link in postman at http://localhost:8888/<below links> to observe the working of this module
+- Or you can checkout all the branches and get the complete project working and start from sigining up as a user in this portal
+
+
 #### What all added? 
 - Swagger UI
 - Customized Exception hanlding
