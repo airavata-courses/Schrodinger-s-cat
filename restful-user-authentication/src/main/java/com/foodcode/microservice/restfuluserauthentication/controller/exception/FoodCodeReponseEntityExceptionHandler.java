@@ -66,7 +66,7 @@ extends ResponseEntityExceptionHandler {
 				new ExceptionResponse(new Date(),ex.getMessage(),
 						request.getDescription(false));
 		return new ResponseEntity<Object>(exceptionResponse,
-				HttpStatus.IM_USED);
+				HttpStatus.NOT_FOUND);
 	}
 	
 	
