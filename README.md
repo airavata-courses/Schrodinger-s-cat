@@ -82,6 +82,7 @@ An interactive website where you can browse for recipes, upload your own creatio
   	* mysql -u root -e "GRANT ALL PRIVILEGES ON loginAuth.* TO 'nawaz'@'localhost';"
 * Change the directory to restful-user-authentication
 	* cd restful-user-authentication
+* change the directory to restful-user-authentication
 * mvn clean install
 * mvn install package
 * java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar
