@@ -26,7 +26,7 @@ class Login extends React.Component{
           password : pass
         }).then(res=>{
             console.log(res.data.username)
-            this.notify("Login Success")
+            this.notify("Login Success..! Dashboard and other functionality are WIP")
         }).catch(error =>{
             this.notify("Login Failed")
         });
@@ -51,7 +51,7 @@ class Login extends React.Component{
               All the recipes at one place
             </p>  */}
           <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="User name"   onChange={this.handleChangeUname.bind(this)}/>
+          <input type="text" placeholder="Email Id"   onChange={this.handleChangeUname.bind(this)}/>
           <input type="password" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>
           <input type="submit" />
           <ToastContainer/>

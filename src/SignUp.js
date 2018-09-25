@@ -20,7 +20,7 @@ class SignUp extends React.Component {
             firstName : firstname,
             lastName : lastname,
             email:  email,
-            username : username,
+            username : email,
             password : password,
             selfDescription : description,
             recipeId : []
@@ -39,9 +39,6 @@ class SignUp extends React.Component {
       };
       handleChangeemail(event){
         this.setState({email: event.target.value})
-      };
-      handleChangeusername(event){
-        this.setState({username: event.target.value})      
       };
       handleChangedescription(event){
         this.setState({description: event.target.value})
@@ -72,19 +69,16 @@ class SignUp extends React.Component {
                     <label htmlfor="lastname">Last Name :</label>
                     <input type="text" placeholder="lastname"  onChange={this.handleChangelname.bind(this)}/>
                 </div>
+
+                <div className="description">
+                    <label htmlfor="description">Self description (atleast 5 characters):</label>
+                    <input type="text" placeholder="description"  onChange={this.handleChangedescription.bind(this)}/>
+                </div>
                 <div className="email">
                     <label htmlfor="email">Email :</label>
                     <input type="text" placeholder="email"  onChange={this.handleChangeemail.bind(this)}/>
                 </div>
                 
-                <div className="description">
-                    <label htmlfor="description">Self description :</label>
-                    <input type="text" placeholder="description"  onChange={this.handleChangedescription.bind(this)}/>
-                </div>
-                <div className="username">
-                    <label htmlfor="username">Username :</label>
-                    <input type="text" placeholder="username"  onChange={this.handleChangeusername.bind(this)}/>
-                </div>
                 <div className="password">
                     <label htmlfor="password">password :</label>
                     <input type="password" placeholder="password"  onChange={this.handleChangepassword.bind(this)}/>
