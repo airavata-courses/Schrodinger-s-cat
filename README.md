@@ -74,11 +74,14 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Change the branch to feature-login_authentication using the following command   
     * git checkout feature-login_authentication
 * Change the directory to Schrodinegr's - cat
+	* cd Schrodinegr's - cat
 * Then run the following commands:
 	* mysql_upgrade
   	* mysql -u root -e 'CREATE DATABASE IF NOT EXISTS loginAuth;'
   	* mysql -u root -e "CREATE USER IF NOT EXISTS 'nawaz'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
   	* mysql -u root -e "GRANT ALL PRIVILEGES ON loginAuth.* TO 'nawaz'@'localhost';"
+* Change the directory to restful-user-authentication
+	* cd restful-user-authentication
 * mvn clean install
 * mvn install package
 * java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar
