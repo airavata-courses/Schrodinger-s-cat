@@ -150,6 +150,7 @@ public class UserResourceEdit {
 		if (bindingResult.hasErrors()) {
 			throw new RegistrationDetailsException("There is already a user registered with the email "+userExists.getEmail()+" provided");
 		} else {
+			log.info("user found with the data+ "+user.getEmail());
 			userService.saveUser(user);
 			List<User> userList = new ArrayList<>();
 			userList.add(user);

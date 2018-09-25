@@ -49,7 +49,7 @@ public class User {
 //	@NotEmpty(message = "*Please provide a birthdate")
 //	private Date birthDate;
 	
-	@Size(min=10,message="selfDescription should have atleast ten characters")
+	@Size(min=5,message="selfDescription should have atleast ten characters")
 	@NotEmpty(message = "*Please provide a lastname")
 	private String selfDescription;
 	
