@@ -2,6 +2,8 @@
 
 [Wiki Link](https://github.com/airavata-courses/Schrodinger-s-cat/wiki)
 
+Build test - Raghottam
+
 ## foodcode
 An interactive website where you can browse for recipes, upload your own creations and also check-out what your friends are cooking! Get upvotes, suggestions and recommendations. Just Sign up!
 
