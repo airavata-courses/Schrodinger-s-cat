@@ -14,7 +14,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "nohup docker-compose up > pythonServerLog.log 2>&1 &"
+
+                script{
+                withEnv(['BUILD_ID=dontkill']) {
+                    sh "nohup docker-compose up > pythonServerLog.log 2>&1 &"
+                }
+            }
             }
         }
     }
