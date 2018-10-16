@@ -9,6 +9,4 @@ services:
       - .:/code
     ports:
       - "3000:3000"
-    networks:
-      - net1
     network_mode: 'host'
