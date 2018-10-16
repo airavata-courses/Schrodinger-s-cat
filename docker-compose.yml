@@ -3,7 +3,7 @@ version: '2'
 services:
   web:
     build: .
-    image: nodemicroservice
+    image: reactmicroservice
     command: bash -c "npm install && npm start"
     volumes:
       - .:/code
@@ -11,5 +11,4 @@ services:
       - "3000:3000"
     networks:
       - net1
-networks:
-  net1:
+    network_mode: 'host'
