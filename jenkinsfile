@@ -17,7 +17,7 @@ pipeline {
 
                 script{
                 withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
-                    sh "nohup docker-compose up > reactServerLog.log 2>&1 &"
+                    sh "nohup docker-compose up > nodeMicroServiceLog.log 2>&1 &"
                 }
             }
             }
