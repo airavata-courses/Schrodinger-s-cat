@@ -30,7 +30,7 @@ class RecipeList extends React.Component{
             searchString: event.target.value
         };
 
-        fetch(`http://127.0.0.1:8000/search/${encodeURIComponent(data.searchString)}`, {
+        fetch(`http://127.0.0.1:4000/search/${encodeURIComponent(data.searchString)}`, {
             method: "GET"
         })
         .then(res => {
