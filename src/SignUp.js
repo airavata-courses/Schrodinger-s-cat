@@ -16,7 +16,7 @@ class SignUp extends React.Component {
         var username = this.state.username;
         var password = this.state.password;
         var description = this.state.description;
-        axios.post('/expressSignup',{
+        axios.post('http://127.0.0.1:4000/expressSignup',{
             firstName : firstname,
             lastName : lastname,
             email:  email,

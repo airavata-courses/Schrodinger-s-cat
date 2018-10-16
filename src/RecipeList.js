@@ -11,7 +11,7 @@ class RecipeList extends React.Component{
         };
     };
     componentDidMount() {
-        fetch('/recipesExpress/')
+        fetch('http://127.0.0.1:4000/recipesExpress/')
           .then(res => {
              res.json().then(resultArray => {
                 this.setState({recipes:resultArray})
@@ -30,7 +30,7 @@ class RecipeList extends React.Component{
             searchString: event.target.value
         };
 
-        fetch(`/search/${encodeURIComponent(data.searchString)}`, {
+        fetch(`http://127.0.0.1:4000/search/${encodeURIComponent(data.searchString)}`, {
             method: "GET"
         })
         .then(res => {
