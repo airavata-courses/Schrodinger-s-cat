@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  web:
+    build: .
+    image: nodemicroservice
+    command: bash -c "npm start"
+    volumes:
+      - .:/code
+    ports:
+      - "3000:3000"
+    networks:
+      - net1
+networks:
+  net1:

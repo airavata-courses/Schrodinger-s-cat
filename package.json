@@ -16,7 +16,7 @@
     "reactstrap": "^6.4.0"
   },
   "scripts": {
-    "start": "set PORT=3080 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build --history-api-fallback",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
