@@ -30,6 +30,10 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+// Constants
+const PORT = 4000;
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST);
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
