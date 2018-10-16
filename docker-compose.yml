@@ -4,7 +4,7 @@ services:
   web:
     build: .
     image: nodemicroservice
-    command: npm run
+    command: bash -c "npm start"
     volumes:
       - .:/code
     ports:

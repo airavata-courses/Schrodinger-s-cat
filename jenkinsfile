@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+
+                script{
+                withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
+                    sh "nohup docker-compose up > nodeServerLog.log 2>&1 &"
+                }
+            }
+            }
+        }
+    }
+}
