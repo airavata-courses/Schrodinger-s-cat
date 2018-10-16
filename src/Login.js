@@ -21,7 +21,7 @@ class Login extends React.Component{
         var name = this.state.uname;
         var pass = this.state.passwd;
        
-        axios.post('http://127.0.0.1:4000/expressLogin/',{
+        axios.post('/expressLogin/',{
           username : name,
           password : pass
         }).then(res=>{
