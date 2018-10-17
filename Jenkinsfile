@@ -16,6 +16,7 @@ pipeline {
         }
         stage(' Developing the jar '){
             steps{
+                sh 'cd restful-user-authentication'
                 sh 'sudo docker run -it --rm -v "$PWD":/app -w /app --network host \
                 -p 8888:8888 \
                 nawazkh/maven:3.5.4 mvn clean install'
