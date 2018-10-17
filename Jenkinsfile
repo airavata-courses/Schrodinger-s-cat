@@ -9,7 +9,7 @@ pipeline {
         }
         stage(' Login Authentication Up '){
             steps {
-                sh 'run_docker.sh'
+                sh 'sudo bash ./run_docker.sh'
             }
         }
         stage(' Login Authentication Deployed '){
