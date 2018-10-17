@@ -1,12 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Remove old Docker containers') {
-            steps {
-                sh 'sudo docker rm -f login_authenticaion_container || true'
-                sh 'sudo docker rmi nawazkh/maven:3.5.4 || true'
-            }
-        }
         stage(' Login Authentication Up '){
             steps {
                 sh 'sudo bash ./run_docker.sh'
