@@ -2,8 +2,6 @@
 
 #docker stack rm login_authenticaion_service
 #docker swarm leave --force
-
-docker rm -f login_authenticaion_container
 docker rmi nawazkh/maven:3.5.4
 docker rmi nawazkh/login:latest
 cd restful-user-authentication/
