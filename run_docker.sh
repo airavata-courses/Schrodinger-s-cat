@@ -6,10 +6,11 @@
 docker rm -f login_authenticaion_container
 
 docker rmi nawazkh/maven:3.5.4
+cd restful-user-authentication/
 echo "---------removed old containers and images if existed---------"
 docker build -f Dockerfile -t nawazkh/maven:3.5.4 .
 echo "---------built docker image for maven ---------"
-cd restful-user-authentication/
+
 
 docker run --rm -v "$PWD":/app -w /app --network host \
 -p 8888:8888 \
