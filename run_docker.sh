@@ -21,6 +21,7 @@ echo "--------- created the jar for the project ---------"
 #nawazkh/maven:3.5.4 \
 #java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar
 echo "--------- starting the login module ---------"
+cd ..
 docker-compose up -d
 #cd ..
 #docker swarm init
