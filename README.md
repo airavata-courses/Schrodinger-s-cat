@@ -1,4 +1,4 @@
-# Schrodinger-s-cat 
+# Schrodinger-s-cat
 [![Build Status](https://travis-ci.org/airavata-courses/Schrodinger-s-cat.svg?branch=feature-login_authenticatiion)](https://travis-ci.org/airavata-courses/Schrodinger-s-cat)
 
 [Wiki Link](https://github.com/airavata-courses/Schrodinger-s-cat/wiki)
@@ -12,7 +12,7 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Feature-Login-Authentication Branch.
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
 
-### How to run this project? 
+### How to run this project?
 - You need Postman to test the functionality of this module. Download postman from https://www.getpostman.com.
 - You also need to have an installed instance of MySQL in your local machine.
 - Then run the following commands:
@@ -20,7 +20,12 @@ An interactive website where you can browse for recipes, upload your own creatio
   	- mysql -u root -e 'CREATE DATABASE IF NOT EXISTS loginAuth;'
   	- mysql -u root -e "CREATE USER IF NOT EXISTS 'nawaz'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
   	- mysql -u root -e "GRANT ALL PRIVILEGES ON loginAuth.* TO 'nawaz'@'localhost';"
+- Install Docker from https://docs.docker.com
 - Then Check out/clone this repository.
+- run sh run_docker.sh
+- GoTo What all added
+
+### Old Steps will be removed
 - run 'mvn clean install' from restful-user-authentication folder to check if the checked out code will work or not.
 - once mvn runs successfully, open this project in eclipse to launch the project.
 - right click on RestfulUserAuthenticationApplication.java and run it as java application to launch it.
@@ -28,10 +33,10 @@ An interactive website where you can browse for recipes, upload your own creatio
 - Or you can checkout all the branches and get the complete project working and start from sigining up as a user in this portal
 
 
-#### What all added? 
+#### What all added?
 - Swagger UI
 - Customized Exception hanlding
-- Dynamic Filtering 
+- Dynamic Filtering
 - API Modeling
 - Http Security
 - Web Secutiry
@@ -51,7 +56,7 @@ Need to register a user in registration.html and then access create and delete u
 - http://localhost:8888/jpa/users/create/{id}/save-posts			- createUserPosts
 
 #### Get (require no authentication)
-- http://localhost:8888/jpa/users/get/all-attributes 				- retrieveAllUsers 
+- http://localhost:8888/jpa/users/get/all-attributes 				- retrieveAllUsers
 - http://localhost:8888/jpa/users/get/f-l-name 					- retrieveAllUsersFirstLastName
 - http://localhost:8888/jpa/users/get/uId-emailId 				- retrieveAllUsersUIdEmailId
 - http://localhost:8888/jpa/users/get/fn-ln-ui-ps					- retrieveAllUsersFnLnUnPass
