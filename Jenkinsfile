@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+      stage(' Setup Java'){
+        steps {
+            sh 'sudo apt-get install oracle-java8-installer'
+            sh 'export JAVA_HOME=$(/usr/lib/jvm/java-8-openjdk-amd64/)'
+            sh 'export PATH=$JAVA_HOME/bin:$PATH'
+        }
+      }
         stage(' Login Authentication Up '){
             steps {
                 sh 'sudo bash ./run_docker.sh'
@@ -9,20 +16,19 @@ pipeline {
     }
     post {
         always {
-            echo 'This will always run'
+            echo 'Building pipeline...'
         }
         success {
-            echo 'This will run only if successful'
+            echo 'Login Module up'
         }
         failure {
-            echo 'This will run only if failed'
+            echo 'Login Module Could not be deployed'
         }
         unstable {
-            echo 'This will run only if the run was marked as unstable'
+            echo 'Run is marked as unstable'
         }
         changed {
-            echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
+            echo 'Change in the pipeline detected'
         }
     }
 }
