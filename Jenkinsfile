@@ -16,9 +16,9 @@ pipeline {
       }
       stage(' Setup MySql '){
         steps {
-            sh 'sudo docker run -d --network host -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql_container mysql/mysql-server:8.0.12 || true'
+            sh 'sudo docker run -d --network host -p 3306:3306  --name mysql_container mysql/mysql-server:8.0.12 -e MYSQL_ROOT_PASSWORD=root || true'
             sh 'sudo chmod +x database.sql'
-            sh 'sudo docker exec -i mysql_container /usr/bin/mysql -h 127.0.0.1 -P3306 -uroot -proot < ./database.sql || true'
+            sh 'sudo docker exec -i mysql_container /usr/bin/mysql -h 127.0.0.1 -P 3306 -uroot -proot < ./database.sql || true'
         }
       }
         stage(' Login Authentication Up '){
