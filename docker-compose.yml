@@ -2,8 +2,7 @@ version: "2"
 services:
   login:
     image: "nawazkh/login:latest"
-    command: bash -c "java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar "
-    working_dir: /code
+    working_dir: /code/target
     container_name: login_authenticaion_container
     ports:
       - "8888:8888"
