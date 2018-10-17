@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Remove old Docker containers') {
             steps {
-                sh 'sudo docker rm -f login_authenticaion_container'
-                sh 'sudo docker rmi nawazkh/maven:3.5.4'
+                sh 'sudo docker rm -f login_authenticaion_container || true'
+                sh 'sudo docker rmi nawazkh/maven:3.5.4 || true'
             }
         }
         stage(' Installing Maven '){
             steps {
                 sh 'echo "---------removed old containers and images if existed---------"'
-                sh 'sudo docker build -f Dockerfile -t nawazkh/maven:3.5.4 .'
+                sh 'sudo docker build -f Dockerfile -t nawazkh/maven:3.5.4 . || true'
                 sh 'echo "---------built docker image for maven ---------"'
             }
         }
