@@ -19,6 +19,8 @@ echo "--------- created the jar for the project ---------"
 #docker build -f Dockerfile -t nawazkh/login:latest .
 cd ..
 docker-compose up -d
+docker container ls
+docker image ls
 echo "--------- login module up ---------"
 #cd ..
 #docker swarm init
