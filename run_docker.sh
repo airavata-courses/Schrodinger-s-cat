@@ -11,7 +11,7 @@ docker build -f Dockerfile -t nawazkh/maven:3.5.4 .
 echo "---------built docker image for maven ---------"
 cd restful-user-authentication/
 
-docker run -it --rm -v "$PWD":/app -w /app --network host \
+docker run --rm -v "$PWD":/app -w /app --network host \
 -p 8888:8888 \
 nawazkh/maven:3.5.4 mvn clean install
 echo "--------- created the jar for the project ---------"
