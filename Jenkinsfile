@@ -1,15 +1,21 @@
 pipeline {
     agent any
     stages {
-
-        stage(' Developing the jar '){
-            steps{
-                sh 'cd restful-user-authentication'
-                sh 'ls -l'
-
+        stage('Remove old Docker containers') {
+            steps {
+                sh 'sudo docker rm -f login_authenticaion_container || true'
+                sh 'sudo docker rmi nawazkh/maven:3.5.4 || true'
             }
         }
-
+        stage(' Login Authentication Up '){
+            steps {
+                sh 'run_docker.sh'
+            }
+        }
+        stage(' Login Authentication Deployed '){
+            steps {
+                sh 'echo "DONE"'
+            }
         }
     }
     post {
