@@ -1,9 +1,12 @@
 # Using an official Java Runtime as a parent image
 # choosing
 FROM openjdk:8-jdk-alpine
-
+LABEL description="This a docker file to make maven executable"
+LABEL maintainer="Nawaz Hussain Khazielakha"
+LABEL email="k.nawaz.h@gmail.com"
 # Install Maven
-RUN apk add --no-cache curl tar bash
+#RUN apk add --no-cache curl tar bash
+RUN apk add curl tar bash
 ARG MAVEN_VERSION=3.5.4
 ARG USER_HOME_DIR="/root"
 RUN mkdir -p /usr/share/maven && \

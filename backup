@@ -1,0 +1,15 @@
+login_authentication_build:
+  #description: build the login authentication image
+  working_dir: /app/restful-user-authentication
+  image: "nawazkh/maven:latest"
+  command: ["mvn","clean","install"]
+login_authentication_run:
+  #description: run the login authentication branch
+  working_dir: /app/restful-user-authentication
+  image: "nawazkh/maven:latest"
+  command: ["java","-jar","target/restful-user-authentication-0.0.1-SNAPSHOT.jar"]
+  volumes:
+    - .:/app
+  ports:
+  - "8888:8888"
+  network_mode: "host"
