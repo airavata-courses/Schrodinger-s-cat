@@ -6,11 +6,6 @@ pipeline {
                 sh 'sudo bash ./run_docker.sh'
             }
         }
-        stage(' Login Authentication Deployed '){
-            steps {
-                sh 'echo "DONE"'
-            }
-        }
     }
     post {
         always {

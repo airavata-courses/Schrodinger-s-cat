@@ -1,7 +1,7 @@
 version: "2"
 services:
   login:
-    image: "nawazkh/maven:3.5.4"
+    image: "nawazkh/login:latest"
     command: bash -c "java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar "
     working_dir: /code
     container_name: login_authenticaion_container
