@@ -23,6 +23,8 @@ echo "--------- created the jar for the project ---------"
 echo "--------- starting the login module ---------"
 cd ..
 docker-compose up -d
+docker container ls
+docker image ls
 #cd ..
 #docker swarm init
 #docker stack deploy -c docker-compose.yml login_authenticaion_service
