@@ -3,17 +3,6 @@ services:
   login:
     image: "nawazkh/login:latest"
     container_name: login_authenticaion_container
-    deploy:
-      replicas: 5
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-      restart_policy:
-        condition: on-failure
     ports:
       - "8888:8888"
-    networks:
-      - webnet
-networks:
-  webnet:
+    network_mode: "host"
