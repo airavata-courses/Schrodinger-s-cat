@@ -7,5 +7,5 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ./restful-user-authentication:/code
+      - /restful-user-authentication:/code
     network_mode: "host"
