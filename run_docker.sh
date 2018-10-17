@@ -20,6 +20,7 @@ echo "--------- created the jar for the project ---------"
 docker-compose up -d
 docker container ls
 docker image ls
+ls -l
 docker container ls
 echo "--------- login module up ---------"
 #cd ..

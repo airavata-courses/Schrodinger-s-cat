@@ -2,7 +2,6 @@ version: "2"
 services:
   login:
     image: "nawazkh/login:latest"
-    working_dir: /code/target
     container_name: login_authenticaion_container
     ports:
       - "8888:8888"

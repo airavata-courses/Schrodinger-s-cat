@@ -6,4 +6,5 @@ LABEL maintainer="Nawaz Hussain Khazielakha"
 LABEL email="k.nawaz.h@gmail.com"
 EXPOSE 8888
 ADD /target/restful-user-authentication-0.0.1-SNAPSHOT.jar /target/login.jar
+WORKDIR /target
 ENTRYPOINT ["java","-jar","login.jar"]
