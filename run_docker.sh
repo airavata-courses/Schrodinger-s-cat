@@ -8,7 +8,7 @@ docker rm -f login_authenticaion_container
 #docker rmi nawazkh/maven:3.5.4
 cd restful-user-authentication/
 echo "---------removed old containers and images if existed---------"
-docker build -f Dockerfile -t nawazkh/maven:3.5.4 .
+#docker build -f Dockerfile -t nawazkh/maven:3.5.4 .
 echo "---------built docker image for maven ---------"
 
 
