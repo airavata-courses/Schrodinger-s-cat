@@ -16,10 +16,10 @@ docker run --rm -v "$PWD":/app -w /app --network host -p 8888:8888 nawazkh/maven
 #java -jar target/restful-user-authentication-0.0.1-SNAPSHOT.jar
 #---------#
 docker build -f Dockerfile -t nawazkh/login:latest .
-docker-compose up -d
+# docker-compose up -d
 #---------#
 # echo "--------- login module up ---------"
 #cd ..
-#docker swarm init
-#docker stack deploy -c docker-compose.yml login_authenticaion_service
+docker swarm init
+docker stack deploy -c docker-compose.yml login_authenticaion_service
 #---------#
