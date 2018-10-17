@@ -6,6 +6,4 @@ services:
     container_name: login_authenticaion_container
     ports:
       - "8888:8888"
-    volumes:
-      - /restful-user-authentication:/code
     network_mode: "host"
