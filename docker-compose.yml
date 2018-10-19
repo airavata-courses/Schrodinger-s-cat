@@ -16,5 +16,6 @@ services:
     networks:
       - webnet
 networks:
-  external:
-    name: nodeserver_web
+  webnet:
+    external:
+      name: reactserver_webnet
