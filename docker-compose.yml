@@ -16,4 +16,5 @@ services:
     networks:
       - webnet
 networks:
-  webnet:
+  external:
+    name: nodeserver_web
