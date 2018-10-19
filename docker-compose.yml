@@ -1,13 +1,12 @@
-version: '2'
-
+version: "3"
 services:
   web:
-    build: .
-    image: reactmicroservice
+    # replace username/repo:tag with your name and image details
+    image: scatreactserver
     command: bash -c "npm install && npm start"
     volumes:
       - .:/code
-     deploy:
+    deploy:
       replicas: 5
       resources:
         limits:
@@ -16,5 +15,8 @@ services:
       restart_policy:
         condition: on-failure
     ports:
-      - "3000:3000"
-    network_mode: 'host'
+      - "3333:3333"
+    networks:
+      - webnet
+networks:
+  webnet:

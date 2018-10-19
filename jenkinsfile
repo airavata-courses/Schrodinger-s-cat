@@ -4,21 +4,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'docker swarm init'
             }
         }
-        stage('Test') {
+        stage('Image Build') {
             steps {
-                echo 'Testing..'
+                sh 'docker build -t scatreactserver .'
+                echo 'Build Complete'
             }
         }
         stage('Deploy') {
             steps {
 
                 script{
-                withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
-                    sh "nohup docker-compose up > reactServerLog.log 2>&1 &"
-                }
+                    sh "docker stack deploy -c docker-compose.yml reactserver"
+                // withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
+                //     sh "docker-compose up -d"
+                // }
             }
             }
         }
