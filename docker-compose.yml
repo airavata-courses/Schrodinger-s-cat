@@ -2,12 +2,11 @@ version: "3"
 services:
   web:
     # replace username/repo:tag with your name and image details
-    image: scatreactserver
-    command: bash -c "npm install && npm start"
+    image: pswargam/scat
     volumes:
       - .:/code
     deploy:
-      replicas: 5
+      replicas: 1
       resources:
         limits:
           cpus: "0.1"
