@@ -7,6 +7,11 @@ pipeline {
             sh 'sudo docker stop mysql_container || true && sudo docker rm -f mysql_container || true'
         }
      }
+     stage(' Setup Mysql-server'){
+      stage{
+        //install mysql server
+      }
+     }
       stage(' Setup Java'){
         steps {
             sh 'sudo apt-get install oracle-java8-installer'
