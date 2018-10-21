@@ -25,6 +25,6 @@
 
 
 DELETE FROM role WHERE role_id = 1;
-INSERT INTO role(role_id, role) VALUES (2, 'ADMIN');
+INSERT INTO role(role_id, role) VALUES (1, 'ADMIN');
 --insert INTO role VALUES (2,'ADMIN');
 --insert into user (active, email, first_name, last_name, password, self_description, username, user_id) values (1, 'nawazkh@iu.edu', 'nawaz','hussain', 'bada cook hoon bhaiya', ?, ?, ?);
