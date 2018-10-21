@@ -1,0 +1,14 @@
+version: "3"
+services:
+  db1:
+    image: bitnami/postgresql:latest
+    volumes:
+      - pgdata:/bitnami/postgresql
+  ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - webnet
+volumes:
+  pgdata:
+networks:
+  webnet:
