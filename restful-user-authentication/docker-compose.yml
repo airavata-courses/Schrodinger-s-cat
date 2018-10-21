@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   login:
     image: "nawazkh/login:latest"
@@ -14,3 +14,5 @@ services:
       - webnet
 networks:
   webnet:
+    external:
+      name: scatpost_webnet

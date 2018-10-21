@@ -23,3 +23,4 @@ docker-compose up -d
 # docker swarm init
 # docker stack deploy -c docker-compose.yml login_authenticaion_service
 #---------#
+docker stack deploy -c docker-stack-postgresql.yml post
