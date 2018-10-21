@@ -7,6 +7,7 @@ docker rmi nawazkh/login:latest
 cd restful-user-authentication/
 # echo "---------removed old containers and images if existed---------"
 docker build -f Dockerfile.maven -t nawazkh/maven:3.5.4 .
+createuser -s postgres;
 docker run --rm -v "$PWD":/app -w /app --network host -p 8888:8888 nawazkh/maven:3.5.4 clean install
 #---------#
 # echo "--------- created the jar for the project ---------"
