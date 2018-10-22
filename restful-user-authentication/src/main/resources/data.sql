@@ -24,7 +24,14 @@
 --insert into posts(id,user_id) values(11014,1004);
 
 
-DELETE FROM role WHERE role_id = 1;
-INSERT INTO role(role_id, role) VALUES (1, 'ADMIN');
+--DELETE FROM role WHERE role_id = 1;
+--INSERT INTO role(role_id, role) VALUES (1, 'ADMIN');
 --insert INTO role VALUES (2,'ADMIN');
 --insert into user (active, email, first_name, last_name, password, self_description, username, user_id) values (1, 'nawazkh@iu.edu', 'nawaz','hussain', 'bada cook hoon bhaiya', ?, ?, ?);
+
+insert into role (role_id, role)
+select 
+    '1', 'ADMIN'
+where not exists (
+    select * from role where role_id = 1 and role = 'ADMIN'
+);
