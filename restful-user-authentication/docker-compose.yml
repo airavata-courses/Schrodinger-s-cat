@@ -15,4 +15,4 @@ services:
 networks:
   webnet:
     external:
-      name: scatpost_webnet
+      name: post_webnet

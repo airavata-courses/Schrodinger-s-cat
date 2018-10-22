@@ -4,10 +4,14 @@
 #docker swarm leave --force
 docker rmi nawazkh/maven:3.5.4
 docker rmi nawazkh/login:latest
+
 cd restful-user-authentication/
+
 # echo "---------removed old containers and images if existed---------"
+docker swarm init
+docker stack deploy -c docker-stack-postgresql.yml post
+
 docker build -f Dockerfile.maven -t nawazkh/maven:3.5.4 .
-createuser -s postgres;
 docker run --rm -v "$PWD":/app -w /app --network host -p 8888:8888 nawazkh/maven:3.5.4 clean install
 #---------#
 # echo "--------- created the jar for the project ---------"
@@ -24,4 +28,4 @@ docker build -f Dockerfile -t nawazkh/login:latest .
 # docker swarm init
 # docker stack deploy -c docker-compose.yml login_authenticaion_service
 #---------#
-docker stack deploy -c docker-stack-postgresql.yml post
+docker stack deploy -c docker-compose.yml login_authenticaion_service
