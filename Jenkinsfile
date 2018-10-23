@@ -3,9 +3,10 @@ pipeline {
     stages {
       stage('Stop Old Containers'){
         steps {
+        sh 'sudo usermod -a -G docker $USER'
         sh 'sudo docker stack rm login_authenticaion_service || true'
         sh 'sudo docker stack rm post || true'
-        sh 'docker swarm leave'
+        sh 'sudo docker swarm leave'
         }
      }
      stage('Start Postgres network'){
