@@ -31,11 +31,11 @@ pipeline {
             sh 'sudo docker network ls || true'
             }
      }
-     //stage(' Login Authentication Up '){
-        //steps {
-        //    sh 'sudo bash ./run_docker.sh'
-        //    }
-        //}
+     stage(' Login Authentication Up '){
+        steps {
+            sh 'sudo bash ./run_docker.sh'
+            }
+        }
     }
     post {
         always {
