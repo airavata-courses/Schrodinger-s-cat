@@ -5,14 +5,12 @@ pipeline {
         steps {
         sh 'sudo docker stack rm login_authenticaion_service || true'
         sh 'sudo docker stack rm post || true'
-            //sh 'sudo docker stop login_authenticaion_container || true && sudo docker rm -f login_authenticaion_container || true'
-            //sh 'sudo docker stop post || true && sudo docker rm -f post || true''
+        sh 'docker swarm leave'
         }
      }
      stage('Start Postgres network'){
         steps{
             sh 'sudo bash ./run_postgres.sh'
-
             }
      }
      stage(' Setup Java'){
