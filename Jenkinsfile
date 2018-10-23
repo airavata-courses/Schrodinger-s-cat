@@ -11,8 +11,7 @@ pipeline {
      }
      stage('Start Postgres network'){
         steps{
-            sh 'sudo docker swarm init'
-            sh 'sudo docker stack deploy -c docker-stack-postgresql.yml post'
+            sh 'sudo bash ./run_postgres.sh'
 
             }
      }
