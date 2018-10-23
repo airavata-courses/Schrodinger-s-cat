@@ -5,12 +5,11 @@
 cd restful-user-authentication/
 
 # echo "---------removed old containers and images if existed---------"
-sudo docker swarm init
-sudo docker stack deploy -c docker-stack-postgresql.yml post
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
 
 sudo docker rmi nawazkh/maven:3.5.4
 sudo docker rmi nawazkh/login:latest
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+
 sudo docker build -f Dockerfile.maven -t nawazkh/maven:3.5.4 .
 sudo docker run --rm -v "$PWD":/app -w /app --network host -p 8888:8888 nawazkh/maven:3.5.4 clean install
 #---------#
