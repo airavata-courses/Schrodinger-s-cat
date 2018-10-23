@@ -4,21 +4,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'docker swarm init'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'docker build -t scatpythonserver .'
+                echo 'Build Complete'
             }
         }
         stage('Deploy') {
             steps {
 
                 script{
-                withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
-                    sh "nohup docker-compose up > pythonServerLog.log 2>&1 &"
-                }
+                    sh "docker stack deploy -c docker-compose.yml pythonserver"
+                // withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
+                //     sh "docker-compose up -d"
+                // }
             }
             }
         }

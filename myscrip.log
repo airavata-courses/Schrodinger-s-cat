@@ -29,3 +29,4 @@ Quit the server with CONTROL-C.
 <QuerySet [<Ingredient: Ingredient object (2)>]>
 <QuerySet [<Ingredient: Ingredient object (1)>, <Ingredient: Ingredient object (2)>]>
 <QuerySet [<Ingredient: Ingredient object (2)>]>
+[16/Oct/2018 07:12:24] "GET /recipes/pythonSearch/a/ HTTP/1.1" 200 494
