@@ -6,6 +6,7 @@ pipeline {
         sh 'sudo usermod -a -G docker $USER'
         sh 'sudo docker stack rm login_authenticaion_service || true'
         sh 'sudo docker stack rm post || true'
+        sh 'sudo docker swarm leave --force || true'
         }
      }
      stage('Start Postgres network'){
@@ -26,7 +27,7 @@ pipeline {
             sh 'sudo apt update || true'
             sh 'sudo apt install postgresql postgresql-contrib || true'
             sh 'sudo -u postgres createuser -s postgres || true'
-            sh 'sudo docker network ls || true'
+            //sh 'sudo docker network ls || true'
             }
      }
      stage(' Login Authentication Up '){
