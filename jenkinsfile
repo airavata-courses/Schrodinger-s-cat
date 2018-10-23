@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'docker swarm init || true'
+                sh 'docker stack rm nodeserver || true'
             }
         }
         stage('Image Build') {
