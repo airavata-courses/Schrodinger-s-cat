@@ -20,4 +20,4 @@ services:
 networks:
   webnet:
     external:
-      name: reactserver_webnet
+      name: post_webnet
