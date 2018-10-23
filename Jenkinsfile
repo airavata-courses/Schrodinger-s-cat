@@ -12,27 +12,21 @@ pipeline {
      stage(' Setup Java'){
        steps {
            sh 'sudo apt update'
-           sh 'sudo apt install openjdk-8-jre'
+           sh 'sudo apt install openjdk-8-jdk'
            sh 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/'
            sh 'export PATH=$JAVA_HOME/bin:$PATH'
        }
      }
-     stage ('Install Postgres')
-     stage{
-        sh 'sudo apt update'
-        sh 'sudo apt install postgresql postgresql-contrib'
-        sh 'sudo -u postgres createuser -s postgres;'
+     stage ('Install Postgres'){
+        steps{
+            sh 'sudo apt update'
+            sh 'sudo apt install postgresql postgresql-contrib'
+            sh 'sudo -u postgres createuser -s postgres;'
+            }
      }
-      //stage(' Setup MySql '){
-        //steps {
-          //  sh 'sudo docker run -d --network host -p 3306:3306  --name mysql_container mysql/mysql-server:8.0.12 -e MYSQL_ROOT_PASSWORD=root || true'
-          //  sh 'sudo chmod +x database.sql'
-            //sh 'sudo docker exec -i mysql_container /usr/bin/mysql -h 127.0.0.1 -P 3306 -uroot -proot < ./database.sql || true'
-        //}
-      //}
-        stage(' Login Authentication Up '){
-            steps {
-                sh 'sudo bash ./run_docker.sh'
+     stage(' Login Authentication Up '){
+        steps {
+            sh 'sudo bash ./run_docker.sh'
             }
         }
     }
