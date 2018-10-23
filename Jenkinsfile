@@ -33,6 +33,7 @@ pipeline {
      stage(' Login Authentication Up '){
         steps {
             sh 'sudo bash ./run_docker.sh'
+            sh 'sudo sleep 10'
             }
         }
     }
