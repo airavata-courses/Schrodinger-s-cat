@@ -17,3 +17,5 @@ services:
       - webnet
 networks:
   webnet:
+    external:
+      name: post_webnet
