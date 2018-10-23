@@ -12,7 +12,7 @@ router.post('/', function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     
     
-    axios.post('http://127.0.0.1:8888/jpa/users/register',
+    axios.post('http://javaservers:8888/jpa/users/register',
     
     req.body).then(result=>{
         console.log(result.data)
