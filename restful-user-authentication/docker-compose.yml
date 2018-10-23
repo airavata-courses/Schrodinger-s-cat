@@ -1,8 +1,7 @@
 version: "3"
 services:
-  login:
+  scatlogin:
     image: "nawazkh/login:latest"
-    container_name: login_authenticaion_container
     deploy:
       replicas: 5
       restart_policy:

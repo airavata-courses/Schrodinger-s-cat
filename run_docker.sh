@@ -27,4 +27,4 @@ sudo docker build -f Dockerfile -t nawazkh/login:latest .
 # docker swarm init
 # docker stack deploy -c docker-compose.yml login_authenticaion_service
 #---------#
-sudo docker stack deploy -c docker-compose.yml login_authenticaion_service
+sudo docker stack deploy -c docker-compose.yml login
