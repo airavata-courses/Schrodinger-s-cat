@@ -21,7 +21,6 @@ pipeline {
         steps{
             sh 'sudo apt update || true'
             sh 'sudo apt install postgresql postgresql-contrib || true'
-            sh 'sudo -u postgres createuser -s postgres || true'
             }
      }
      stage(' Login Authentication Up '){
