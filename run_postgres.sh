@@ -1,2 +1,2 @@
 sudo docker swarm init
-sudo docker stack deploy -c docker-compose-postgresql.yml post
+sudo docker stack deploy -c docker-compose-postgres.yml post
