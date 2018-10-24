@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+     label 'searchslave'
+    }
 
     stages {
         stage('Build') {
