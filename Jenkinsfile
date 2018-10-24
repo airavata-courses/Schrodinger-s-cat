@@ -1,5 +1,7 @@
-pipeline {
-    agent any
+pipeline { 
+    agent {
+     label 'masterNode'
+    }
     stages {
       stage('Stop Old Containers'){
         steps {
