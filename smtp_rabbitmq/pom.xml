@@ -58,6 +58,14 @@
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.4.3</version>
+		</dependency>
+
+
 
 
 	</dependencies>
@@ -93,9 +101,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<excludes>
+					<!-- <excludes>
 						<exclude>**/log4j.properties</exclude>
-					</excludes>
+					</excludes> -->
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>

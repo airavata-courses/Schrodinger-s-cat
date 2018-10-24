@@ -1,6 +1,8 @@
 package com.foodcode.microservices.smtp.service;
 
+import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeoutException;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -12,67 +14,69 @@ import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 
-import com.foodcode.microservices.smtp.service.util.EmailUtil;
+import com.rabbitmq.client.*;
+
+import email.SendEmail;
+
 
 
 public class App {
 
 	private static final Logger logger = Logger.getLogger(App.class);
+	private static final String EXCHANGE_NAME = "mail_list";
+	private static final String ROUTING_KEY = "black";
 
 	public static void main(String[] args) {
-
 		System.out.println(getLocalCurrentDate());
-		// Recipient's email ID needs to be mentioned.
-	      String to = "abcd@gmail.com";
-
-	      // Sender's email ID needs to be mentioned
-	      String from = "web@gmail.com";
-
-	      // Assuming you are sending email from localhost
-	      String host = "localhost";
-
-	      // Get system properties
-	      Properties properties = System.getProperties();
-
-	      // Setup mail server
-	      properties.setProperty("mail.smtp.host", host);
-
-	      // Get the default Session object.
-	      Session session = Session.getDefaultInstance(properties);
-
-	      try {
-	         // Create a default MimeMessage object.
-	         MimeMessage message = new MimeMessage(session);
-
-	         // Set From: header field of the header.
-	         message.setFrom(new InternetAddress(from));
-
-	         // Set To: header field of the header.
-	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-	         // Set Subject: header field
-	         message.setSubject("This is the Subject Line!");
-
-	         // Now set the actual message
-	         message.setText("This is actual message");
-
-	         // Send message
-	         Transport.send(message);
-	         System.out.println("Sent message successfully....");
-	      } catch (MessagingException mex) {
-	         mex.printStackTrace();
-	      }
+		try {
+			ListenExchange();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-private static String getLocalCurrentDate() {
-
-	if (logger.isDebugEnabled()) {
-		logger.debug("getLocalCurrentDate() is executed!");
+	private static String getLocalCurrentDate() {
+		if (logger.isDebugEnabled()) {
+			logger.debug("getLocalCurrentDate() is executed!");
+		}
+		LocalDate date = new LocalDate();
+		return date.toString();
 	}
+	public static void ListenExchange() throws TimeoutException, IOException {
+		try {
+			ConnectionFactory factory = new ConnectionFactory();
+			factory.setHost("localhost"); //TODO: change it to other when running on docker
+			Connection connection = factory.newConnection();
+			Channel channel = connection.createChannel();
 
-	LocalDate date = new LocalDate();
-	return date.toString();
+			channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+			String queueName = channel.queueDeclare().getQueue();
+			
+			channel.queueBind(queueName, EXCHANGE_NAME, ROUTING_KEY);
+			System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
+			Consumer consumer = new DefaultConsumer(channel) {
+				@Override
+				public void handleDelivery(String consumerTag, Envelope envelope,
+						AMQP.BasicProperties properties, byte[] body) throws IOException {
+					String emailId = new String(body, "UTF-8");
+					SendEmail sendEmail = new SendEmail();
+					// call send email here.
+					sendEmail.sendEmailToReceipient(emailId);
+					System.out.println(" [x] routing key:  '" + envelope.getRoutingKey() + "':' sending email to " + emailId + "'");
+				}
+			};
+			channel.basicConsume(queueName, false, consumer);
+		}catch (TimeoutException e) {
+			e.printStackTrace();
+		}	
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
-}
