@@ -6,6 +6,7 @@ pipeline {
             steps {
                 sh 'docker swarm init || true'
                 sh 'docker stack rm nodeserver || true'
+                sh 'docker network create -d overlay post_webnet || true'
             }
         }
         stage('Image Build') {
