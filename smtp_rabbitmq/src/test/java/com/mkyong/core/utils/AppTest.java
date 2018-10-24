@@ -1,4 +1,4 @@
-package com.foodcode.microservice.rabbitmq.smtp.server;
+package com.mkyong.core.utils;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
