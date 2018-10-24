@@ -55,7 +55,7 @@ public class App {
 
 			channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 			String queueName = channel.queueDeclare().getQueue();
-			
+
 			channel.queueBind(queueName, EXCHANGE_NAME, ROUTING_KEY);
 			System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
@@ -67,16 +67,15 @@ public class App {
 					SendEmail sendEmail = new SendEmail();
 					// call send email here.
 					sendEmail.sendEmailToReceipient(emailId);
-					System.out.println(" [x] routing key:  '" + envelope.getRoutingKey() + "':' sending email to " + emailId + "'");
+					System.out.println(" [x] routing key:  '" + envelope.getRoutingKey() + "':' email sent to " + emailId + "'");
 				}
 			};
 			channel.basicConsume(queueName, false, consumer);
 		}catch (TimeoutException e) {
 			e.printStackTrace();
-		}	
+		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 }
-

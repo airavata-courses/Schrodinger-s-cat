@@ -17,10 +17,11 @@ public class SendEmail {
 		from = "noreply@foodcode.com";
 		host = "localhost";
 		properties = System.getProperties();
+		properties.setProperty("mail.smtp.host", host);
 	}
 	public void sendEmailToReceipient(String to) {
 	    // Setup mail server
-	    properties.setProperty("mail.smtp.host", host);
+
 
 	    // Get the default Session object.
 	    Session session = Session.getDefaultInstance(properties);
@@ -43,10 +44,10 @@ public class SendEmail {
 
 	       // Send message
 	       Transport.send(message);
-	       System.out.println("Sent message successfully....");
+	       System.out.println("Message sent successfully....");
 	    } catch (MessagingException mex) {
 	       mex.printStackTrace();
 	    }
 	}
-	
+
 }
