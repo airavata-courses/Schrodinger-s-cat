@@ -8,7 +8,7 @@ pipeline {
         sh 'sudo usermod -a -G docker $USER'
         sh 'sudo docker stack rm login_authenticaion_service || true'
         sh 'sudo docker stack rm post || true'
-        sh 'sudo docker swarm leave --force || true'
+	sh 'docker network create --driver overlay post_webnet || true'
         }
      }
      stage('Start Postgres network'){
