@@ -33,6 +33,7 @@ import com.foodcode.microservice.restfuluserauthentication.persistence.model.Use
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.UserAuthenticationDetails;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.PostsRepository;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
+import com.foodcode.microservice.restfuluserauthentication.service.EmitLogDirect;
 import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 
 @RestController
@@ -51,6 +52,9 @@ public class UserResourceEdit {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmitLogDirect emitLogDirect;
 
 //	@PostMapping("/jpa/users/create")
 //	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
@@ -155,6 +159,7 @@ public class UserResourceEdit {
 			List<User> userList = new ArrayList<>();
 			userList.add(user);
 			MappingJacksonValue allAttributes = filterAttributes.getUserNameAndUserID(userList);
+			emitLogDirect.sendEmailToUser(user.getEmail());
 			return allAttributes;
 		}
 	}
