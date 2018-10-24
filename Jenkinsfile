@@ -15,9 +15,15 @@ pipeline {
             }
         }
 
-        stage('End') {
+        stage('React Front End') {
             steps {
-                sh 'ls'
+               build job: 'Front end React JS'
+            }
+        }
+
+        stage('Node Branch') {
+            steps {
+               build job: 'Node JS Server'
             }
         }
     }
