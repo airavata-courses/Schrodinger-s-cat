@@ -8,7 +8,6 @@ pipeline {
             steps {
                 sh 'docker swarm init || true'
                 sh 'docker stack rm pythonserver || true'
-                sh 'docker network create -d overlay post_webnet || true'
             }
         }
         stage('Test') {
