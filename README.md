@@ -1,8 +1,8 @@
-# Schrodinger-s-cat
+# Schrodinger-s-cat  
 
 Wiki Link : https://github.com/airavata-courses/Schrodinger-s-cat/wiki
 
-## foodcode
+## foodcode  
 An interactive website where you can browse for recipes, upload your own creations and also check-out what your friends are cooking! Get upvotes, suggestions and recommendations. Just Sign up!
 
 ### About this branch
@@ -31,7 +31,7 @@ An interactive website where you can browse for recipes, upload your own creatio
    * npm start
 
 
-## Step -2:
+## Step -2:  
 * Clone the github repository
 * Change the branch to frontEnd_React using the following command   
     * git checkout frontEnd_React
