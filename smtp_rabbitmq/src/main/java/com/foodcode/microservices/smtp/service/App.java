@@ -32,7 +32,7 @@ public class App {
 		System.out.println(getLocalCurrentDate());
 		GetEmail getEmail = new GetEmail();
 		try {
-			getEmail.sendEmailToUser("dummy@gmail.com");
+			getEmail.sendEmailToUser("nawazkh@iu.edu");
 			ListenExchange();
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
