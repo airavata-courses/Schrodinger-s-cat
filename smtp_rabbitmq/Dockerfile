@@ -4,6 +4,7 @@ FROM openjdk:8-jdk-alpine
 LABEL description="Docker file for login auth jar"
 LABEL maintainer="Nawaz Hussain Khazielakha"
 LABEL email="k.nawaz.h@gmail.com"
+EXPOSE 465
 ADD /target .
 ADD /target/smtp_rabbitmq.jar login.jar
 ENTRYPOINT ["java","-jar","login.jar"]
