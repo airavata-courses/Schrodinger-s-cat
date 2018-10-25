@@ -12,3 +12,5 @@ volumes:
   pgdata:
 networks:
   webnet:
+     external:
+      name: post_webnet
