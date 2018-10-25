@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'docker swarm init || true'
                 sh 'docker stack rm pythonserver || true'
+                sh 'docker rmi scatpythonserver:latest || true'
             }
         }
         stage('Test') {
