@@ -21,13 +21,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                //sh "sudo docker stack deploy -c docker-compose.yml rabbitserver"
+                sh "sudo docker stack deploy -c docker-compose.yml rabbitserver"
                 echo 'Build Complete'
             }
         }
         stage (' start the consumer microservice'){
         steps{
-          sh 'sudo bash ./run_docker.sh'
+          //sh 'sudo bash ./run_docker.sh'
           echo 'Build Complete'
         }
         }
