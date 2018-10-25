@@ -39,10 +39,11 @@ public class SendEmailGmail {
 				return new PasswordAuthentication(fromEmail, password);
 			}
 		};
-		
+
 		Session session = Session.getDefaultInstance(props, auth);
 		System.out.println("Session created");
-	        EmailUtil.sendEmail(session, toEmail,"SSLEmail Testing Subject", "SSLEmail Testing Body");
+
+		EmailUtil.sendEmail(session, toEmail,"FoodCode.com -- Account created!", "Hello User with the email : "+toEmail+" \n Your account has been created at foodcode.com.\n \n Regards,\n Foodcode.com");
 
 	}
 

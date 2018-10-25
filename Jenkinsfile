@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Removing old') {
             steps {
+                sh 'sudo docker network create --driver overlay post_webnet || true'
                 sh 'usermod -aG docker $USER || true'
                 //sh 'sudo docker swarm init || true'
                 //sh 'sudo docker stack rm rabbitserver || true'
