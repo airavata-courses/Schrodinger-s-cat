@@ -10,6 +10,7 @@ pipeline {
                 sh 'sudo docker swarm init || true'
                 sh 'sudo docker stack rm rabbitserver || true'
 		        sh 'sudo docker rmi rabbit:latest || true'
+                sh 'sudo docker stack rm consumer || true'
             }
         }
         stage('Build') {
