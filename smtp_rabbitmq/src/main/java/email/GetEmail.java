@@ -16,7 +16,7 @@ public class GetEmail {
 		try {
 			ConnectionFactory factory = new ConnectionFactory();
 			factory.setHost("rabbitserver");//host name
-			factory.setPort(5672);
+			//factory.setPort(5672);
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
 
