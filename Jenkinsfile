@@ -7,7 +7,8 @@ pipeline {
             steps {
                 sh 'docker swarm init || true'
                 sh 'docker stack rm reactserver || true'
-            }
+            	sh 'docker rmi scatreactserver:latest || true'
+		}
         }
         stage('Image Build') {
             steps {
