@@ -29,5 +29,9 @@ pipeline {
             }
             }
         }
+        stage (' start the consumer microservice')
+        steps{
+          sh 'sudo bash ./run_docker.sh'
+        }
     }
 }
