@@ -23,7 +23,7 @@ public class EmitLogDirect {
 	public void sendEmailToUser(String emailId) {
 		try {
 			ConnectionFactory factory = new ConnectionFactory();
-			factory.setHost(env.getProperty("rabbitmq.network.name"));//host name
+			factory.setHost("rabbitserver");//host name
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
 
