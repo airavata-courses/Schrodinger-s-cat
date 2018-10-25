@@ -83,9 +83,11 @@ public class App {
 			channel.basicConsume(queueName, false, consumer);
 		}catch (TimeoutException e) {
 			e.printStackTrace();
+			System.exit(1);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
+			System.exit(1);
 		}
 	}
 }
