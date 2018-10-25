@@ -27,7 +27,7 @@ public class App {
 	private static final String EXCHANGE_NAME = "mail_list";
 	private static final String ROUTING_KEY = "black";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println(getLocalCurrentDate());
 		try {
 			ListenExchange();
@@ -37,6 +37,7 @@ public class App {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw e;
 		}
 	}
 
