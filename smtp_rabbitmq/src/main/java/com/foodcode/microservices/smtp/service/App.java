@@ -17,6 +17,7 @@ import org.joda.time.LocalDate;
 import com.rabbitmq.client.*;
 
 import email.SendEmail;
+import email.SendEmailGmail;
 
 
 
@@ -64,9 +65,12 @@ public class App {
 				public void handleDelivery(String consumerTag, Envelope envelope,
 						AMQP.BasicProperties properties, byte[] body) throws IOException {
 					String emailId = new String(body, "UTF-8");
+//					
 					SendEmail sendEmail = new SendEmail();
-					// call send email here.
-					sendEmail.sendEmailToReceipient(emailId);
+//					// call send email here.
+//					sendEmail.sendEmailToReceipient(emailId);
+					SendEmailGmail emailGmail = new SendEmailGmail();
+					emailGmail.sendEmailFromGmailAccount(emailId);
 					System.out.println(" [x] routing key:  '" + envelope.getRoutingKey() + "':' email sent to " + emailId + "'");
 				}
 			};
