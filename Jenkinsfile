@@ -24,7 +24,7 @@ pipeline {
 
                 script{
                     sh "sudo docker stack deploy -c docker-compose.yml rabbitserver"
-                /withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
+                //withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
                 //     sh "docker-compose up -d"
                 // }
             }
