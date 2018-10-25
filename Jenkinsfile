@@ -19,17 +19,17 @@ pipeline {
                 echo 'Build Complete'
             }
         }
-        stage('Deploy') {
-            steps {
+        //stage('Deploy') {
+            //steps {
 
-                script{
+                //script{
                     //sh "sudo docker stack deploy -c docker-compose.yml rabbitserver"
                 // withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
                 //     sh "docker-compose up -d"
                 // }
-            }
-            }
-        }
+            //}
+            //}
+        //}
         stage (' start the consumer microservice'){
         steps{
           sh 'sudo bash ./run_docker.sh'
