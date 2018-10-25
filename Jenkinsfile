@@ -9,6 +9,11 @@ pipeline {
         sh 'sudo docker swarm leave --force || true'
         }
      }
+     stage(' Start rabbitmq '){
+     steps{
+        sh 'sudo bash ./run_rabbitmq.sh'
+     }
+     }
      stage('Start Postgres network'){
         steps{
             sh 'sudo bash ./run_postgres.sh'

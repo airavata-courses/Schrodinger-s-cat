@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  rmq:
+    image: rabbitmq:3.6.11-management-alpine
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=abc
+      - RABBITMQ_USE_LONGNAME=true
+      - RABBITMQ_MNESIA_DIR=/var/lib/rabbitmq/mnesia
+      - RABBITMQ_PLUGINS_EXPAND_DIR=/var/lib/rabbitmq/mnesia/plugins-expand
+      - SERVICE_NAME={{.Service.Name}}
+      - SLOT={{.Task.Slot}}
+      - MASTER_SLOT=1
+    ports:
+      - "5672:5672"   # amqp
+      - "15672:15672" # web ui
+    networks:
+      - webnet
+networks:
+  webnet:
+    external:
+      name: post_webnet
