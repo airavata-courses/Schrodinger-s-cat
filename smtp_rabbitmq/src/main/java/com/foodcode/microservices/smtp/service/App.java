@@ -32,8 +32,8 @@ public class App {
 		System.out.println(getLocalCurrentDate());
 		GetEmail getEmail = new GetEmail();
 		try {
-			getEmail.sendEmailToUser("nawazkh@iu.edu");
 			ListenExchange();
+			getEmail.sendEmailToUser("nawazkh@iu.edu");
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
