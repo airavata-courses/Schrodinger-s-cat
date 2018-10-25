@@ -8,12 +8,11 @@ pipeline {
                 sh 'docker network create --driver overlay post_webnet || true'
             }
         }
-        stage('Java and postgres') {
+	stage('RabbitMQ and Email Service') {
             steps {
-                build job: 'Login Authentication 1'
+                build job: 'RabbitMq Container'
             }
         }
-
         stage ('Python Search Branch') {
             steps {
                 build job: 'Python Search Branch'
@@ -25,10 +24,14 @@ pipeline {
                build job: 'Front end React JS'
             }
         }
-
         stage('Node Branch') {
             steps {
                build job: 'Node JS Server'
+            }
+        }
+	stage('Java and postgres') {
+            steps {
+                build job: 'Login Authentication 1'
             }
         }
     }
