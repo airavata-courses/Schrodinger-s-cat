@@ -6,7 +6,7 @@ pipeline {
       stage('Stop Old Containers'){
         steps {
         sh 'sudo usermod -a -G docker $USER'
-        sh 'sudo docker stack rm login_authenticaion_service || true'
+        sh 'sudo docker stack rm login || true'
         sh 'sudo docker stack rm post || true'
         //sh 'sudo docker stack rm rabbitserver || true'
         }
