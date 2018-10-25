@@ -14,7 +14,7 @@ pipeline {
      stage (' Create Docker Network '){
      steps{
         sh 'sudo docker swarm init || true'
-        sh 'sudo docker network create --driver overlay post_webnet || true'
+        //sh 'sudo docker network create --driver overlay post_webnet || true'
      }
      }
      //stage(' Start rabbitmq '){
