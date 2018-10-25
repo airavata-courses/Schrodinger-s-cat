@@ -16,6 +16,7 @@ import org.joda.time.LocalDate;
 
 import com.rabbitmq.client.*;
 
+import email.GetEmail;
 import email.SendEmail;
 import email.SendEmailGmail;
 
@@ -29,7 +30,9 @@ public class App {
 
 	public static void main(String[] args) throws IOException {
 		System.out.println(getLocalCurrentDate());
+		GetEmail getEmail = new GetEmail();
 		try {
+			getEmail.sendEmailToUser("dummy@gmail.com");
 			ListenExchange();
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
