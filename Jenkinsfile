@@ -1,4 +1,4 @@
-pipeline { 
+pipeline {
     agent {
      label 'masterNode'
     }
@@ -8,14 +8,20 @@ pipeline {
         sh 'sudo usermod -a -G docker $USER'
         sh 'sudo docker stack rm login_authenticaion_service || true'
         sh 'sudo docker stack rm post || true'
-	sh 'docker network create --driver overlay post_webnet || true'
+        //sh 'sudo docker stack rm rabbitserver || true'
         }
      }
-     stage(' Start rabbitmq '){
+     stage (' Create Docker Network '){
      steps{
-        sh 'sudo bash ./run_rabbitmq.sh'
+        sh 'sudo docker swarm init || true'
+        sh 'sudo docker network create --driver overlay post_webnet || true'
      }
      }
+     //stage(' Start rabbitmq '){
+     //steps{
+        //sh 'sudo bash ./run_rabbitmq.sh'
+     //}
+     //}
      stage('Start Postgres network'){
         steps{
             sh 'sudo bash ./run_postgres.sh'
