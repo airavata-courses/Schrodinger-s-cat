@@ -6,9 +6,9 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
-    ports:
-      - "465:465"
-      - "5672:5672"
+    # ports:
+    #   - "465:465"
+    #   - "465:465"
     # network_mode: "host"
     networks:
       - webnet
