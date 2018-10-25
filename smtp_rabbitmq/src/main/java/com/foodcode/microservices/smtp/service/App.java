@@ -33,7 +33,7 @@ public class App {
 		GetEmail getEmail = new GetEmail();
 		try {
 			ListenExchange();
-			getEmail.sendEmailToUser("nawazkh@iu.edu");
+			//getEmail.sendEmailToUser("nawazkh@iu.edu");
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
