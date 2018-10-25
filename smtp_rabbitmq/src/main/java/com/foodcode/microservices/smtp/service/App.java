@@ -50,7 +50,7 @@ public class App {
 	public static void ListenExchange() throws TimeoutException, IOException {
 		try {
 			ConnectionFactory factory = new ConnectionFactory();
-			factory.setHost("rabbitserver_rabbitserver"); //TODO: change it to other when running on docker
+			factory.setHost("post_webnet"); //TODO: change it to other when running on docker
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
 
