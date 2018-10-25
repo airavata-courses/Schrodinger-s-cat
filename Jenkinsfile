@@ -7,7 +7,7 @@ pipeline {
             steps {
                 sh 'docker swarm init || true'
                 sh 'docker stack rm nodeserver || true'
-           	sh 'docker rmi scatnodeserver:latest'
+           	sh 'docker rmi scatnodeserver:latest || true'
 		 }
         }
         stage('Image Build') {
