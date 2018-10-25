@@ -2,7 +2,7 @@ version: '3'
 
 services:
   rabbitserver:
-    image: rabbit:latest
+    image: scatrabbitserver:latest
     deploy:
       replicas: 1
       resources:
