@@ -7,10 +7,14 @@ class Home extends React.Component{
         this.state = {recipes:[]};
       }
     render(){
-        let alpha = this.state.recipes;
+        //let alpha = this.state.recipes;
         return (
         <div>
-              <h1>List</h1> 
+            <div>
+                <p>
+                    <h2>Search recipes!!! </h2>
+                </p>
+            </div>
               <RecipeList />
           </div>
         )

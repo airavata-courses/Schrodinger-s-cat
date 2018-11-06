@@ -50,6 +50,14 @@ class Login extends React.Component{
             <p className="App-intro">
               All the recipes at one place
             </p>  */}
+            <div>
+              <p>
+                <h3>
+                  Login !!!
+                </h3>
+              </p>
+            </div>
+
           <form onSubmit={this.onSubmit}>
           <input type="text" placeholder="Email Id"   onChange={this.handleChangeUname.bind(this)}/>
           <input type="password" placeholder="Password"  onChange={this.handleChangePasswd.bind(this)}/>

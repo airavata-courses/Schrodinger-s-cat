@@ -2,34 +2,52 @@ import React, { Component } from 'react';
 import './App.css';
 import {Router, Route, browserHistory,withRouter} from 'react-router';  
 import logo from './logo.jpg';
-import {Button} from 'reactstrap';
+// import {Button} from 'reactstrap';
 import SignUp from './SignUp';
 import Login from './Login';
 import Home from './Home';
+import AboutUs from './AboutUs';
+import Careers from './Careers';
+import DashBoard from './Dashboard';
 // import RecipeList from './RecipeList';
+//import { render } from "react-dom";
+ import Tabs from './Tabs';
+ //import Background from './food.jpg';
+// import Background1 from './food1.jpg';
 
-
+require('./style.css');
 class App extends Component {
-  constructor() {
-    super();
-    //this.state = {recipes:[]};
-  }
-  handlePageChange_SignUP() {
-    window.location = "signup";
-  }
+  // constructor() {
+  //   super();
+  //   //this.state = {recipes:[]};
+  // }
+  // handlePageChange_SignUP() {
+  //   window.location = "signup";
+  // }
 
-  handlePageChange_Login() {
-    window.location = "login";
-  }
-  handlePageChange_Dashboard() {
-    window.location = "App";
-  }
-  handlePageChange_Home() {
-    window.location = "Home";
-  }
+  // handlePageChange_Login() {
+  //   window.location = "login";
+  // }
+  // handlePageChange_Dashboard() {
+  //   window.location = "App";
+  // }
+  // handlePageChange_Home() {
+  //   window.location = "Home";
+  // }
+  // handlePageChange_AboutUs() {
+  //   window.location = "AboutUs";
+  // }
+  
+
   render() {
     // let alpha = this.state.recipes;
+    // var sectionStyle = {
+    //   width: "100%",
+    //   height: "400px",
+    //   backgroundImage: "url(" +  Background  + ")"
+    // };
     return (
+      
       /*https://code.visualstudio.com/docs/nodejs/reactjs-tutorial*/
         <div className="Body">
           <div className="App">
@@ -53,7 +71,9 @@ class App extends Component {
               </Tabs.Panel>
           </Tabs> */}
 
-          <div>
+
+          
+          {/* <div>
               <Button color="primary" className="px-4" onClick={this.handlePageChange_Dashboard}>
                   Dashboard
               </Button>
@@ -66,7 +86,27 @@ class App extends Component {
               <Button color="primary" className="px-4" onClick={this.handlePageChange_Login}>
                   Login
               </Button> 
+          </div> */}
+          <div>
+              {/* //<h1>Welcome</h1> */}
+              <Tabs>
+                {/* <div label="Dashboard">
+                  
+                </div> */}
+                <div label="Home">
+                </div>
+                <div label="Signup">
+                </div>
+                <div label="Login" >
+                </div>
+                <div label="AboutUs">
+                </div>
+                <div label="Careers">
+                </div>
+              </Tabs>
           </div>
+
+
           {/* <Tabs active={this.state.active} onchange={active=> this.setState({active})}>
               <div key={aTab} title="Tab 1">
                 Tab 1 content
@@ -78,9 +118,9 @@ class App extends Component {
           <h2>Content</h2>
           <p>{content[this.state.active]}</p> */}
           <div>
-          <Router history={browserHistory}>
-                <Route exact path="signup" component={SignUp}/>
-          </Router>
+              <Router history={browserHistory}>
+                    <Route exact path="signup" component={SignUp}/>
+              </Router>
           </div>
           <div>
           <Router history={browserHistory}>
@@ -90,6 +130,21 @@ class App extends Component {
           <div>
           <Router history={browserHistory}>
                 <Route exact path="home" component={Home}/>
+          </Router>
+          </div>
+          <div>
+          <Router history={browserHistory}>
+                <Route exact path="aboutus" component={AboutUs}/>
+          </Router>
+          </div>
+          <div>
+          <Router history={browserHistory}>
+                <Route exact path="careers" component={Careers}/>
+          </Router>
+          </div>
+          <div>
+          <Router history={browserHistory}>
+                <Route exact path="DashBoard" component={DashBoard}/>
           </Router>
           </div>
           {/* <div>

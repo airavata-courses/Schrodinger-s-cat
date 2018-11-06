@@ -13,7 +13,7 @@ class SignUp extends React.Component {
         var firstname = this.state.firstname;
         var lastname = this.state.lastname;
         var email = this.state.email;
-        var username = this.state.username;
+     //   var username = this.state.username;
         var password = this.state.password;
         var description = this.state.description;
         axios.post('/expressSignup',{
@@ -60,6 +60,9 @@ class SignUp extends React.Component {
                 </p>
         </div> */}
 
+                <div>
+                <p><h4>Join Us, <em>Signup</em> Today!</h4></p>
+                </div>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className="firstname">
                     <label htmlfor="firstname">First Name :</label>
