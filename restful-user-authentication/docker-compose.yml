@@ -1,0 +1,17 @@
+version: "3"
+services:
+  scatlogin:
+    image: "nawazkh/login:latest"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8888:8888"
+    # network_mode: "host"
+    networks:
+      - webnet
+networks:
+  webnet:
+    external:
+      name: post_webnet

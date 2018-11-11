@@ -33,6 +33,7 @@ import com.foodcode.microservice.restfuluserauthentication.persistence.model.Use
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.UserAuthenticationDetails;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.PostsRepository;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
+import com.foodcode.microservice.restfuluserauthentication.service.EmitLogDirect;
 import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 
 @RestController
@@ -51,6 +52,9 @@ public class UserResourceEdit {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmitLogDirect emitLogDirect;
 
 //	@PostMapping("/jpa/users/create")
 //	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
@@ -97,23 +101,23 @@ public class UserResourceEdit {
 		return ResponseEntity.created(location).build();
 	}
 
-//	@DeleteMapping("/jpa/users/delete/{id}")
-//	public void deleteUser(@PathVariable int id) {
-//		Optional<User> savedUser = userRepository.findById(id);
-//		if(!(savedUser.isPresent()))  {
-//			log.info("exception at deleting user with the id:"+id);
-//			throw new UserNotFoundException("id-"+id);
-//		}
-//		User user = savedUser.get();
-//		boolean containsFlag = false;
-//		if(!(user.getRecipeId().isEmpty())) {
-//			for(Posts delPost:user.getRecipeId()) {
-//				postsRepository.deleteById(delPost.getId());
-//			}
-//		}
-//		userRepository.deleteById(id);
-//		log.info("Deleted user with the id:"+id);
-//	}
+	@DeleteMapping("/jpa/users/delete/{id}")
+	public void deleteUser(@PathVariable int id) {
+		Optional<User> savedUser = userRepository.findById(id);
+		if(!(savedUser.isPresent()))  {
+			log.info("exception at deleting user with the id:"+id);
+			throw new UserNotFoundException("id-"+id);
+		}
+		User user = savedUser.get();
+		boolean containsFlag = false;
+		if(!(user.getRecipeId().isEmpty())) {
+			for(Posts delPost:user.getRecipeId()) {
+				postsRepository.deleteById(delPost.getId());
+			}
+		}
+		userRepository.deleteById(id);
+		log.info("Deleted user with the id:"+id);
+	}
 
 	@DeleteMapping("/jpa/users/delete/{id}/delete-post")
 	public void deleteUserPost(@PathVariable int id, @RequestBody Posts post) {
@@ -155,6 +159,7 @@ public class UserResourceEdit {
 			List<User> userList = new ArrayList<>();
 			userList.add(user);
 			MappingJacksonValue allAttributes = filterAttributes.getUserNameAndUserID(userList);
+			emitLogDirect.sendEmailToUser(user.getEmail());
 			return allAttributes;
 		}
 	}

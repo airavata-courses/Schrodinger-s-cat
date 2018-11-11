@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiModel;
 @JsonFilter("UserFilter")
 @ApiModel(description="All details about the user")
 @Entity
-@Table(name="user")
+@Table(name="myUser")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
