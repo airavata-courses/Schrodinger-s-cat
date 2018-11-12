@@ -26,6 +26,11 @@ pipeline {
                 echo 'Build Complete'
             }
         }
+	stage ('wait_prior_starting_smoke_testing') {
+    		def time = 180
+    		echo "Waiting 180 seconds for deployment to complete prior starting smoke testing"
+    		sleep time.toInteger() // seconds
+	}
         stage (' start the consumer microservice'){
         steps{
           sh 'sudo bash ./run_docker.sh'
