@@ -27,9 +27,11 @@ pipeline {
             }
         }
 	stage ('wait_prior_starting_smoke_testing') {
+		steps{
     		def time = 180
     		echo "Waiting 180 seconds for deployment to complete prior starting smoke testing"
     		sleep time.toInteger() // seconds
+		}
 	}
         stage (' start the consumer microservice'){
         steps{
