@@ -10,6 +10,8 @@ var searchRouter = require('./routes/search');
 var loginRouter = require('./routes/login');
 var app = express();
 var signupRouter = require('./routes/signup')
+var receiveAmqp = require('./routes/receive')
+var sendAmqp = require('./routes/send')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -25,11 +27,18 @@ app.use('/recipesExpress', usersRouter);
 app.use('/search',searchRouter);
 app.use('/expressLogin/', loginRouter);
 app.use('/expressSignup/', signupRouter);
+app.use('/startreceive/',receiveAmqp);
+app.use('/startsend/',sendAmqp);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
+// Constants
+const PORT = 4000;
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST);
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

@@ -1,0 +1,12 @@
+Starting schrodinger-s-cat_web_1 ... 
+[1A[2KStarting schrodinger-s-cat_web_1 ... [32mdone[0m[1BAttaching to schrodinger-s-cat_web_1
+[36mweb_1  |[0m 
+[36mweb_1  |[0m > nodemicroservice@0.0.0 start /code
+[36mweb_1  |[0m > node server.js
+[36mweb_1  |[0m 
+[36mweb_1  |[0m Running on http://0.0.0.0:4000
+[36mUnexpected API error for schrodinger-s-cat_web_1 (HTTP code 502)
+Response body:
+Bad response from Docker engine
+
+[0m

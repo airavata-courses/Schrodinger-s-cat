@@ -4,7 +4,7 @@ var request = require('request')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   console.log("Making request to python");
-  request('http://localhost:8000/recipes/pythonSearch/a', function (error, response, body) {
+  request('http://pythonserver_web:8000/recipes/pythonSearch/a', function (error, response, body) {
   if (!error && response.statusCode == 200) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
