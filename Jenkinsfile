@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
 		sh 'sudo usermod -a -G docker $USER'
-                sh 'sudo docker swarm init || true'
+                //sh 'sudo docker swarm init || true'
                 sh 'sudo docker stack rm nodeserver || true'
            	sh 'sudo docker rmi scatnodeserver:latest || true'
 		 }
