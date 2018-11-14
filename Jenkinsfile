@@ -6,14 +6,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker swarm init || true'
-                sh 'docker stack rm pythonserver || true'
-                sh 'docker rmi scatpythonserver:latest || true'
+                sh 'sudo usermod -a -G docker $USER || true'
+                sh 'sudo docker swarm init || true'
+                sh 'sudo docker stack rm pythonserver || true'
+                sh 'sudo docker rmi scatpythonserver:latest || true'
             }
         }
         stage('Test') {
             steps {
-                sh 'docker build -t scatpythonserver .'
+                sh 'sudo docker build -t scatpythonserver .'
                 echo 'Build Complete'
             }
         }
@@ -21,7 +22,7 @@ pipeline {
             steps {
 
                 script{
-                    sh "docker stack deploy -c docker-compose.yml pythonserver"
+                    sh 'sudo docker stack deploy -c docker-compose.yml pythonserver'
                 // withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
                 //     sh "docker-compose up -d"
                 // }
