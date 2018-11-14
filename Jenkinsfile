@@ -14,15 +14,12 @@ pipeline {
         stage('Image Build') {
             steps {
                 sh 'sudo docker build -t scatnodeserver .'
-                echo 'sudo Build Complete'
+                echo 'Build Complete'
             }
         }
         stage('Deploy') {
             steps {
-
-                script{
-                    sh "sudo docker stack deploy -c docker-compose.yml nodeserver"
-            }
+                sh 'sudo docker stack deploy -c docker-compose.yml nodeserver'
             }
         }
     }
