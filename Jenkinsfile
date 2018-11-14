@@ -14,6 +14,11 @@ pipeline {
                 sh 'sudo docker stack rm consumer || true'
             }
         }
+	stage (' Create Docker Network '){
+     	    steps{
+        	sh 'sudo docker swarm init || true'
+     	    }
+     	}
         stage('Build') {
             steps {
                 sh 'sudo docker build -t scatrabbitserver .'
