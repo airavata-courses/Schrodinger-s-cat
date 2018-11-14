@@ -11,12 +11,12 @@ pipeline {
         //sh 'sudo docker stack rm rabbitserver || true'
         }
      }
-     stage (' Create Docker Network '){
-     steps{
-        sh 'sudo docker swarm init || true'
+     //stage (' Create Docker Network '){
+     //steps{
+       // sh 'sudo docker swarm init || true'
         //sh 'sudo docker network create --driver overlay post_webnet || true'
-     }
-     }
+     //}
+     //}
      //stage(' Start rabbitmq '){
      //steps{
         //sh 'sudo bash ./run_rabbitmq.sh'
