@@ -5,22 +5,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker swarm init || true'
-                sh 'docker stack rm nodeserver || true'
-           	sh 'docker rmi scatnodeserver:latest || true'
+		sh 'sudo usermod -a -G docker $USER'
+                sh 'sudo docker swarm init || true'
+                sh 'sudo docker stack rm nodeserver || true'
+           	sh 'sudo docker rmi scatnodeserver:latest || true'
 		 }
         }
         stage('Image Build') {
             steps {
-                sh 'docker build -t scatnodeserver .'
-                echo 'Build Complete'
+                sh 'sudo docker build -t scatnodeserver .'
+                echo 'sudo Build Complete'
             }
         }
         stage('Deploy') {
             steps {
 
                 script{
-                    sh "docker stack deploy -c docker-compose.yml nodeserver"
+                    sh "sudo docker stack deploy -c docker-compose.yml nodeserver"
             }
             }
         }
