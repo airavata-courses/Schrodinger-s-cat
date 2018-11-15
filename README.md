@@ -6,12 +6,36 @@
 An interactive website where you can browse for recipes, upload your own creations and also check-out what your friends are cooking! Get upvotes, suggestions and recommendations. Just Sign up!
 
 ### About this branch  
-* Master Branch.
-* Stable Releases
+* Feature-react_ui
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
 
-### Active Branches  
-* feature-login_authenticatiion : Login Authentication to be implemented in Spring
-* feature-nodejs_server : NodeJS server to handle incoming and outgoing requests to and fro from the front end. Also communicate with the Messaging Queue and gather distributed logs.
-* feature-react_ui : Front end of the project
-* feature-search_recipes : To be implemented in python.
+### What does this branch contain?
+* This branch handles the front-end of the project.
+* The Dashboard contains Home tab, Signup tab, Login tab, AboutUs tab
+
+![DashBoard](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/Dashboard.JPG)
+
+# Home Tab:
+By clicking on the home tab you get access to the search functionality, youn can search for various recipes.
+
+![Home_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/Home_Page.JPG)
+
+# SignUp Tab:
+This tab lets you create an account in the website.
+
+![SignUp_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/SignUp_Page.JPG)
+
+# Login Tab:
+This tab allows you to login to the website.
+
+![Login_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/Login_Page.JPG)
+
+# AboutUs Tab:
+This tab contains a brief description about the project/website.
+
+![AboutUs_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/AboutUs_Page.JPG)
+
+### How to run this branch?
+* Clone this branch in your local machine.
+* Do npm install and then npm start.
+
