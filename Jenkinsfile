@@ -15,8 +15,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'sudo docker build -t scatpythonserver .'
-                echo 'Build Complete'
+                sh 'sudo docker stack deploy -c docker-compose-postgres.yml postgres'
+                sh 'echo "Sleeping for 3minutes"'
+                sh 'sleep 180'
             }
         }
         stage('Deploy') {
