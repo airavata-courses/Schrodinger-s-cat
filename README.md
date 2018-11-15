@@ -9,6 +9,10 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Feature-react_ui
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
 
+### How to run this branch?
+* Clone this branch in your local machine.
+* Do npm install and then npm start.
+
 ### What does this branch contain?
 * This branch handles the front-end of the project.
 * The Dashboard contains Home tab, Signup tab, Login tab, AboutUs tab
@@ -35,7 +39,4 @@ This tab contains a brief description about the project/website.
 
 ![AboutUs_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/AboutUs_Page.JPG)
 
-### How to run this branch?
-* Clone this branch in your local machine.
-* Do npm install and then npm start.
 
