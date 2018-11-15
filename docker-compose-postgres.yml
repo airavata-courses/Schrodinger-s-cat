@@ -3,6 +3,9 @@ version: '3'
 services:
   searchdb:
     image: bitnami/postgresql:latest
+    user: root
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
     deploy:
       replicas: 1
       resources:
