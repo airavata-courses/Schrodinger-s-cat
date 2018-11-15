@@ -14,15 +14,12 @@ An interactive website where you can browse for recipes, upload your own creatio
 
 ### How to run this project?
 - You need Postman to test the functionality of this module. Download postman from https://www.getpostman.com.
-- You also need to have an installed instance of MySQL in your local machine.
+- You also need to have an installed instance of PostgresSQL and postgresql-contrib in your local machine.
 - Then run the following commands:
-	- mysql_upgrade
-  	- mysql -u root -e 'CREATE DATABASE IF NOT EXISTS loginAuth;'
-  	- mysql -u root -e "CREATE USER IF NOT EXISTS 'nawaz'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
-  	- mysql -u root -e "GRANT ALL PRIVILEGES ON loginAuth.* TO 'nawaz'@'localhost';"
-- Install Docker from https://docs.docker.com
+	- sudo -u postgres createuser -s postgres
 - Then Check out/clone this repository.
-- run sh run_docker.sh
+- Run _mvn clean install_ to generate the targer jar.
+- run java -jar /target/restful-user-authentication-0.0.1-SNAPSHOT.jar --spring.config.name=deploy --spring.config.location=classpath:/prodConfigs/
 - GoTo What all added
 
 ### Old Steps will be removed
@@ -52,20 +49,20 @@ Need to register a user in registration.html and then access create and delete u
 
 
 #### Post (requires user authentication)
-- http://localhost:8888/jpa/users/create							- createUser
+- http://localhost:8888/jpa/users/create					- createUser
 - http://localhost:8888/jpa/users/create/{id}/save-posts			- createUserPosts
 
 #### Get (require no authentication)
 - http://localhost:8888/jpa/users/get/all-attributes 				- retrieveAllUsers
 - http://localhost:8888/jpa/users/get/f-l-name 					- retrieveAllUsersFirstLastName
 - http://localhost:8888/jpa/users/get/uId-emailId 				- retrieveAllUsersUIdEmailId
-- http://localhost:8888/jpa/users/get/fn-ln-ui-ps					- retrieveAllUsersFnLnUnPass
-- http://localhost:8888/jpa/users/get/fn-ln-ds-re					- retrieveAllUsersFnLnDrRId
+- http://localhost:8888/jpa/users/get/fn-ln-ui-ps				- retrieveAllUsersFnLnUnPass
+- http://localhost:8888/jpa/users/get/fn-ln-ds-re				- retrieveAllUsersFnLnDrRId
 - http://localhost:8888/jpa/users/get/all-attributes/{id}			- retrieveUserAllAttributes
 - http://localhost:8888/jpa/users/get/f-l-name/{id}				- retrieveUserFirstLastName
-- http://localhost:8888/jpa/users/get/uId-emailId/{id}			- retrieveUserIdEmail
-- http://localhost:8888/jpa/users/get/fn-ln-ui-ps/{id}			- retrieveFirstLastUserIdPass
-- http://localhost:8888/jpa/users/get/fn-ln-ds-re/{id}			- retrieveFirstLastDescRecipeId
+- http://localhost:8888/jpa/users/get/uId-emailId/{id}				- retrieveUserIdEmail
+- http://localhost:8888/jpa/users/get/fn-ln-ui-ps/{id}				- retrieveFirstLastUserIdPass
+- http://localhost:8888/jpa/users/get/fn-ln-ds-re/{id}				- retrieveFirstLastDescRecipeId
 
 #### Delete (requires user authentication)
 - http://localhost:8888/jpa/users/delete/{id}					- deleteUser
