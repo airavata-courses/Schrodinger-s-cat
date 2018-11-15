@@ -1,6 +1,7 @@
 pipeline {
     agent {
-     label 'masterNode'
+     //label 'masterNode'
+        label 'searchslave'
     }
 
     stages {
