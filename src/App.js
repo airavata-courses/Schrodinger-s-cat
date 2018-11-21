@@ -1,199 +1,44 @@
 import React, { Component } from 'react';
-import './App.css';
-import {Router, Route, browserHistory,withRouter} from 'react-router';  
-import logo from './logo.jpg';
-// import {Button} from 'reactstrap';
-import SignUp from './SignUp';
-import Login from './Login';
-import Home from './Home';
-import AboutUs from './AboutUs';
-import Careers from './Careers';
-import DashBoard from './Dashboard';
-// import RecipeList from './RecipeList';
-//import { render } from "react-dom";
- import Tabs from './Tabs';
- //import Background from './food.jpg';
-// import Background1 from './food1.jpg';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
-require('./style.css');
+//components
+import Header from './components/headerComponent/header';
+import Footer from './components/footerComponent/footer';
+import Homepage from './components/pages/homePage';
+import Recipies from './components/pages/recipies';
+import About from './components/pages/about';
+import Login from './components/pages/login';
+import Signup from './components/pages/signup';
+
+
+
+// include CSS
+import './Assets/css/default.min.css';
+
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   //this.state = {recipes:[]};
-  // }
-  // handlePageChange_SignUP() {
-  //   window.location = "signup";
-  // }
-
-  // handlePageChange_Login() {
-  //   window.location = "login";
-  // }
-  // handlePageChange_Dashboard() {
-  //   window.location = "App";
-  // }
-  // handlePageChange_Home() {
-  //   window.location = "Home";
-  // }
-  // handlePageChange_AboutUs() {
-  //   window.location = "AboutUs";
-  // }
-  
-
   render() {
-    // let alpha = this.state.recipes;
-    // var sectionStyle = {
-    //   width: "100%",
-    //   height: "400px",
-    //   backgroundImage: "url(" +  Background  + ")"
-    // };
     return (
+
+      <Router>
+        <div className="App">
+        <Header /> 
+        <Route exact path='/' component={Homepage} />
+        <Route exact path='/Homepage' component={Homepage} />
+        <Route exact path='/Recipies' component={Recipies} />
+        <Route exact path='/About' component={About} />
+        <Route exact path='/Login' component={Login} />
+        <Route exact path='/Signup' component={Signup} />
+        {/* <Footer /> */}
+      </div>
+      </Router>
+
       
-      /*https://code.visualstudio.com/docs/nodejs/reactjs-tutorial*/
-        <div className="Body">
-          <div className="App">
-          <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">foodCode</h1>
-            </header>
-            <p className="App-intro">
-              All the recipes at one place
-            </p>
-          </div>
-          {/* <Tabs tabActive={2} onBeforeChange={this.onBeforeChange} onAfterChange={this.onAfterChange} onMount={this.onMount}>
-              <Tabs.Panel title='Tab #1'>
-                <h2>Content #1</h2>
-              </Tabs.Panel>
-              <Tabs.Panel title='Tab #2'>
-                <h2>Content #2</h2>
-              </Tabs.Panel>
-              <Tabs.Panel title='Tab #3'>
-                <h2>Content #3</h2>
-              </Tabs.Panel>
-          </Tabs> */}
-
-
-          
-          {/* <div>
-              <Button color="primary" className="px-4" onClick={this.handlePageChange_Dashboard}>
-                  Dashboard
-              </Button>
-              <Button color="primary" className="px-4" onClick={this.handlePageChange_Home}>
-                  Home
-              </Button>
-              <Button color="primary" className="px-4" onClick={this.handlePageChange_SignUP}>
-                  Sign Up!
-              </Button>
-              <Button color="primary" className="px-4" onClick={this.handlePageChange_Login}>
-                  Login
-              </Button> 
-          </div> */}
-          <div>
-              {/* //<h1>Welcome</h1> */}
-              <Tabs>
-                {/* <div label="Dashboard">
-                  
-                </div> */}
-                <div label="Home">
-                </div>
-                <div label="Signup">
-                </div>
-                <div label="Login" >
-                </div>
-                <div label="AboutUs">
-                </div>
-                <div label="Careers">
-                </div>
-              </Tabs>
-          </div>
-
-
-          {/* <Tabs active={this.state.active} onchange={active=> this.setState({active})}>
-              <div key={aTab} title="Tab 1">
-                Tab 1 content
-              </div>
-              <div key={bTab} title="Tab 2">
-                Tab 2 content
-              </div>
-          </Tabs>
-          <h2>Content</h2>
-          <p>{content[this.state.active]}</p> */}
-          <div>
-              <Router history={browserHistory}>
-                    <Route exact path="signup" component={SignUp}/>
-              </Router>
-          </div>
-          <div>
-          <Router history={browserHistory}>
-                <Route exact path="login" component={Login}/>
-          </Router>
-          </div>
-          <div>
-          <Router history={browserHistory}>
-                <Route exact path="home" component={Home}/>
-          </Router>
-          </div>
-          <div>
-          <Router history={browserHistory}>
-                <Route exact path="aboutus" component={AboutUs}/>
-          </Router>
-          </div>
-          <div>
-          <Router history={browserHistory}>
-                <Route exact path="careers" component={Careers}/>
-          </Router>
-          </div>
-          <div>
-          <Router history={browserHistory}>
-                <Route exact path="DashBoard" component={DashBoard}/>
-          </Router>
-          </div>
-          {/* <div>
-              <h1>List</h1> 
-              <RecipeList />
-          </div> */}
-        </div>
-      );
-    } 
+    );
   }
-        /* <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">foodCode</h1>
-          </header>
-          <p className="App-intro">
-            All the recipes at one place
-          </p>
-        </div> 
-         https://stackoverflow.com/questions/41332643/sending-data-to-database-in-react-js-web-application 
-        
-         <nav className="navbar navbar-default">
-            <div className="container">
-                <div className="navbar-header">
-                    <ul className= "nav navbar-nav">
-                        <li>Home</li>
-                        <li>SignUp</li>    
-                    </ul>
-                </div>
-            </div>
-        </nav> 
-        
-         <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="User name" ref="Username"/>
-          <input type="text" placeholder="Password" ref="Password"/>
-          <input type="submit" />
-        </form>
-        <div className="component-wrapper">
-            <div>
-              <Button color="primary" className="px-4" onClick={this.handlePageChange}>
-                  Sign Up!
-              </Button> 
-            </div>
-         </div>
-        <div>
-          <h1>List</h1> 
-          <RecipeList recipes={recipes}/>
-        </div> */
+}
 
-//export default App;
-//React.renderComponent(<App />, mountNode);
-export default withRouter(App);
+export default App;

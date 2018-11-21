@@ -1,0 +1,48 @@
+$black: #010000;
+$white: #ffffff;
+$lightGrey: #e6e6e6;
+$darkGrey: #333;
+$red: #ff1755;
+
+@mixin translateY($e) {
+    -webkit-transform: translateY($e);
+       -moz-transform: translateY($e);
+            transform: translateY($e);
+}
+
+@mixin transition($e) {
+    -webkit-transition: $e;
+       -moz-transition: $e;
+       transition: $e;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    color: $black;
+    font-weight: 400;
+    font-style: normal;
+}
+h1{
+    text-align: center;
+}
+
+
+a {
+    text-decoration: none;
+    @include transition(.3s ease-in-out);
+    cursor: pointer;
+
+    &:hover {
+        color: $red;
+        @include transition(.3s ease-in-out)
+    }
+
+}
+.container-fluid {
+    line-height: 24px;
+}
+
+#loginForm{
+    text-align: center;
+}
