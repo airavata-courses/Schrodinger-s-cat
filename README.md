@@ -2,7 +2,7 @@
 
 [Wiki Link](https://github.com/airavata-courses/Schrodinger-s-cat/wiki)
 
-[![Build Status](https://travis-ci.org/airavata-courses/Schrodinger-s-cat.svg?branch=feature-search_recipes)]
+![Build Status](https://travis-ci.org/airavata-courses/Schrodinger-s-cat.svg?branch=feature-search_recipes)
 
 Build test - Raghottam
 
