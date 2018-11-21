@@ -1,8 +1,9 @@
-FROM python:3
+FROM python:3-slim
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
 ADD pipinstalls.txt /code/
+RUN pip install --upgrade setuptools
 RUN pip install -r pipinstalls.txt
 ADD . /code/
 
