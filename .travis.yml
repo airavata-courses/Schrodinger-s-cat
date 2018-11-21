@@ -2,8 +2,9 @@ language: python
 python:
   - "3.6"
 install:
-  - pip install django
-  - pip install pytz
+  - easy_install distribute
+  - pip install -r pipinstalls.txt
 script: 
   - pythonMicroservice/manage.py makemigrations --settings=pythonMicroservice.settings_dev
   - pythonMicroservice/manage.py migrate --settings=pythonMicroservice.settings_dev
+  - pythonMicroservice/manage.py test --settings=pythonMicroservice.settings_dev
