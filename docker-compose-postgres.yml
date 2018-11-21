@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  searchdb:
+    image: bitnami/postgresql:latest
+    user: root
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 1024M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - ./pgdata:/bitnami/postgresql
+    ports:
+      - "5433:5432"
+    networks:
+      - webnet
+networks:
+  webnet:
+    external:
+      name: post_webnet
