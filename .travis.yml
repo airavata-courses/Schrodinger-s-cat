@@ -7,4 +7,5 @@ install:
 script: 
   - pythonMicroservice/manage.py makemigrations --settings=pythonMicroservice.settings_dev
   - pythonMicroservice/manage.py migrate --settings=pythonMicroservice.settings_dev
-  - pythonMicroservice/manage.py test --settings=pythonMicroservice.settings_dev
+  - cd pythonMicroservice
+  - ./manage.py test --settings=pythonMicroservice.settings_dev
