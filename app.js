@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/recipesExpress');
 var searchRouter = require('./routes/search');
 var loginRouter = require('./routes/login');
+var logoutRouter = require('./routes/logout');
 var app = express();
 var signupRouter = require('./routes/signup')
 var receiveAmqp = require('./routes/receive')
@@ -24,8 +25,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/recipesExpress', usersRouter);
-app.use('/search',searchRouter);
+app.use('/search/',searchRouter);
 app.use('/expressLogin/', loginRouter);
+app.use('/expressLogout/', logoutRouter);
 app.use('/expressSignup/', signupRouter);
 app.use('/startreceive/',receiveAmqp);
 app.use('/startsend/',sendAmqp);
