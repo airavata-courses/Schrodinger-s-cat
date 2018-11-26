@@ -18,5 +18,5 @@ class ObjectCreationTestCase(TestCase):
         self.assertEqual(recipe1.name,"Egg Masala")
 
     def test_searchMethod(self):
-        response = self.client.get("/recipes/pythonSearch/a/")
+        response = self.client.get("/recipes/pythonSearch/a,b/2/")
         self.assertEqual(response.status_code,200)
