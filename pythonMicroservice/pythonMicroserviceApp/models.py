@@ -9,3 +9,5 @@ class Recipe(models.Model):
     madeBy = models.CharField(max_length=50)
     genre = models.CharField(max_length=50)
     ingredients = models.ManyToManyField(Ingredient)
+    timeTaken = models.IntegerField(default=0)
+
