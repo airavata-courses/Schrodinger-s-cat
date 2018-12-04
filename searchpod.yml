@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: scatpythonserver
+spec:
+  containers:
+    - image: pswargam/scatpythonserver
+      name: scatpythonserver
+      ports:
+        - containerPort: 8000
