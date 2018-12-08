@@ -13,6 +13,9 @@ import Recipies from './components/pages/recipies';
 import About from './components/pages/about';
 import Login from './components/pages/login';
 import Signup from './components/pages/signup';
+import Addrecipe from './components/pages/addrecipe';
+import Mydetails from './components/pages/mydetails';
+import Allusers from './components/pages/allusers';
 
 
 
@@ -30,6 +33,9 @@ class App extends Component {
         <Route exact path='/Homepage' component={Homepage} />
         <Route exact path='/Recipies' component={Recipies} />
         <Route exact path='/About' component={About} />
+        <Route exact path='/Addrecipe' component={Addrecipe} />
+        <Route exact path='/Mydetails' component={Mydetails} />
+        <Route exact path='/Allusers' component={Allusers} />
         <Route exact path='/Login' component={Login} />
         <Route exact path='/Signup' component={Signup} />
         {/* <Footer /> */}

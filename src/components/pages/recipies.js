@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Panel,Button, ButtonToolbar,DropdownButton, FormGroup, MenuItem, ControlLabel,HelpBlock,FormControl } from "react-bootstrap";
 import axios from 'axios';
+import homePage from './homePage';
 function RenderDropDownButton(props) {
   // const BUTTONS = 'Primary';
   //alert('props.value: '+props.value);
@@ -31,6 +32,7 @@ class Recipies extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleReturn = this.handleReturn.bind(this);
     this.bindTimeValue = this.bindTimeValue.bind(this);
+    this.navigateToHomepage = this.navigateToHomepage.bind(this);
 
     this.state = {
       value: '',
@@ -40,7 +42,7 @@ class Recipies extends Component {
   
   getValidationState() {
     const length = this.state.value.length;
-    if (length > 5) return 'success';
+    if (length > 3) return 'success';
     else if (length > 0) return 'error';
     return null;
   }
@@ -54,39 +56,26 @@ class Recipies extends Component {
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
-
-  handleReturn = event => { //send this detail to the server
+  navigateToHomepage() {
+    this.props.history.push('/Homepage');
+  }
+  handleReturn(e){ //send this detail to the server
     console.log('Enter pressed with the following details '+ this.state.value + ' and the time is ' +this.state.defaultTimeSelect );
-    event.preventDefault();
 
     const items = this.state.value.slice();
     const time = this.state.defaultTimeSelect.slice();
 
-    axios.get('/search/',{
-      items : items,
-      time : time
+    axios.get('/search/'+items+'/'+time,{
     }).then(res=>{
-      res.json().then(resultArray => {
-        console.log('redirecting to home page');
-        sessionStorage.setItem('recipes',resultArray.data);
-        // sessionStorage.setItem('userId',res.data.id);
-        // sessionStorage.setItem('isLoggedIn',true);
-        this.props.history.push({
-          pathname: '/Homepage/'
-        });
-      })
-        //console.log(res.data.username)
-        
-        //UserProfile.setUserId(res.data.id);
-        //UserProfile.setUserName(res.data.username);
-        // this.props.history.push({
-        //   pathname: '/',
-        //   state: { uname: uname }
-        // });
+      console.log('redirecting to home page');
+      console.log(res.data);
+      sessionStorage.setItem('recipes',res.data);
+      sessionStorage.setItem('hasSearched',true);
     }).catch(error =>{
         alert("Search Failed")
     });
-
+    e.preventDefault();
+    this.navigateToHomepage();
   }
   bindTimeValue(e){
     console.log('Entered time value is: '+e);
@@ -103,7 +92,7 @@ class Recipies extends Component {
         </Panel.Heading>
         <Panel.Body>
         <div className="Search">   
-        <form onSubmit={this.handleReturn}>
+        <form onSubmit={(e) => this.handleReturn(e)}>
           <FormGroup
             controlId="formBasicText"
             validationState={this.getValidationState()}>

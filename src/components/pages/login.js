@@ -15,7 +15,8 @@ class Login extends Component {
 
         this.state = {
           email: "",
-          password: ""
+          password: "",
+          token: ""
         };
       }
     
@@ -45,9 +46,10 @@ class Login extends Component {
             //console.log(res.data.username)
             console.log("Login Success..!");
             console.log('redirecting to home page');
-            sessionStorage.setItem('username',res.data.username);
+            sessionStorage.setItem('username',uname);
             sessionStorage.setItem('userId',res.data.id);
             sessionStorage.setItem('isLoggedIn',true);
+            sessionStorage.setItem('token',"Bearer "+res.data.token);
             this.props.history.push({
               pathname: '/Homepage/'
             });
