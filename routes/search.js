@@ -6,8 +6,8 @@ var request = require('request')
 router.get('/:searchString/:timeString', function(req, res, next) {
 
   console.log("hi "+req.params.searchString)
-  console.log("http://localhost:8000/recipes/pythonSearch/"+req.params.searchString+"/"+req.params.timeString)
-  request("http://localhost:8000/recipes/pythonSearch/"+req.params.searchString+"/"+req.params.timeString, function (error, response, body) {
+  console.log("http://service-search-server:8000/recipes/pythonSearch/"+req.params.searchString+"/"+req.params.timeString)
+  request("http://service-search-server:8000/recipes/pythonSearch/"+req.params.searchString+"/"+req.params.timeString, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
