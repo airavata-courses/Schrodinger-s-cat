@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
     - name: http
-      nodePort: 31005
+      nodePort: 31012
       port: 8003
       targetPort: 3000
       protocol: TCP
