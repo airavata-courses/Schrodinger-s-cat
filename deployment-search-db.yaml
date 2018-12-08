@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-search-db
+  labels:
+    purpose: search-db
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      purpose: search-db
+  template:
+    metadata:
+      labels:
+        purpose: search-db
+    spec:
+      containers:
+      - name: search-db
+        image: bitnami/postgresql:latest
+        ports:
+        - containerPort: 5432
