@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-node-server
+  labels:
+    purpose: node-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      purpose: node-server
+  template:
+    metadata:
+      labels:
+        purpose: node-server
+    spec:
+      containers:
+      - name: node-server
+        image: pswargam/nodeserver
+        ports:
+        - containerPort: 4000
