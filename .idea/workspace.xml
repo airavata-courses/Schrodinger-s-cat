@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b569d27-eeb8-4b26-bf2e-915bf8cb677a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" afterPath="$PROJECT_DIR$/Jenkinsfile" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile_kub" afterPath="$PROJECT_DIR$/Jenkinsfile_kub" />
+      <change beforePath="$PROJECT_DIR$/service-search-server.yaml" afterPath="$PROJECT_DIR$/service-search-server.yaml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,27 +30,27 @@
         <entry file="file://$PROJECT_DIR$/Jenkinsfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="5" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="4" selection-end-column="5" />
+              <caret line="4" column="5" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="4" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service-search-server.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="service-search-server.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service-search-server.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Jenkinsfile_kub" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Jenkinsfile_kub" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Jenkinsfile_kub">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -122,10 +121,10 @@
         <option value="$PROJECT_DIR$/pythonMicroservice/pythonMicroservice/settings.py" />
         <option value="$PROJECT_DIR$/deployment-search-server" />
         <option value="$PROJECT_DIR$/deployment-search-server.yaml" />
-        <option value="$PROJECT_DIR$/service-search-server.yaml" />
         <option value="$PROJECT_DIR$/jenkinsFile_kub" />
         <option value="$PROJECT_DIR$/Jenkinsfile" />
         <option value="$PROJECT_DIR$/Jenkinsfile_kub" />
+        <option value="$PROJECT_DIR$/service-search-server.yaml" />
       </list>
     </option>
   </component>
@@ -648,14 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-search-server.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deployment-search-server.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -667,7 +658,7 @@
     <entry file="file://$PROJECT_DIR$/Jenkinsfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="5" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="4" selection-end-column="5" />
+          <caret line="4" column="5" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="4" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -675,7 +666,15 @@
     <entry file="file://$PROJECT_DIR$/Jenkinsfile_kub">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-search-server.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           <folding />
         </state>
       </provider>
