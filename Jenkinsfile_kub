@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        stage('Search - Service') {
+        stage('Node - Service') {
              steps {
                 sh 'kubectl create -f deployment-node-server.yaml'
                 sh 'kubectl create -f service-node-server.yaml'
