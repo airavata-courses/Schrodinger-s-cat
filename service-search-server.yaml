@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     purpose: search-server
-  type: NodePort
+  type: NodePortls
   ports:
     - name: http
       nodePort: 31002

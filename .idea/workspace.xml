@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b569d27-eeb8-4b26-bf2e-915bf8cb677a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/deployment-search-db.yaml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/deployment-search-server.yaml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/service-search-db.yaml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/service-search-server.yaml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Jenkinsfile_kub" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/base/12294/pg_internal.init" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/global/pg_control" afterPath="$PROJECT_DIR$/pgdata/data/global/pg_control" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/global/pg_internal.init" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/pg_stat_tmp/db_0.stat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/pg_stat_tmp/db_12294.stat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/pg_stat_tmp/global.stat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pgdata/data/postmaster.pid" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pythonMicroservice/.idea/workspace.xml" afterPath="$PROJECT_DIR$/pythonMicroservice/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pythonMicroservice/pythonMicroservice/settings.py" afterPath="$PROJECT_DIR$/pythonMicroservice/pythonMicroservice/settings.py" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" afterPath="$PROJECT_DIR$/Jenkinsfile" />
+      <change beforePath="$PROJECT_DIR$/service-search-server.yaml" afterPath="$PROJECT_DIR$/service-search-server.yaml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +19,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="deployment-search-server.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deployment-search-server.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deployment-search-server.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -39,11 +29,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Jenkinsfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Jenkinsfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="service-search-server.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service-search-server.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="105">
+              <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Jenkinsfile_kub" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Jenkinsfile_kub">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -103,7 +113,6 @@
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/pythonMicroservice/pythonMicroservice/superUserCreation.py" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/Jenkinsfile" />
         <option value="$PROJECT_DIR$/docker-compose-postgres.yml" />
         <option value="$PROJECT_DIR$/pythonMicroservice/pythonMicroserviceApp/testPythonServices.py" />
         <option value="$PROJECT_DIR$/.travis.yml" />
@@ -116,6 +125,8 @@
         <option value="$PROJECT_DIR$/deployment-search-server" />
         <option value="$PROJECT_DIR$/deployment-search-server.yaml" />
         <option value="$PROJECT_DIR$/service-search-server.yaml" />
+        <option value="$PROJECT_DIR$/jenkinsFile_kub" />
+        <option value="$PROJECT_DIR$/Jenkinsfile" />
       </list>
     </option>
   </component>
@@ -285,13 +296,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -555,14 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Jenkinsfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -645,14 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-search-server.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/searchService.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -661,10 +649,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/service-search-server.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Jenkinsfile_kub">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/deployment-search-server.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Jenkinsfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
           <folding />
         </state>
       </provider>

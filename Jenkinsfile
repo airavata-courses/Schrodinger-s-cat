@@ -1,35 +1,24 @@
 pipeline {
-    agent {
-     //label 'masterNode'
-        label 'searchslave'
-    }
 
     stages {
         stage('Build') {
             steps {
                 sh 'sudo usermod -a -G docker $USER || true'
-                //sh 'sudo docker swarm init || true'
-                sh 'sudo docker stack rm pythonserver || true'
-                sh 'sudo docker rmi scatpythonserver:latest || true'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'sudo docker stack deploy -c docker-compose-postgres.yml postgres'
-                sh 'echo "Sleeping for 3minutes"'
-                sh 'sleep 180'
-                sh 'sudo docker build -t scatpythonserver .'
-            }
-        }
-        stage('Deploy') {
-            steps {
 
-                script{
-                    sh 'sudo docker stack deploy -c docker-compose.yml pythonserver'
-                // withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
-                //     sh "docker-compose up -d"
-                // }
+                sh 'sudo docker rmi scatpythonserver:latest || true'
+                sh 'kubectl delete deployment deployment-search-server || true'
             }
+        }
+        stage('Database') {
+            steps {
+                sh 'kubectl create -f deployment-search-db.yaml'
+                sh 'kubectl create -f service-search-db.yaml'
+            }
+        }
+        stage('Search - Service') {
+             steps {
+                sh 'kubectl create -f deployment-search-server.yaml'
+                sh 'kubectl create -f service-search-server.yaml'
             }
         }
     }
