@@ -50,10 +50,6 @@ public class UserServiceTest {
 		user.setFirstName("test");
 		user.setLastName("test");
 		Role userRole = mockRoleRepository.findByRole("ADMIN");
-//		if(!(userRole.isPresent())) {
-//			System.out.println("userRole not found ***********************");
-//		}
-//		Role userRoleRole = userRole.get();
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		user.setPassword(mockBCryptPasswordEncoder.encode("test@1234"));
 		

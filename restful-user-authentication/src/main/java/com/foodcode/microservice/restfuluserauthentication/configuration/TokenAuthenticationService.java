@@ -33,8 +33,8 @@ public class TokenAuthenticationService {
 		res.setContentType("application/json");
 		res.setCharacterEncoding("UTF-8");
 		res.getWriter().write(
-	            "{ \"" + "ID" + "\":\"" + ID + "\","+
-	            "\"Token\":"+"\""+JWT+"\""+
+	            "{ \"" + "id" + "\":\"" + ID + "\","+
+	            "\"token\":"+"\""+JWT+"\""+
 		"}"
 	    );
 	}
