@@ -35,8 +35,10 @@ import com.foodcode.microservice.restfuluserauthentication.persistence.model.Use
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.UserAuthenticationDetails;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.PostsRepository;
 import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
+import com.foodcode.microservice.restfuluserauthentication.service.EmitLogDirect;
 import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 import com.foodcode.microservice.restfuluserauthentication.controller.exception.RecipeIdExistsException;
+import com.foodcode.microservice.restfuluserauthentication.controller.exception.RegistrationDetailsException;
 import com.foodcode.microservice.restfuluserauthentication.controller.exception.UserNotFoundException;
 import com.foodcode.microservice.restfuluserauthentication.controller.exception.UserPasswordWrongException;
 import com.foodcode.microservice.restfuluserauthentication.controller.filter.UserFilterAttributes;
@@ -61,6 +63,9 @@ public class UserJPAResource {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmitLogDirect emitLogDirect;
 
 	/*---------------*/
 	@GetMapping("/jpa/users/get/all-attributes")
@@ -101,6 +106,28 @@ public class UserJPAResource {
 		MappingJacksonValue allAttributes = filterAttributes.getFirstLastDescriptionRecipeId(findAll);
 		log.info("retrieved all users with first name, last names, description and RecipeIds");
 		return allAttributes;
-	}	
+	}
+	
+	@PostMapping("/jpa/users/register")
+	public MappingJacksonValue createNewUser(@Valid @RequestBody User user, BindingResult bindingResult) {
+		log.info("user email:"+user.getEmail()+" user.getFirstName():"+user.getFirstName()+" user.getLastName():"+user.getLastName()+" user.getSelfDescription():"+user.getSelfDescription()+" user.getUsername():"+user.getUsername()+" user.getRecipeId():"+user.getRecipeId());
+		User userExists = userService.findUserByEmail(user.getEmail());
+		if (userExists != null) {
+			bindingResult
+			.rejectValue("email", "error.user",
+					"There is already a user registered with the email provided");
+		}
+		if (bindingResult.hasErrors()) {
+			throw new RegistrationDetailsException("There is already a user registered with the email "+userExists.getEmail()+" provided");
+		} else {
+			log.info("user found with the data+ "+user.getEmail());
+			userService.saveUser(user);
+			List<User> userList = new ArrayList<>();
+			userList.add(user);
+			MappingJacksonValue allAttributes = filterAttributes.getUserNameAndUserID(userList);
+			emitLogDirect.sendEmailToUser(user.getEmail());
+			return allAttributes;
+		}
+	}
 
 }

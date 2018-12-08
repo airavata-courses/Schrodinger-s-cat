@@ -76,16 +76,5 @@ public class LoginController {
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
-		
-//		Optional<User> userr = userRepository.findById(user.getId());
-//		if(!(userr.isPresent()))  {
-//			log.info("exception at deleting user with the id:"+id);
-//			throw new UserNotFoundException("id-"+id);
-//		}
-//		List<User> userList = new ArrayList<>();
-//		userList.add(userr.get());
-//		MappingJacksonValue allAttributes = filterAttributes.getFirstLastDescriptionRecipeId(userList);
-//		log.info("retrieved user: with first name, last names, description and RecipeIds");
-//		return allAttributes;
 	}
 }

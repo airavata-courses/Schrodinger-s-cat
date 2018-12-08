@@ -8,7 +8,6 @@ public class UserAuthenticationDetails {
 	private String password;
 	public UserAuthenticationDetails() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public UserAuthenticationDetails(String username, String password) {
 		super();
