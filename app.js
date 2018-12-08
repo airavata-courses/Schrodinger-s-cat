@@ -9,6 +9,8 @@ var usersRouter = require('./routes/recipesExpress');
 var searchRouter = require('./routes/search');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
+var myDetailsRouter = require('./routes/myDetails');
+var allUserDetailsRouter = require('./routes/allUserDetails');
 var app = express();
 var signupRouter = require('./routes/signup')
 var receiveAmqp = require('./routes/receive')
@@ -28,6 +30,8 @@ app.use('/recipesExpress', usersRouter);
 app.use('/search/',searchRouter);
 app.use('/expressLogin/', loginRouter);
 app.use('/expressLogout/', logoutRouter);
+app.use('/expressAllUserDetails/', allUserDetailsRouter);
+app.use('/expressMyDetails/', myDetailsRouter);
 app.use('/expressSignup/', signupRouter);
 app.use('/startreceive/',receiveAmqp);
 app.use('/startsend/',sendAmqp);
