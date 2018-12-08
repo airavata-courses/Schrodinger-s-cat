@@ -10,11 +10,12 @@ router.post('/', function(req, res, next) {
     console.log(req.body)
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    
-    
+
+
     axios.post('http://localhost:8888/jpa/users/register',
-    
+
     req.body).then(result=>{
+      console.log("result success for signup")
         console.log(result.data)
         res.send(result.data[0])
     }).catch(error=>{
@@ -29,8 +30,7 @@ router.post('/', function(req, res, next) {
     // // }, function(error, response, body){
     // //   console.log(body);
     // // });
-    
-    
+
+
   })
   module.exports = router;
-  

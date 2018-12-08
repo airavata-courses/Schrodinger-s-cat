@@ -5,7 +5,7 @@ var request = require('request')
 // /:searchString/:timeString'
 router.get('/:searchString/:timeString', function(req, res, next) {
 
-  console.log("hi "+req.params.searchString)
+  console.log("hi "+req.params.searchString+" "+timeString)
   console.log("http://localhost:8000/recipes/pythonSearch/"+req.params.searchString+"/"+req.params.timeString)
   request("http://localhost:8000/recipes/pythonSearch/"+req.params.searchString+"/"+req.params.timeString, function (error, response, body) {
     if (!error && response.statusCode == 200) {

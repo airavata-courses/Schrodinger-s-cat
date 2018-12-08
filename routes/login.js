@@ -8,7 +8,8 @@ router.use(bodyParser.urlencoded({ extended: true }))
 router.post('/', function(req, res, next) {
   console.log("here")
   var reqBody=req.body.username
-  console.log(reqBody)
+  console.log(req.body.username)
+  console.log(req.body.password)
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
@@ -18,8 +19,11 @@ router.post('/', function(req, res, next) {
     password : req.body.password
   }).then(result=>{
       console.log("Login success")
-      res.send(result.data[0])
+      // console.log(res.data.id)
+      // console.log(res.data.token)
+      res.send(result.data)
   }).catch(error=>{
+    console.log("Error here")
     console.log(error)
     res.status('404').send('not found')
   });
