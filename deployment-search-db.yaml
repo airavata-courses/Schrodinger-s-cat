@@ -5,7 +5,7 @@ metadata:
   labels:
     purpose: search-db
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       purpose: search-db
@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
       - name: search-db
-        image: bitnami/postgresql:latest
+        image: postgres:9.3
+        env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
         ports:
         - containerPort: 5432

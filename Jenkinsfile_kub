@@ -8,6 +8,8 @@ pipeline {
                 sh 'sudo docker rmi scatpythonserver:latest || true'
                 sh 'kubectl delete deployment deployment-search-db || true'
                 sh 'kubectl delete deployment deployment-search-server || true'
+                sh 'kubectl delete svc service-search-db || true'
+                sh 'kubectl delete svc service-search-server || true'
             }
         }
         stage('Database') {
