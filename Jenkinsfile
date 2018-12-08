@@ -1,4 +1,8 @@
 pipeline {
+    agent {
+     //label 'masterNode'
+        label 'searchslave'
+    }
 
     stages {
         stage('Build') {
@@ -6,7 +10,6 @@ pipeline {
                 sh 'sudo usermod -a -G docker $USER || true'
 
                 sh 'sudo docker rmi scatpythonserver:latest || true'
-                sh 'kubectl delete deployment deployment-search-db || true'
                 sh 'kubectl delete deployment deployment-search-server || true'
             }
         }
@@ -18,13 +21,8 @@ pipeline {
         }
         stage('Search - Service') {
              steps {
-                sh 'kubectl create -f deployment-search-server.yaml'
-                sh 'kubectl create -f service-search-server.yaml'
-            }
-        }
-         stage('Echo') {
-             steps {
-                sh 'kubectl get pods || true'
+                sh 'kubectl create -f deployment-search-db.yaml'
+                sh 'kubectl create -f service-search-db.yaml'
             }
         }
     }
