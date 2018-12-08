@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-front-react
+spec:
+  selector:
+    purpose: front-react
+  type: NodePort
+  ports:
+    - name: http
+      nodePort: 31005
+      port: 8003
+      targetPort: 3000
+      protocol: TCP
