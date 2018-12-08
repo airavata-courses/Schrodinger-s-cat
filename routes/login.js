@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  axios.post('http://localhost:8888/auth/users/logmein',
+  axios.post('http://service-login:8002/auth/users/logmein',
   {
     username : req.body.username,
     password : req.body.password
