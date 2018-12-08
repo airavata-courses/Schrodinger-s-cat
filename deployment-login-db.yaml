@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-login-db
+  labels:
+    purpose: login-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      purpose: login-db
+  template:
+    metadata:
+      labels:
+        purpose: login-db
+    spec:
+      containers:
+      - name: login-db
+        image: postgres:9.3
+        ports:
+        - containerPort: 5432

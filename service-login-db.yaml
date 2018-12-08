@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-login-db
+spec:
+  selector:
+    purpose: login-db
+  type: NodePort
+  ports:
+     - name: http
+       nodePort: 31006
+       port: 8001
+       targetPort: 5432
+       protocol: TCP

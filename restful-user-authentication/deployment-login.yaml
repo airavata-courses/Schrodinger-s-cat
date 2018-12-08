@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-login
+  labels:
+    purpose: login
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      purpose: login
+  template:
+    metadata:
+      labels:
+        purpose: login
+    spec:
+      containers:
+      - name: login
+        image: nawazkh/login:latest
+        ports:
+        - containerPort: 8888
