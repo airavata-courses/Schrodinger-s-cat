@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Service of consumer') {
              steps {
-                sh 'kubectl create -f service-smtp-consumer.yaml'
+                sh 'kubectl create -f service-smtp-consumer.yaml || true'
             }
         }
         stage (' start the consumer microservice'){
