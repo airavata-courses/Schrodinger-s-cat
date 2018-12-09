@@ -21,7 +21,7 @@ pipeline {
 	stage ('wait_prior_starting_smoke_testing') {
 		steps{
     		echo "Waiting 180 seconds for deployment to complete prior starting smoke testing"
-    		sleep 120 // seconds
+    		sleep 60 // seconds
 		}
 	}
 	stage('Deployment of consumer') {
