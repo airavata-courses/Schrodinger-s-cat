@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'searchdb',
+        'HOST': 'service-search-db',
         'PORT': '5432',
     }
 }

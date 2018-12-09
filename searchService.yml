@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: searchservice
+spec:
+  selector:
+    purpose: searchservice
+  type: NodePort
+  ports:
+    - name: http
+      nodePort: 31001
+      port: 8000
+      targetPort: 8000
+      protocol: TCP

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-search-server
+  labels:
+    purpose: search-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      purpose: search-server
+  template:
+    metadata:
+      labels:
+        purpose: search-server
+    spec:
+      containers:
+      - name: search-server
+        image: pswargam/scatpythonserver
+        ports:
+        - containerPort: 8000
