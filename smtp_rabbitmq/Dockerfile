@@ -5,5 +5,5 @@ LABEL description="Docker file for login auth jar"
 LABEL maintainer="Nawaz Hussain Khazielakha"
 LABEL email="k.nawaz.h@gmail.com"
 ADD /target .
-ADD /target/smtp_rabbitmq.jar login.jar
-ENTRYPOINT ["java","-jar","login.jar"]
+ADD /target/smtp_rabbitmq.jar smtp_consumer.jar
+ENTRYPOINT ["java","-jar","smtp_consumer.jar"]

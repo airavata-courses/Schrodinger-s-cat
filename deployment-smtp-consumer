@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-smtp-consumer
+  labels:
+    purpose: smtp-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      purpose: smtp-consumer
+  template:
+    metadata:
+      labels:
+        purpose: smtp-consumer
+    spec:
+      containers:
+      - name: smtp-consumer
+        image: nawazkh/consumer:latest
