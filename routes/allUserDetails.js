@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  axios.get('http://localhost:8888/jpa/users/get/all-attributes',
+  // axios.get('http://localhost:8888/jpa/users/get/all-attributes',
+  axios.get('http://service-login:8002/jpa/users/get/all-attributes',
   {
   }).then(result=>{
       console.log("Retrieved Data success")

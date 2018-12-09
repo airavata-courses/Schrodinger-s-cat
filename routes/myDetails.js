@@ -14,7 +14,9 @@ router.get('/:userId', function(req, res, next) {
   var config = {
   headers: {'Authorization': req.headers.authorization}
 };
-  axios.get('http://localhost:8888/auth/users/get/all-attributes/'+req.params.userId,config,
+  // service-login:8002
+  // axios.get('http://localhost:8888/auth/users/get/all-attributes/'+req.params.userId,config,
+  axios.get('http://service-login:8002/auth/users/get/all-attributes/'+req.params.userId,config,
   {
 
   }).then(result=>{

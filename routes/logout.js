@@ -11,8 +11,9 @@ router.post('/', function(req, res, next) {
   console.log(reqBody)
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-  axios.post('http://localhost:8888/auth/users/logmeout',
+  // service-login:8002
+  // axios.post('http://localhost:8888/auth/users/logmeout',
+  axios.post('http://service-login:8002/auth/users/logmeout',
   {
     username : req.body.username
   }).then(result=>{

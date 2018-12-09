@@ -9,11 +9,11 @@ router.post('/', function(req, res, next) {
   console.log("here")
   var reqBody=req.body.username
   console.log(req.body.username)
-  console.log(req.body.password)
+  // console.log(req.body.password)
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-  axios.post('http://localhost:8888/auth/users/logmein',
+  // axios.post('http://localhost:8888/auth/users/logmein',
+  axios.post('http://service-login:8002/auth/users/logmein',
   {
     username : req.body.username,
     password : req.body.password
