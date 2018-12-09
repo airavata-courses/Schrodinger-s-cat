@@ -55,7 +55,8 @@ public class App {
 	public static void ListenExchange() throws TimeoutException, IOException {
 		try {
 			ConnectionFactory factory = new ConnectionFactory();
-			factory.setHost("rabbitserver");
+//			factory.setHost("rabbitserver");//host name
+			factory.setHost("service-rabbitserver");//host name
 			//factory.setPort(5672);//TODO: change it to other when running on docker
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
