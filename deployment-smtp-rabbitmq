@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-smtp-rabbotmq
+  labels:
+    purpose: smtp-rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      purpose: smtp-rabbitmq
+  template:
+    metadata:
+      labels:
+        purpose: smtp-rabbitmq
+    spec:
+      containers:
+      - name: smtp-rabbitmq
+        image: pswargam/scatrabbitmq:latest
+        ports:
+        - containerPort: 1883
+        - containerPort: 4369
+        - containerPort: 5672
+        - containerPort: 15672
+        - containerPort: 25672
