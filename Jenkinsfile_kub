@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Node Branch') {
             steps {
-               build job: 'node server'
+               build job: 'nodeServer'
             }
         }
 	stage('rabbitmq and listener') {
