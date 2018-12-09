@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.foodcode.microservice.restfuluserauthentication.controller.exception.JDBCConnectionFailed;
+import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
 import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 
 @Configuration
@@ -27,7 +28,9 @@ import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	private UserService userService;
+	private UserRepository userRepository;
+//	private UserService userService;
+//	private UserRepository userRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -66,9 +69,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/error").permitAll()
 		.anyRequest().authenticated()
 		.and()
-		.addFilterBefore(new JWTLoginFilter("/auth/users/logmein", authenticationManager(),userService),
+		.addFilterBefore(new JWTLoginFilter("/auth/users/logmein", authenticationManager(),userRepository),
                 UsernamePasswordAuthenticationFilter.class)
-		.addFilterBefore(new JWTAuthenticationFilter(userService),
+		.antMatcher("/auth/users/**").addFilterBefore(new JWTAuthenticationFilter(userRepository),
 				UsernamePasswordAuthenticationFilter.class)
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}

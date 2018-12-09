@@ -136,7 +136,7 @@ public class UserResourceAuth {
 		return allAttributes;
 	}
 	@PostMapping("/auth/users/create/{id}/save-posts")
-	public ResponseEntity<Object> createUserPosts(@PathVariable int id, @RequestBody Posts post) {
+	public MappingJacksonValue createUserPosts(@PathVariable int id, @RequestBody Posts post) {
 		log.info("In /jpa/users/create/{id}/save-posts to create post");
 		Optional<User> savedUser = userRepository.findById(id);
 		log.info("retrieved user");
@@ -158,11 +158,11 @@ public class UserResourceAuth {
 		post.setUser(user);
 		post.setId(post.getId());
 		postsRepository.save(post);
-		URI location = ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedUser.get().getId()).toUri();
-		log.info("created User's: "+savedUser+" Post with the Id: "+post.getId());
-		return ResponseEntity.created(location).build();
+		
+		List<User> userList = new ArrayList<>();
+		userList.add(user);
+		MappingJacksonValue allAttributes = filterAttributes.getUserNameAndUserID(userList);
+		return allAttributes;
 	}
 
 	@DeleteMapping("/auth/users/delete/{id}")

@@ -13,6 +13,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.User;
 import com.foodcode.microservice.restfuluserauthentication.persistence.model.UserAuthenticationDetails;
+import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
 import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 
 import javax.servlet.FilterChain;
@@ -25,11 +26,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
-	private UserService userService;
-	public JWTLoginFilter(String url, AuthenticationManager authManager, UserService userService) {
+//	private UserService userService;
+	private UserRepository userRepository;
+	
+	public JWTLoginFilter(String url, AuthenticationManager authManager, UserRepository userRepository) {
 		super(new AntPathRequestMatcher(url));
 		setAuthenticationManager(authManager);
-		this.userService=userService;
+		this.userRepository=userRepository;
 	}
 
 	@Override
@@ -59,7 +62,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 		
 //		res.setIntHeader("id", );
 		System.out.println("Hello");
-		User userExists = userService.findUserByEmail(auth.getName().trim());
+		User userExists = userRepository.findByEmail(auth.getName().trim());
 		System.out.println("Hello2");
 		if (userExists != null) {
 			

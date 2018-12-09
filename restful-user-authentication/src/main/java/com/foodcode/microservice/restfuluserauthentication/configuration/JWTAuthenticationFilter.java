@@ -4,6 +4,7 @@ package com.foodcode.microservice.restfuluserauthentication.configuration;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
+import com.foodcode.microservice.restfuluserauthentication.persistence.repository.UserRepository;
 import com.foodcode.microservice.restfuluserauthentication.service.UserService;
 
 import org.springframework.security.core.Authentication;
@@ -17,11 +18,11 @@ import java.io.IOException;
 
 public class JWTAuthenticationFilter extends GenericFilterBean{
 	
-	private UserService userService;
+	private UserRepository userRepository;
 	
-	public JWTAuthenticationFilter(UserService userService) {
+	public JWTAuthenticationFilter(UserRepository userRepository) {
 		super();
-		this.userService = userService;
+		this.userRepository = userRepository;
 	}
 	
 	@Override
@@ -29,6 +30,7 @@ public class JWTAuthenticationFilter extends GenericFilterBean{
 			ServletResponse response,
 			FilterChain filterChain)
 					throws IOException, ServletException {
+		System.out.println("Coming here? ");
 		Authentication authentication = TokenAuthenticationService
 				.getAuthentication((HttpServletRequest)request);
 
