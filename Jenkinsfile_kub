@@ -1,9 +1,14 @@
 pipeline {
     agent any
 
-    stages 
+    stages
     {
-	stage('Login db and service') {
+    stage('Creating NameSpace If not Exits') {
+              steps {
+                  sh 'sudo kubectl apply -f namespace-scat.yaml || true '
+              }
+          }
+	         stage('Login db and service') {
             steps {
                 build job: 'loginService'
             }
@@ -31,4 +36,3 @@ pipeline {
         }
     }
 }
-
