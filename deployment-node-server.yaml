@@ -17,5 +17,6 @@ spec:
       containers:
       - name: node-server
         image: pswargam/nodeserver
+        imagePullPolicy: Always
         ports:
         - containerPort: 4000
