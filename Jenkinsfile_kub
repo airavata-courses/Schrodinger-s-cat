@@ -8,16 +8,33 @@ pipeline {
                 sh 'kubectl delete svc service-smtp-rabbitmq || true'
             }
         }
-        stage('deployments') {
+        stage('Deployment of rarbbitmq') {
             steps {
                 sh 'kubectl create -f deployment-smtp-rabbitmq.yaml'
             }
         }
-        stage('Service') {
+        stage('Service of rabbitmq') {
              steps {
-                sh 'kubectl create -f deployment-smtp-rabbitmq.yaml'
+                sh 'kubectl create -f service-smtp-rabbitmq.yaml'
             }
         }
+	stage ('wait_prior_starting_smoke_testing') {
+		steps{
+    		echo "Waiting 180 seconds for deployment to complete prior starting smoke testing"
+    		sleep 120 // seconds
+		}
+	}
+	stage('Deployment of consumer') {
+            steps {
+                sh 'kubectl create -f deployment-smtp-consumer.yaml'
+            }
+        }
+        stage('Service of consumer') {
+             steps {
+                sh 'kubectl create -f service-smtp-consumer.yaml'
+            }
+        }
+        stage (' start the consumer microservice'){
          stage('Echo') {
              steps {
                 sh 'kubectl get pods || true'
