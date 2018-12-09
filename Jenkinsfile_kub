@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'sudo usermod -a -G docker $USER || true'
+                sh 'kubectl delete deployment deployment-smtp-rabbitmq || true'
+                sh 'kubectl delete svc service-smtp-rabbitmq || true'
+            }
+        }
+        stage('deployments') {
+            steps {
+                sh 'kubectl create -f deployment-smtp-rabbitmq.yaml'
+            }
+        }
+        stage('Service') {
+             steps {
+                sh 'kubectl create -f deployment-smtp-rabbitmq.yaml'
+            }
+        }
+         stage('Echo') {
+             steps {
+                sh 'kubectl get pods || true'
+            }
+        }
+    }
+}
