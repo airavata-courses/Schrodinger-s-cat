@@ -17,5 +17,6 @@ spec:
       containers:
       - name: search-server
         image: pswargam/scatpythonserver
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
