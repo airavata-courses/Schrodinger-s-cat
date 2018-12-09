@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages 
+    {
+	stage('Login db and service') {
+            steps {
+                build job: 'loginService'
+            }
+        }
+        stage ('Python Search Branch') {
+            steps {
+                build job: 'pythonMicroservice'
+            }
+        }
+
+        stage('React Front End') {
+            steps {
+               build job: 'frontEnd Server'
+            }
+        }
+        stage('Node Branch') {
+            steps {
+               build job: 'node server'
+            }
+        }
+	stage('rabbitmq and listener') {
+            steps {
+                build job: 'smtpServer'
+            }
+        }
+    }
+}
+
