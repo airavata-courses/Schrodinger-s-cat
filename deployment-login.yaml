@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-login
+  namespace: scat
   labels:
     purpose: login
 spec:
@@ -11,6 +12,7 @@ spec:
       purpose: login
   template:
     metadata:
+      namespace: scat
       labels:
         purpose: login
     spec:
