@@ -9,12 +9,12 @@ pipeline {
 		sh 'sudo usermod -a -G docker $USER || true'
                 //sh 'sudo docker swarm init || true'
                 sh 'sudo docker stack rm reactserver || true'
-            	sh 'sudo docker rmi scatreactserver:latest || true'
+            	sh 'sudo docker rmi nawazkh/frontend:latest || true'
 		}
         }
         stage('Image Build') {
             steps {
-                sh 'sudo docker build -t scatreactserver .'
+                sh 'sudo docker build -t nawazkh/frontend:latest .'
                 echo 'Build Complete'
             }
         }

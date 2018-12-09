@@ -5,7 +5,7 @@ metadata:
   labels:
     purpose: front-react
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       purpose: front-react
@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: front-react
-        image: ljosyula/frontend:latest
+        image: nawazkh/frontend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000

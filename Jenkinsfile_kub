@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'sudo usermod -a -G docker $USER || true'
-                sh 'sudo docker rmi ljosyula/frontend:latest || true'
+                sh 'sudo docker rmi nawazkh/frontend:latest || true'
                 sh 'kubectl delete deployment deployment-front-react || true'
                 sh 'kubectl delete svc service-front-react || true'
             }
