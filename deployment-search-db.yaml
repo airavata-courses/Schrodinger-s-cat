@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-search-db
+  namespace: scat
   labels:
     purpose: search-db
 spec:
@@ -11,12 +12,14 @@ spec:
       purpose: search-db
   template:
     metadata:
+      namespace: scat
       labels:
         purpose: search-db
     spec:
       containers:
       - name: search-db
         image: postgres:9.3
+        imagePullPolicy: Always
         env:
         - name: POSTGRES_PASSWORD
           value: postgres
