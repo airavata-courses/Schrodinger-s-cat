@@ -1,7 +1,0 @@
-Performing system checks...
-
-System check identified no issues (0 silenced).
-October 14, 2018 - 23:25:57
-Django version 2.0.5, using settings 'pythonMicroservice.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
