@@ -42,7 +42,7 @@ class Recipies extends Component {
   
   getValidationState() {
     const length = this.state.value.length;
-    if (length > 3) return 'success';
+    if (length > 1) return 'success';
     else if (length > 0) return 'error';
     return null;
   }
@@ -60,6 +60,7 @@ class Recipies extends Component {
     this.props.history.push('/Homepage');
   }
   handleReturn(e){ //send this detail to the server
+    e.preventDefault();
     console.log('Enter pressed with the following details '+ this.state.value + ' and the time is ' +this.state.defaultTimeSelect );
 
     const items = this.state.value.slice();
@@ -69,13 +70,14 @@ class Recipies extends Component {
     }).then(res=>{
       console.log('redirecting to home page');
       console.log(res.data);
-      sessionStorage.setItem('recipes',res.data);
+      sessionStorage.setItem('recipes',JSON.stringify(res.data));
       sessionStorage.setItem('hasSearched',true);
+      console.log(res.data);
+      this.navigateToHomepage();
     }).catch(error =>{
         alert("Search Failed")
     });
-    e.preventDefault();
-    this.navigateToHomepage();
+    
   }
   bindTimeValue(e){
     console.log('Entered time value is: '+e);

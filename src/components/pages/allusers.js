@@ -3,17 +3,6 @@ import { Panel } from "react-bootstrap";
 import {withRouter} from "react-router-dom";
 import UserProfile from './../../Assets/Profiles/userProfile';
 
-
-// function Hello(props){
-//     if(sessionStorage.getItem('isLoggedIn') !== null && sessionStorage.getItem('isLoggedIn') === 'true'){
-//         //console.log('in checkLoggedStatusHome 1: '+this.state.isLogin);
-//         return <h1> Hello {sessionStorage.getItem('username')}</h1> ;
-//       } else {
-//         //console.log('in checkLoggedStatusHome 2: '+this.state.isLogin);
-//         return <h1> Hello Guest User</h1> ;
-//       }
-// }
-
 function UserDetails(props){
     if(sessionStorage.getItem('allUserDetails') !== null){
         var retrieveduserDetails = JSON.parse(sessionStorage.getItem('allUserDetails')) ;
@@ -32,8 +21,6 @@ function UserDetails(props){
             //Inner loop to create children
             for (let j = 0; j < 6 ; j++) {
                 if(j === 4){
-                    // convert the recipe to Json and add to the list
-                    //console.log();
                     var temptemp = JSON.parse(JSON.stringify(userValues[j]));
                     
                     if(temptemp.length !== 0){
@@ -52,39 +39,10 @@ function UserDetails(props){
                 else{
                     children.push(<Panel.Body key ={i+j+1000}>{userKeys[j].toString().toLocaleUpperCase()} : {userValues[j]}</Panel.Body>)
                 }
-                
-                // 
              }
             //Create the parent and add the children
             panel.push(<Panel key ={i+2000}><Panel.Heading key ={i+5000}>Username : {userValues[5]}</Panel.Heading>{children }</Panel>)
         }
-
-        // for (let i = 0; i < retrieveduserDetails.length; i++) {
-            
-        //     panel.push(<Panel>
-        //         {
-        //             <Panel.Heading>Username : {userValues[5]}</Panel.Heading>
-        //             {
-        //                 for (let j = 0; j < userKeys.length; j++) {
-        //                     console.log(userKeys[j]+" "+userValues[j]);
-        //                 }
-        //             }
-                    
-        //         }
-        //       </Panel>)
-
-        //     var userKeys = Object.keys(retrieveduserDetails[i]);
-        //     var userValues = Object.values(retrieveduserDetails[i])
-            
-        //     console.log("\n");
-            
-        // }
-        // console.log("something "+retrieveduserDetails[0][0]);
-       
-        // for (let index = 0; index < retrieveduserDetails.length; index++) {
-        //     console.log("members are "+ index);
-            
-        // }
         return panel
     }
     return null

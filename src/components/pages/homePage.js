@@ -3,6 +3,61 @@ import { Panel } from "react-bootstrap";
 import {withRouter} from "react-router-dom";
 import UserProfile from './../../Assets/Profiles/userProfile';
 
+function UserDetails2(props){
+    console.log("strange "+sessionStorage.getItem('recipes') )
+    if(sessionStorage.getItem('recipes') !== null || sessionStorage.getItem('recipes') != null || sessionStorage.getItem('recipes')){
+        var retrieveduserDetails = JSON.parse(sessionStorage.getItem('recipes')) ;
+        // console.log("something 0 "+retrieveduserDetails);
+        // console.log("something 1 "+retrieveduserDetails.length);
+        // console.log("something 2 "+Object.keys(retrieveduserDetails[0]).length);
+        // console.log("something 3 "+Object.values(retrieveduserDetails[0]));
+        let panel = [];
+
+        // Outer loop to create parent
+        for (let i = 0; i < Object.keys(retrieveduserDetails).length; i++) {
+            var userKeys = Object.keys(retrieveduserDetails[i]);
+            var userValues = Object.values(retrieveduserDetails[i])
+            let children = []
+
+            //Inner loop to create children
+            for (let j = 0; j < 6 ; j++) {
+                if(userKeys[j] === 'ingredients'){
+                    var temptemp = JSON.parse(JSON.stringify(userValues[j]));
+                    
+                    if(temptemp.length !== 0){
+                        console.log("hellooooo"+temptemp.length);
+                        let childrenchildren = []
+                        for(let k = 0; k < temptemp.length; k++){
+                            console.log(temptemp[k]);
+                            childrenchildren.push(<div key = {i + j + k + 250}> {temptemp[k]}</div>) 
+                        }
+                        children.push(<Panel.Body key ={i+j+500}>{userKeys[j].toString().toLocaleUpperCase()} : {childrenchildren}</Panel.Body>)
+                    }
+                    else{
+                        children.push(<Panel.Body key ={i+j+500}>{userKeys[j].toString().toLocaleUpperCase()} : No Recipies Added</Panel.Body>)
+                    }
+                }
+                else if(userKeys[j] === 'timeTaken'){
+                    if(userValues[j]=== 1){
+                        children.push(<Panel.Body key ={i+j+1010}>{userKeys[j].toString().toLocaleUpperCase()} : 15 mins</Panel.Body>)
+                    }else if(userValues[j]=== 2){
+                        children.push(<Panel.Body key ={i+j+1020}>{userKeys[j].toString().toLocaleUpperCase()} : 30 mins</Panel.Body>)
+                    }else{
+                        children.push(<Panel.Body key ={i+j+1030}>{userKeys[j].toString().toLocaleUpperCase()} : 45 mins</Panel.Body>)
+                    }
+                    
+                }else{
+                    children.push(<Panel.Body key ={i+j+1000}>{userKeys[j]} : {userValues[j]}</Panel.Body>)
+                }
+             }
+            //Create the parent and add the children
+            panel.push(<Panel key ={i+2000}><Panel.Heading key ={i+5000}>Recipe Name : {userValues[5]}</Panel.Heading>{children }</Panel>)
+        }
+        return panel
+    }
+    return null
+}
+
 
 function Hello(props){
     if(sessionStorage.getItem('isLoggedIn') !== null && sessionStorage.getItem('isLoggedIn') === 'true'){
@@ -68,13 +123,11 @@ class Homepage extends Component {
                         <Hello/>
                     </Panel.Title>
                 </Panel.Heading>
-                <Panel.Body>
-                {/* <RenderWelcomeUser value={[this.state.userName,this.state.test]}/> */}
-                    <div className="Home">
-                    {/* <RenderRecipies value={this.state.isSearched}/> */}
-                    </div>
-                 </Panel.Body>
+                <Panel.Body><small>Click Home Page to clear the results</small></Panel.Body>
             </Panel>
+            <div className="Home">
+                <UserDetails2/>
+            </div>
         </div>
     );
   }

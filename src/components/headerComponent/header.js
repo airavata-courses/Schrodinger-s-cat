@@ -34,6 +34,14 @@ class Header extends Component {
     }
   }
 
+  clearAllData(e){
+    sessionStorage.setItem('hasSearched',false)
+    sessionStorage.setItem('recipes','false')
+    this.props.history.push({
+      pathname: '/Homepage/'
+    });
+  }
+
   retieveAllUsers(e){
     // retrieve All users data.
     axios.get('/expressAllUserDetails/',{
@@ -166,7 +174,8 @@ class Header extends Component {
                     <Link to="/AllUsers" onClick={(e) => this.retieveAllUsers(e)} >All Users</Link>
                   </li>
                   <li>
-                        <Link to="/Homepage">Homepage</Link>
+                        <Link to="/Homepage" onClick={(e) => this.clearAllData(e)} >Homepage</Link>
+                        {/* <Link to="/Homepage" >Homepage</Link> */}
                         {/* will have home, list of all the recipes */}
                   </li>
                   <li>

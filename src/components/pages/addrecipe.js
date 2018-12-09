@@ -34,6 +34,7 @@ class Addrecipe extends Component {
     this.handleReturn = this.handleReturn.bind(this);
     this.handleChangeTime = this.handleChangeTime.bind(this);
     this.bindTimeValue = this.bindTimeValue.bind(this);
+    this.handleChangeGenre = this.handleChangeGenre.bind(this);
 
     if(sessionStorage.getItem('isLoggedIn') !== null && sessionStorage.getItem('isLoggedIn')){
       this.state = {
@@ -43,6 +44,8 @@ class Addrecipe extends Component {
         recipeIngridents: '',
         recipeDesc: '',
         defaultTimeSelect: '2',
+        genre: '',
+        myToken: sessionStorage.getItem('token'),
       };
     } else {
       this.state = {
@@ -52,6 +55,8 @@ class Addrecipe extends Component {
         recipeIngridents: '',
         recipeDesc: '',
         defaultTimeSelect: '2',
+        genre: '',
+        myToken: ''
       };
     }
   }
@@ -82,6 +87,9 @@ class Addrecipe extends Component {
   handleChangeDesc(e) {
     this.setState({ recipeDesc: e.target.value });
   }
+  handleChangeGenre(e) {
+    this.setState({ genre: e.target.value });
+  }
   handleChangeTime(e) {
     this.setState({ defaultTimeSelect: e.target.value });
   }
@@ -101,15 +109,27 @@ class Addrecipe extends Component {
     const recipeTitle = this.state.recipeTitle.slice();
     const recipeIngridents = this.state.recipeIngridents.slice();
     const recipeDesc = this.state.recipeDesc.slice();
-    const defaultTimeSelect = this.state.defaultTimeSelect.slice();
+    var defaultTimet = this.state.defaultTimeSelect.slice();
+    var defaultTimeSelect=1; 
+    if(defaultTimet < 16){
+      defaultTimeSelect = 1;
+    }else if(defaultTimet > 16 && defaultTimet < 45 ){
+      defaultTimeSelect = 2;
+    }else{
+      defaultTimeSelect = 3;
+    }
+    const genre = this.state.genre.slice();
+    const myToken = this.state.myToken.slice();
 
-    axios.post('/expressSearch/',{
+    axios.post('/expressAddRecipe/',{
       username : username,
-      userId : userId,
-      recipeTitle : recipeTitle,
-      recipeIngridents : recipeIngridents,
-      recipeDesc : recipeDesc,
-      defaultTimeSelect : defaultTimeSelect,
+      madeby : userId,
+      name : recipeTitle,
+      ingredients : recipeIngridents,
+      description : recipeDesc,
+      timeTaken : defaultTimeSelect,
+      genre : genre,
+      myToken: myToken,
     }).then(res=>{
       //console.log(res.data.username)
       console.log("Adding recipe successfull ..!");
@@ -120,12 +140,6 @@ class Addrecipe extends Component {
       this.props.history.push({
         pathname: '/Homepage/'
       });
-      //UserProfile.setUserId(res.data.id);
-      //UserProfile.setUserName(res.data.username);
-      // this.props.history.push({
-      //   pathname: '/',
-      //   state: { uname: uname }
-      // });
     }).catch(error =>{
         alert("Search Failed")
     });
@@ -174,6 +188,14 @@ class Addrecipe extends Component {
               onChange={this.handleChangeDesc}/>
             <FormControl.Feedback />
             <br/>
+            <ControlLabel>Genre</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.genre}
+              placeholder="Minimum 5 characters"
+              onChange={this.handleChangeGenre}/>
+            <FormControl.Feedback />
+            <br/>
             <ControlLabel>Time to cook</ControlLabel>
             <FormControl
               type="text"
@@ -189,7 +211,7 @@ class Addrecipe extends Component {
               bsStyle="primary"
               disabled={!this.validateForm()}
               type="submit">
-              Search
+              Add Post
             </Button>
             </center>
             </FormGroup>
