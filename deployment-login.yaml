@@ -5,7 +5,7 @@ metadata:
   labels:
     purpose: login
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       purpose: login
@@ -17,5 +17,6 @@ spec:
       containers:
       - name: login
         image: nawazkh/login:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8888
