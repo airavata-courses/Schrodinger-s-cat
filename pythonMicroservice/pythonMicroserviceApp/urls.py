@@ -19,4 +19,6 @@ from . import views
 
 urlpatterns = [
     url(r'^pythonSearch/(?P<searchString>.+\w{0,200})/(?P<timeString>\w{0,200})/',views.search,name='searchBasic'),
+    url(r'^addRecipe/', views.addRecipe, name='addRecipe')
+
 ]

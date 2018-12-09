@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import *
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 # Create your views here.
 
@@ -60,7 +61,9 @@ def search(request,searchString,timeString):
                     "name": obj.name,
                     "genre": obj.genre,
                     "madeBy": obj.madeBy,
-                    "ingredients": ingList
+                    "ingredients": ingList,
+                    "description": obj.description,
+                    "timeTaken": obj.timeTaken
                 }
                 if dictToBeSent not in returnValue:
                     returnValue.append(dictToBeSent)
@@ -77,7 +80,9 @@ def search(request,searchString,timeString):
                 "name": obj.name,
                 "genre": obj.genre,
                 "madeBy": obj.madeBy,
-                "ingredients": ingList
+                "ingredients": ingList,
+                "description": obj.description,
+                "timeTaken": obj.timeTaken
             }
             if dictToBeSent not in returnValue:
                 returnValue.append(dictToBeSent)
@@ -91,7 +96,9 @@ def search(request,searchString,timeString):
                 "name": obj.name,
                 "genre": obj.genre,
                 "madeBy": obj.madeBy,
-                "ingredients": ingList
+                "ingredients": ingList,
+                "description": obj.description,
+                "timeTaken": obj.timeTaken
             }
             if dictToBeSent not in returnValue:
                 returnValue.append(dictToBeSent)
@@ -103,7 +110,9 @@ def search(request,searchString,timeString):
                 "name": obj.name,
                 "genre": obj.genre,
                 "madeBy": obj.madeBy,
-                "ingredients": ingList
+                "ingredients": ingList,
+                "description": obj.description,
+                "timeTaken": obj.timeTaken
             }
             if dictToBeSent in returnValue:
                 returnValue.append(dictToBeSent)
@@ -122,7 +131,9 @@ def search(request,searchString,timeString):
             "name": obj.name,
             "genre": obj.genre,
             "madeBy": obj.madeBy,
-            "ingredients": ingList
+            "ingredients": ingList,
+            "description": obj.description,
+            "timeTaken": obj.timeTaken
         }
         if dictToBeSent not in returnValue:
             returnValue.append(dictToBeSent)
@@ -134,8 +145,26 @@ def search(request,searchString,timeString):
             "name": obj.name,
             "genre": obj.genre,
             "madeBy": obj.madeBy,
-            "ingredients": ingList
+            "ingredients": ingList,
+            "description": obj.description,
+            "timeTaken": obj.timeTaken
         }
         if dictToBeSent not in returnValue:
             returnValue.append(dictToBeSent)
     return HttpResponse(json.dumps(returnValue),'application/json')
+
+@csrf_exempt
+def addRecipe(request):
+    if request.method == 'POST':
+        #Adding recipe
+        newRecipe= Recipe.objects.create(name=request.POST['name'],description=request.POST['description'],madeBy=request.POST['madeBy'],genre=request.POST['genre'],timeTaken=request.POST['timeTaken'])
+
+
+        #Appending ingredients
+        for ing in request.POST['ingredients'].split(","):
+            newIng=Ingredient.objects.get_or_create(name=ing)
+            newRecipe.ingredients.add(newIng[0])
+
+        return HttpResponse(newRecipe.id)
+    else:
+        return HttpResponseBadRequest
