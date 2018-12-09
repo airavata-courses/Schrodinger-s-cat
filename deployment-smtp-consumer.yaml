@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-smtp-consumer
+  namespace: scat
   labels:
     purpose: smtp-consumer
 spec:
@@ -11,6 +12,7 @@ spec:
       purpose: smtp-consumer
   template:
     metadata:
+      namespace: scat
       labels:
         purpose: smtp-consumer
     spec:

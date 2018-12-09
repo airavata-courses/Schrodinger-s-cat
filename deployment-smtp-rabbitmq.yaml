@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-smtp-rabbitmq
+  namespace: scat
   labels:
     purpose: smtp-rabbitmq
 spec:
@@ -11,12 +12,14 @@ spec:
       purpose: smtp-rabbitmq
   template:
     metadata:
+      namespace: scat
       labels:
         purpose: smtp-rabbitmq
     spec:
       containers:
       - name: smtp-rabbitmq
         image: pswargam/scatrabbitmq:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 1883
         - containerPort: 4369
