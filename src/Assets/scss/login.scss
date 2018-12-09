@@ -1,0 +1,45 @@
+@import "_config.scss";
+
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+
+    .Signup{
+        padding: 60px 0;
+    }
+    .Signup form {
+        margin: 0 auto;
+        max-width: 320px;
+      }
+      #tooltip-right{
+        margin: 0 auto;
+        max-width: 320px;
+        color: black;
+      }
+      .Search{
+        padding: 60px 0;
+      }
+      .Search form {
+        margin: 0 auto;
+        max-width: 600px;
+      }
+      .Home{
+        margin: 0 auto;
+        padding: 60px 0;
+        max-width: 700px;
+      }
+    .Addrecipe{
+        padding: 60px 0;
+    }
+    .Addrecipe form {
+        margin: 0 auto;
+        max-width: 500px;
+      }
+  }
+

@@ -19,26 +19,26 @@ An interactive website where you can browse for recipes, upload your own creatio
 * This branch handles the front-end of the project.
 * The Dashboard contains Home tab, Signup tab, Login tab, AboutUs tab
 
-![DashBoard](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/Dashboard.JPG)
+![DashBoard](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui_dev/Dashboard.JPG)
 
 # Home Tab:
 By clicking on the home tab you get access to the search functionality, youn can search for various recipes.
 
-![Home_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/Home_Page.JPG)
+![Home_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui_dev/Home_Page.JPG)
 
 # SignUp Tab:
 This tab lets you create an account in the website.
 
-![SignUp_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/SignUp_Page.JPG)
+![SignUp_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui_dev/SignUp_Page.JPG)
 
 # Login Tab:
 This tab allows you to login to the website.
 
-![Login_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/Login_Page.JPG)
+![Login_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui_dev/Login_Page.JPG)
 
 # AboutUs Tab:
 This tab contains a brief description about the project/website.
 
-![AboutUs_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui/AboutUs_Page.JPG)
+![AboutUs_Page](https://github.com/airavata-courses/Schrodinger-s-cat/blob/feature-react_ui_dev/AboutUs_Page.JPG)
 
 
