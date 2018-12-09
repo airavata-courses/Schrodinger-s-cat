@@ -157,11 +157,15 @@ def search(request,searchString,timeString):
 def addRecipe(request):
     if request.method == 'POST':
         #Adding recipe
-        newRecipe= Recipe.objects.create(name=request.POST['name'],description=request.POST['description'],madeBy=request.POST['madeBy'],genre=request.POST['genre'],timeTaken=request.POST['timeTaken'])
+        newRecipe= Recipe.objects.create(name=request.POST.get('name'),
+                                         description=request.POST.get('description'),
+                                         madeBy=request.POST.get('madeBy'),
+                                         genre=request.POST.get('genre'),
+                                         timeTaken=request.POST.get('timeTaken'))
 
 
         #Appending ingredients
-        for ing in request.POST['ingredients'].split(","):
+        for ing in request.POST.get('ingredients').split(","):
             newIng=Ingredient.objects.get_or_create(name=ing)
             newRecipe.ingredients.add(newIng[0])
 
