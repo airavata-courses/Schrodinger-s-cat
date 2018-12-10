@@ -44,10 +44,10 @@ class Header extends Component {
 
   retieveAllUsers(e){
     // retrieve All users data.
-
+    // /expressAllUserDetails/
     axios({
       method: 'get',
-      url: 'http://service-node-server:4000/expressAllUserDetails/',
+      url: 'http://129.114.16.182:31003/expressAllUserDetails/',
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(res=>{
       
@@ -74,9 +74,11 @@ class Header extends Component {
       var customConfig = {
         headers: {'Authorization': userToken}
       };
+      
+      // url: 'http://service-node-server:4000/expressMyDetails/'+userId,
       axios({
         method: 'get',
-        url: 'http://service-node-server:4000/expressMyDetails/'+userId,
+        url: 'http://129.114.16.182:31003/expressMyDetails/'+userId,
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
         headers: {'Authorization': userToken}
       }).then(res=>{

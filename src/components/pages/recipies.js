@@ -68,7 +68,7 @@ class Recipies extends Component {
 
     axios({
       method: 'get',
-      url: 'http://service-node-server:4000/search/'+items+'/'+time,
+      url: 'http://129.114.16.182:31003/search/'+items+'/'+time,
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(res=>{
       console.log('redirecting to home page');

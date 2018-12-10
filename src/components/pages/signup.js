@@ -52,7 +52,7 @@ class Signup extends Component {
         
         axios({
           method: 'post',
-          url: 'http://service-node-server:4000/expressSignup/',
+          url: 'http://129.114.16.182:31003/expressSignup/',
           data: body,
           headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(res=>{

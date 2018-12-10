@@ -46,7 +46,7 @@ class Login extends Component {
 
         axios({
           method: 'post',
-          url: 'http://service-node-server:4000/expressLogin/',
+          url: 'http://129.114.16.182:31003/expressLogin/',
           data: body,
           headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(res=>{
