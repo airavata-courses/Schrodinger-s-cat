@@ -3,9 +3,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo usermod -a -G docker $USER || true'
                 sh 'kubectl delete deployment deployment-smtp-consumer || true'
-                sh 'kubectl delete svc service-smtp-consumer || true'
+                //sh 'kubectl delete svc service-smtp-consumer || true'
+            }
+        }
+	stage('Service of rabbitmq') {
+             steps {
+                sh 'kubectl create -f service-smtp-rabbitmq.yaml || true'
             }
         }
         stage('Deployment of rarbbitmq') {
@@ -13,25 +17,20 @@ pipeline {
                 sh 'kubectl create -f deployment-smtp-rabbitmq.yaml || true'
             }
         }
-        stage('Service of rabbitmq') {
+	stage ('wait_prior_starting_smoke_testing') {
+	    steps{
+    		echo "Waiting 20 seconds for deployment to complete prior starting smoke testing"
+    		sleep 20 // seconds
+	    }
+	}
+	stage('Service of consumer') {
              steps {
-                sh 'kubectl create -f service-smtp-rabbitmq.yaml || true'
+                sh 'kubectl create -f service-smtp-consumer.yaml || true'
             }
         }
-	stage ('wait_prior_starting_smoke_testing') {
-		steps{
-    		echo "Waiting 180 seconds for deployment to complete prior starting smoke testing"
-    		sleep 60 // seconds
-		}
-	}
 	stage('Deployment of consumer') {
             steps {
                 sh 'kubectl create -f deployment-smtp-consumer.yaml'
-            }
-        }
-        stage('Service of consumer') {
-             steps {
-                sh 'kubectl create -f service-smtp-consumer.yaml || true'
             }
         }
         stage (' start the consumer microservice'){
