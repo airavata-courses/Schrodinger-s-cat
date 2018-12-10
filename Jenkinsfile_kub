@@ -4,10 +4,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'sudo usermod -a -G docker $USER || true'
-                //sh 'kubectl delete deployments deployment-login-db --namespace=scat || true'
-                sh 'kubectl delete deployments deployment-login --namespace=scat|| true'
-                sh 'kubectl delete services service-login --namespace=scat|| true'
-                //sh 'kubectl delete services service-login-db --namespace=scat|| true'
+                //sh 'kubectl delete deployments deployment-login-db --namespace=default || true'
+                sh 'kubectl delete deployments deployment-login --namespace=default|| true'
+                sh 'kubectl delete services service-login --namespace=default|| true'
+                //sh 'kubectl delete services service-login-db --namespace=default|| true'
             }
         }
         stage('Database') {
