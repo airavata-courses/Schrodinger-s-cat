@@ -2,17 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-node-server
-  namespace: scat
   labels:
     purpose: node-server
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       purpose: node-server
   template:
     metadata:
-      namespace: scat
       labels:
         purpose: node-server
     spec:
