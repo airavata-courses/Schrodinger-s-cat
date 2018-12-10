@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: service-front-react
+  name: service.front.react
 spec:
   selector:
     purpose: front-react
