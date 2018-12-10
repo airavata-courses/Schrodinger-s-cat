@@ -44,7 +44,11 @@ class Header extends Component {
 
   retieveAllUsers(e){
     // retrieve All users data.
-    axios.get('http://service-node-server:4000/expressAllUserDetails/',{
+
+    axios({
+      method: 'get',
+      url: 'http://service-node-server:4000/expressAllUserDetails/',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(res=>{
       
       console.log(res.data);
@@ -70,8 +74,11 @@ class Header extends Component {
       var customConfig = {
         headers: {'Authorization': userToken}
       };
-      axios.get('http://service-node-server:4000/expressMyDetails/'+userId,customConfig,{
-        // id : userId
+      axios({
+        method: 'get',
+        url: 'http://service-node-server:4000/expressMyDetails/'+userId,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+        headers: {'Authorization': userToken}
       }).then(res=>{
         // console.log(res.data);
         sessionStorage.setItem('myDetails',JSON.stringify(res.data));

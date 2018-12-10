@@ -121,7 +121,7 @@ class Addrecipe extends Component {
     const genre = this.state.genre.slice();
     const myToken = this.state.myToken.slice();
 
-    axios.post('http://service-node-server:4000/expressAddRecipe/',{
+    var body = {
       username : username,
       madeby : userId,
       name : recipeTitle,
@@ -129,7 +129,14 @@ class Addrecipe extends Component {
       description : recipeDesc,
       timeTaken : defaultTimeSelect,
       genre : genre,
-      myToken: myToken,
+      myToken: myToken
+    }
+    
+    axios({
+      method: 'post',
+      url: 'http://service-node-server:4000/expressAddRecipe/',
+      data: body,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(res=>{
       //console.log(res.data.username)
       console.log("Adding recipe successfull ..!");

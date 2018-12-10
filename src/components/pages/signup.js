@@ -39,8 +39,8 @@ class Signup extends Component {
         const email = this.state.email.slice();
         const password = this.state.password.slice();
         const selfDescription = this.state.desc.slice();
-        //const lastName = this.state.password.slice();
-        axios.post('http://servicenodeserver:4000/expressSignup',{
+
+        var body = {
           firstName : firstName,
           lastName : lastName,
           email:  email,
@@ -48,6 +48,13 @@ class Signup extends Component {
           password : password,
           selfDescription : selfDescription,
           recipeId : []
+        }
+        
+        axios({
+          method: 'post',
+          url: 'http://service-node-server:4000/expressSignup/',
+          data: body,
+          headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(res=>{
             //console.log(res.data.username)
             console.log("Sign Up Success..!");
