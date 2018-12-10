@@ -3,25 +3,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo usermod -a -G docker $USER || true'
-
-                sh 'sudo docker rmi scatpythonserver:latest || true'
-                sh 'kubectl delete deployment deployment-search-db || true'
+                //sh 'kubectl delete deployment deployment-search-db || true'
                 sh 'kubectl delete deployment deployment-search-server || true'
-                sh 'kubectl delete svc service-search-db || true'
-                sh 'kubectl delete svc service-search-server || true'
+                //sh 'kubectl delete svc service-search-db || true'
+                //sh 'kubectl delete svc service-search-server || true'
             }
         }
         stage('Database') {
             steps {
-                sh 'kubectl create -f deployment-search-db.yaml'
-                sh 'kubectl create -f service-search-db.yaml'
+                sh 'kubectl create -f service-search-db.yaml || true'
+                sh 'kubectl create -f deployment-search-db.yaml || true'
             }
         }
         stage('Search - Service') {
              steps {
+                sh 'kubectl create -f service-search-server.yaml || true'
                 sh 'kubectl create -f deployment-search-server.yaml'
-                sh 'kubectl create -f service-search-server.yaml'
             }
         }
          stage('Echo') {
