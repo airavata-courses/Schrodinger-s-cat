@@ -6,8 +6,8 @@ pipeline {
                 sh 'sudo usermod -a -G docker $USER || true'
                 sh 'sudo docker rmi nawazkh/login:latest || true'
                 sh 'sudo docker rmi postgres:9.3 || true'
-                sh 'kubectl delete deployment deployment-login-db || true'
-                sh 'kubectl delete deployment deployment-login || true'
+                sh 'kubectl delete deployment deployment-login-db --namespace=scat || true'
+                sh 'kubectl delete deployment deployment-login --namespace=scat|| true'
                 sh 'kubectl delete svc service-login-db || true'
                 sh 'kubectl delete svc service-login || true'
             }
