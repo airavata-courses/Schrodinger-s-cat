@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-search-server
-  namespace: scat
   labels:
     purpose: search-server
 spec:
@@ -12,7 +11,6 @@ spec:
       purpose: search-server
   template:
     metadata:
-      namespace: scat
       labels:
         purpose: search-server
     spec:
