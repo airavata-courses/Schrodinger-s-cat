@@ -12,8 +12,8 @@ pipeline {
         }
         stage('Database') {
             steps {
-                //sh 'kubectl create -f deployment-login-db.yaml'
-                //sh 'kubectl create -f service-login-db.yaml || true'
+                // sh 'kubectl create -f deployment-login-db.yaml'
+                // sh 'kubectl create -f service-login-db.yaml || true'
             }
         }
         stage('Search - Service') {
