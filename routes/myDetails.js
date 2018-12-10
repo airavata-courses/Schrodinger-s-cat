@@ -7,7 +7,7 @@ var axios = require('axios')
 router.get('/:userId', function(req, res, next) {
   console.log("my details here")
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,X-Auth-Token,Authorization");
   console.log(req.params.userId);
   console.log(req.headers.authorization);
 
