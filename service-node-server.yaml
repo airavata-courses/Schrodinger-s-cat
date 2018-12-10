@@ -9,6 +9,6 @@ spec:
   ports:
     - name: http
       nodePort: 31003
-      port: 8012
+      port: 4000
       targetPort: 4000
       protocol: TCP
