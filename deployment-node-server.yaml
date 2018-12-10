@@ -5,7 +5,7 @@ metadata:
   labels:
     purpose: node-server
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       purpose: node-server
