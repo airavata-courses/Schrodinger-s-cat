@@ -20,3 +20,5 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 4000
+      nodeSelector:
+        myserver: nodeserver
