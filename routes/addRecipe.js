@@ -14,14 +14,7 @@ router.post('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  var username = req.body.username;
-  var madeby = req.body.madeby;
-  var recipeName = req.body.name;
-  var ingredients = req.body.ingredients;
-  var description = req.body.description;
-  var timeTaken = req.body.timeTaken;
-  var genre = req.body.genre;
-  var myToken = req.body.myToken;
+
 
   console.log(recipeName);
   console.log(description);
@@ -38,6 +31,14 @@ var config = {
 
 console.log("hello"+JSON.parse(Object.keys(req.body)))
 var jsonData = JSON.parse(Object.keys(req.body));
+var username = jsonData.username;
+var madeby = jsonData.madeby;
+var recipeName = jsonData.name;
+var ingredients = jsonData.ingredients;
+var description = jsonData.description;
+var timeTaken = jsonData.timeTaken;
+var genre = jsonData.genre;
+var myToken = jsonData.myToken;
 
 var body = {
   name: jsonData.name,
