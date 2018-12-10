@@ -15,9 +15,12 @@ router.post('/', function(req, res, next) {
   // axios.post('http://localhost:8888/auth/users/logmein',
   var jsonData = JSON.parse(Object.keys(req.body));
   console.log(JSON.parse(Object.keys(req.body)))
+  console.log(jsonData.username)
+  console.log(jsonData.password)
   axios.post('http://service-login:8002/auth/users/logmein',
   {
-    jsonData
+    username : jsonData.username,
+    password : jsonData.password
   }).then(result=>{
       console.log("Login success")
       // console.log(res.data.id)
