@@ -30,17 +30,24 @@ router.post('/', function(req, res, next) {
   console.log(ingredients);
   console.log(timeTaken);
   console.log(" ");
+
 var config = {
   headers: {'Authorization': myToken}
   };
+
+
+console.log(JSON.parse(Object.keys(req.body)))
+var jsonData = JSON.parse(Object.keys(req.body));
+
 var body = {
-  name: recipeName,
-  description: description,
-  madeBy:madeby,
-  genre:genre,
-  ingredients:ingredients,
-  timeTaken:timeTaken
+  name: jsonData.name,
+  description: jsonData.description,
+  madeBy:jsonData.madeby,
+  genre:jsonData.genre,
+  ingredients:jsonData.ingredients,
+  timeTaken:jsonData.timeTaken
 }
+
 // url: 'http://localhost:8000/recipes/addRecipe/',
 // url: "http://localhost:8888/auth/users/create/"+madeby+"/save-posts",
   axios({
@@ -55,9 +62,9 @@ var body = {
       axios({
         method: 'POST',
         url: "http://service-login:8002/auth/users/create/"+madeby+"/save-posts",
-        headers: { Authorization: myToken},
+        headers: { Authorization: jsonData.myToken},
         data: { id:recipeId,
-        user:{email:username} }
+        user:{email:jsonData.username} }
       }).then(result=>{
           console.log("Login success")
           res.send(result.data)

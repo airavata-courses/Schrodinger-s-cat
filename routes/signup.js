@@ -13,9 +13,12 @@ router.post('/', function(req, res, next) {
 
     // service-login:8002
     // axios.post('http://localhost:8888/jpa/users/register',
+    console.log(JSON.parse(Object.keys(req.body)))
+    var jsonData = JSON.parse(Object.keys(req.body));
+
     axios.post('http://service-login:8002/jpa/users/register',
 
-    req.body).then(result=>{
+    jsonData).then(result=>{
       console.log("result success for signup")
         console.log(result.data)
         res.send(result.data[0])
