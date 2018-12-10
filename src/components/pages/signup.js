@@ -40,7 +40,7 @@ class Signup extends Component {
         const password = this.state.password.slice();
         const selfDescription = this.state.desc.slice();
         //const lastName = this.state.password.slice();
-        axios.post('/expressSignup',{
+        axios.post('http://service-node-server:4000/expressSignup',{
           firstName : firstName,
           lastName : lastName,
           email:  email,

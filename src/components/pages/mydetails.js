@@ -47,33 +47,6 @@ function MyDetailsdetails(props){
             //Create the parent and add the children
             panel.push(<Panel key ={i+2000}><Panel.Heading key ={i+5000}>Username : {userValues[5]}</Panel.Heading>{children }</Panel>)
         }
-
-        // for (let i = 0; i < retrieveduserDetails.length; i++) {
-            
-        //     panel.push(<Panel>
-        //         {
-        //             <Panel.Heading>Username : {userValues[5]}</Panel.Heading>
-        //             {
-        //                 for (let j = 0; j < userKeys.length; j++) {
-        //                     console.log(userKeys[j]+" "+userValues[j]);
-        //                 }
-        //             }
-                    
-        //         }
-        //       </Panel>)
-
-        //     var userKeys = Object.keys(retrieveduserDetails[i]);
-        //     var userValues = Object.values(retrieveduserDetails[i])
-            
-        //     console.log("\n");
-            
-        // }
-        // console.log("something "+retrieveduserDetails[0][0]);
-       
-        // for (let index = 0; index < retrieveduserDetails.length; index++) {
-        //     console.log("members are "+ index);
-            
-        // }
         return panel
     }
     return null

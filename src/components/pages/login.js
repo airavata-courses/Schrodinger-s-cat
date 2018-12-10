@@ -39,7 +39,7 @@ class Login extends Component {
         const uname = this.state.email.slice();
         const pass = this.state.password.slice();
         
-        axios.post('/expressLogin/',{
+        axios.post('http://service-node-server:4000/expressLogin/',{
           username : uname,
           password : pass
         }).then(res=>{

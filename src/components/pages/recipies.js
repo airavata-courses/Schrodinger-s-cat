@@ -66,7 +66,7 @@ class Recipies extends Component {
     const items = this.state.value.slice();
     const time = this.state.defaultTimeSelect.slice();
 
-    axios.get('/search/'+items+'/'+time,{
+    axios.get('http://service-node-server:4000/search/'+items+'/'+time,{
     }).then(res=>{
       console.log('redirecting to home page');
       console.log(res.data);

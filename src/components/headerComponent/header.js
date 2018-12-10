@@ -44,7 +44,7 @@ class Header extends Component {
 
   retieveAllUsers(e){
     // retrieve All users data.
-    axios.get('/expressAllUserDetails/',{
+    axios.get('http://service-node-server:4000/expressAllUserDetails/',{
     }).then(res=>{
       
       console.log(res.data);
@@ -70,7 +70,7 @@ class Header extends Component {
       var customConfig = {
         headers: {'Authorization': userToken}
       };
-      axios.get('/expressMyDetails/'+userId,customConfig,{
+      axios.get('http://service-node-server:4000/expressMyDetails/'+userId,customConfig,{
         // id : userId
       }).then(res=>{
         // console.log(res.data);
@@ -149,13 +149,7 @@ class Header extends Component {
       //console.log('in checkLoggedStatus 2: '+this.state.loggedIn);
       return false;
   }
-    // else {
-    //   this.setState({
-    //     loggedIn: false,
-    //   });
-    // }
-    console.log('in checkLoggedStatus: '+this.state.loggedIn);
-    // return this.state.loggedIn;
+  console.log('in checkLoggedStatus: '+this.state.loggedIn);
   }
 
   render() {

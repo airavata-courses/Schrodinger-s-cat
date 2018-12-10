@@ -121,7 +121,7 @@ class Addrecipe extends Component {
     const genre = this.state.genre.slice();
     const myToken = this.state.myToken.slice();
 
-    axios.post('/expressAddRecipe/',{
+    axios.post('http://service-node-server:4000/expressAddRecipe/',{
       username : username,
       madeby : userId,
       name : recipeTitle,

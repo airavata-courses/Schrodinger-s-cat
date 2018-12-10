@@ -11,13 +11,14 @@ class About extends Component {
             <br/>
             <br/>
            <p>
-           Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+           This is a project made by students of Indiana University Bloomington, School of Informatics, Computing and Engineering as a part of the course CSCI-B659 Science Gateway Architecture. 
+           </p><p>
+             This applicaiton is deployed on kubernetes and is running on TACC's jetstream-cloud infrastructure. We have implemented High availability, Scalibility, fault tolerance and rolling updates with zero downtime.
            </p>
-            
+           <p>Visit our profiles on linkedin</p>
+           <p><a href="https://www.linkedin.com/in/nawazhk/">Nawaz Hussain K</a></p>
+           <p><a href="hhttps://www.linkedin.com/in/jlsoumya/">Laxmi Soumya Josyula</a></p>       
+           <p><a href="hhttps://www.linkedin.com/in/prashanth-swargam-pswargam/">Prashanth Swargam</a></p>   
         </div>
     );
   }
