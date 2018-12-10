@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo usermod -a -G docker $USER || true'
                 //sh 'kubectl delete deployments deployment-login-db || true'
                 sh 'kubectl delete deployments deployment-login || true'
                 //sh 'kubectl delete services service-login || true'
