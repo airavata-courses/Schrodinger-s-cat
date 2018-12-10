@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: service-front-react
-  namespace: scat
 spec:
   selector:
     purpose: front-react
