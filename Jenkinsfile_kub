@@ -3,24 +3,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo usermod -a -G docker $USER || true'
-                sh 'kubectl delete deployments deployment-login-db || true'
+                //sh 'kubectl delete deployments deployment-login-db || true'
                 sh 'kubectl delete deployments deployment-login || true'
-                sh 'kubectl delete services service-login || true'
-                sh 'kubectl delete services service-login-db || true'
+                //sh 'kubectl delete services service-login || true'
+                //sh 'kubectl delete services service-login-db || true'
             }
         }
         stage('Database') {
             steps {
-                sh 'kubectl create -f deployment-login-db.yaml'
                 sh 'kubectl create -f service-login-db.yaml || true'
+                sh 'kubectl create -f deployment-login-db.yaml || true'
                 //sh 'echo Skipping'
             }
         }
         stage('Search - Service') {
              steps {
-                sh 'kubectl create -f deployment-login.yaml'
                 sh 'kubectl create -f service-login.yaml || true'
+                sh 'kubectl create -f deployment-login.yaml'
             }
         }
          stage('Echo') {
