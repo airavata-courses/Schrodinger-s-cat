@@ -17,6 +17,7 @@ spec:
       containers:
       - name: search-db
         image: postgres:9.3
+        imagePullPolicy: Always
         env:
         - name: POSTGRES_PASSWORD
           value: postgres
