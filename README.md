@@ -67,3 +67,5 @@ Need to register a user in registration.html and then access create and delete u
 #### Delete (requires user authentication)
 - http://localhost:8888/jpa/users/delete/{id}					- deleteUser
 - http://localhost:8888/jpa/users/delete/{id}/delete-post			- deleteUserPost
+
+Peer Review 4 Commit
