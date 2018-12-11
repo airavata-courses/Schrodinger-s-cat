@@ -13,3 +13,5 @@ An interactive website where you can browse for recipes, upload your own creatio
 * Master Branch.
 * Stable Releases
 * Team members: [Nawaz](https://www.linkedin.com/in/nawazhk/), [Prashanth](https://www.linkedin.com/in/prashanth-swargam-pswargam/) and [Soumya](https://www.linkedin.com/in/jlsoumya/)
+
+Peer Review 4 Commit
